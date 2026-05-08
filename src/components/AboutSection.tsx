@@ -30,10 +30,8 @@ const AboutSection = () => (
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="grid grid-cols-2 gap-4"
         >
-          <img src={PHOTO_1} alt="Field research" className="rounded-2xl shadow-lg object-cover w-full aspect-[3/4]" />
-          <img src={PHOTO_2} alt="Agricultural work" className="rounded-2xl shadow-lg object-cover w-full aspect-[3/4] mt-8" />
+          <img src={PHOTO_2} alt="Agricultural work" className="rounded-2xl shadow-lg object-cover w-full max-w-md mx-auto aspect-[3/4]" />
         </motion.div>
 
         <motion.div
