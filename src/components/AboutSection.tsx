@@ -1,10 +1,5 @@
 import { motion } from "framer-motion";
 import {
-  Microscope,
-  Sprout,
-  Bug,
-  CloudSun,
-  Wheat,
   GraduationCap,
   Briefcase,
   Rocket,
@@ -13,14 +8,6 @@ import {
   FlaskConical,
   Globe2,
 } from "lucide-react";
-
-const expertiseTags = [
-  { icon: Bug, label: "Integrated Pest Management" },
-  { icon: Sprout, label: "Bio-Control Agents" },
-  { icon: Microscope, label: "Plant Disease Diagnostics" },
-  { icon: CloudSun, label: "Climate-Smart Agriculture" },
-  { icon: Wheat, label: "Sustainable Crop Production" },
-];
 
 const timeline = [
   {
@@ -128,32 +115,6 @@ const AboutSection = () => (
           </div>
         </motion.div>
       </div>
-
-      {/* Expertise tags */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-        className="mb-20"
-      >
-        <p className="text-xs font-semibold text-primary tracking-[0.2em] uppercase mb-5">Areas of Expertise</p>
-        <div className="flex flex-wrap gap-3">
-          {expertiseTags.map((tag, i) => (
-            <motion.div
-              key={tag.label}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: i * 0.06 }}
-              className="group inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-card border border-border hover:border-primary/40 hover:bg-primary/5 transition-all cursor-default"
-            >
-              <tag.icon className="w-4 h-4 text-primary" />
-              <span className="text-sm font-medium text-foreground">{tag.label}</span>
-            </motion.div>
-          ))}
-        </div>
-      </motion.div>
 
       {/* Experience highlights timeline */}
       <motion.div
