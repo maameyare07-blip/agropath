@@ -10,7 +10,7 @@ const experiences = [
     isCurrent: true,
     isLeadership: false,
     achievements: [
-      "Certified 50+ seed varieties for national distribution",
+      "Certified seed varieties for national distribution",
       "Ensured regulatory compliance with international phytosanitary standards",
       "Performed field and laboratory quality assessments for seed integrity",
       "Provided strategic advisory to the Ministry of Agriculture on seed policy",
