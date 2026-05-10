@@ -4,14 +4,14 @@ import { ArrowDown, Mail } from "lucide-react";
 const PHOTO = "https://cdn.phototourl.com/free/2026-04-04-1559576d-37d1-42ac-986d-0dfaa8b2383e.jpg";
 
 const HeroSection = () => (
-  <section className="relative min-h-screen flex items-center pt-16 overflow-hidden">
+  <section className="relative flex items-center pt-20 lg:pt-16 lg:min-h-[88vh] overflow-hidden">
     {/* Background gradient */}
     <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-accent/5" />
     <div className="absolute top-20 right-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
     <div className="absolute bottom-0 left-0 w-72 h-72 bg-accent/10 rounded-full blur-3xl" />
 
-    <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20">
-      <div className="grid lg:grid-cols-2 gap-12 items-center">
+    <div className="relative w-full max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-12">
+      <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
         <motion.div
           initial={{ opacity: 0, x: -40 }}
           animate={{ opacity: 1, x: 0 }}
@@ -51,7 +51,7 @@ const HeroSection = () => (
           transition={{ duration: 0.8, delay: 0.2 }}
           className="flex justify-center"
         >
-          <div className="relative w-72 h-72 sm:w-96 sm:h-96">
+          <div className="relative w-64 h-64 sm:w-80 sm:h-80 lg:w-[26rem] lg:h-[26rem]">
             <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary/20 to-accent/20 animate-pulse-slow" />
             <img
               src={PHOTO}

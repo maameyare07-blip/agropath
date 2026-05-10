@@ -21,7 +21,7 @@ const degrees = [
 ];
 
 const EducationSection = () => (
-  <section id="education" className="py-20 lg:py-28 bg-secondary/30">
+  <section id="education" className="py-14 lg:py-20 bg-secondary/30">
     <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
       <motion.div
         initial={{ opacity: 0, y: 30 }}

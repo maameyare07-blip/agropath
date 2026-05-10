@@ -17,7 +17,7 @@ const projects = [
 ];
 
 const ProjectsSection = () => (
-  <section id="projects" className="py-20 lg:py-28">
+  <section id="projects" className="py-14 lg:py-20">
     <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
       <motion.div
         initial={{ opacity: 0, y: 30 }}
