@@ -53,7 +53,7 @@ const ExperienceSection = () => (
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="text-center mb-16"
+        className="text-center mb-12"
       >
         <span className="text-primary font-semibold text-sm uppercase tracking-wider">Career Journey</span>
         <h2 className="font-heading text-3xl sm:text-4xl font-bold text-foreground mt-3">Professional Experience</h2>

@@ -48,7 +48,7 @@ const AboutSection = () => (
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="max-w-3xl mb-16"
+        className="max-w-3xl mb-12"
       >
         <span className="text-primary font-semibold text-xs tracking-[0.2em] uppercase">
           About — Academic & Research Background
@@ -60,7 +60,7 @@ const AboutSection = () => (
       </motion.div>
 
       {/* Two-column biography */}
-      <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 mb-20">
+      <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 mb-14">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -122,7 +122,7 @@ const AboutSection = () => (
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="mb-20"
+        className="mb-14"
       >
         <p className="text-xs font-semibold text-primary tracking-[0.2em] uppercase mb-6">Experience Highlights</p>
         <div className="grid md:grid-cols-3 gap-5">
