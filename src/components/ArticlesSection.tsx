@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Newspaper, ArrowRight, ExternalLink } from "lucide-react";
 
 const ArticlesSection = () => (
-  <section id="articles" className="py-20 lg:py-28 bg-secondary/30">
+  <section id="articles" className="py-14 lg:py-20 bg-secondary/30">
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       <motion.div
         initial={{ opacity: 0, y: 30 }}

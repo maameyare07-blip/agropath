@@ -12,7 +12,7 @@ const memberships = [
 ];
 
 const MembershipsSection = () => (
-  <section id="memberships" className="py-20 lg:py-28 bg-secondary/30 relative overflow-hidden">
+  <section id="memberships" className="py-14 lg:py-20 bg-secondary/30 relative overflow-hidden">
     <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[60rem] h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
 
     <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">

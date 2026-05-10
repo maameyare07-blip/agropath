@@ -41,7 +41,7 @@ const Counter = ({ to, suffix }: { to: number; suffix: string }) => {
 };
 
 const CommitmentSection = () => (
-  <section id="commitment" className="relative py-20 lg:py-28 bg-foreground text-background overflow-hidden">
+  <section id="commitment" className="relative py-14 lg:py-20 bg-foreground text-background overflow-hidden">
     {/* Background illustrations */}
     <div className="absolute inset-0 opacity-[0.06] pointer-events-none">
       <Wheat className="absolute top-10 left-10 w-40 h-40 text-primary" />

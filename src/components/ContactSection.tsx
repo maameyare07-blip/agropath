@@ -60,13 +60,13 @@ const ContactSection = () => {
   };
 
   return (
-    <section id="contact" className="py-20 lg:py-28">
+    <section id="contact" className="py-14 lg:py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-12"
         >
           <span className="text-primary font-semibold text-sm uppercase tracking-wider">Get in Touch</span>
           <h2 className="font-heading text-3xl sm:text-4xl font-bold text-foreground mt-3">Contact Me</h2>

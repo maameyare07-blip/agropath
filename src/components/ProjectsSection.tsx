@@ -17,13 +17,13 @@ const projects = [
 ];
 
 const ProjectsSection = () => (
-  <section id="projects" className="py-20 lg:py-28">
+  <section id="projects" className="py-14 lg:py-20">
     <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="text-center mb-16"
+        className="text-center mb-12"
       >
         <span className="text-primary font-semibold text-sm uppercase tracking-wider">Research & Impact</span>
         <h2 className="font-heading text-3xl sm:text-4xl font-bold text-foreground mt-3">Featured Projects</h2>
