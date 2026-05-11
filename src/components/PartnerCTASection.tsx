@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Mail, Download, Handshake, Sparkles } from "lucide-react";
+import { Mail, FileText, Handshake, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const trustItems = [
