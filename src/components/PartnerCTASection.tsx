@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Mail, Download, Handshake, Sparkles } from "lucide-react";
+import { Mail, FileText, Handshake, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const trustItems = [
@@ -97,8 +97,8 @@ const PartnerCTASection = () => (
             variant="outline"
             className="w-full sm:w-auto border-primary/40 hover:bg-primary/10 hover:scale-105 transition-all"
           >
-            <a href="#" download>
-              <Download className="w-5 h-5" />
+            <a href="/assets/Mohamed_Mohamud_SH_Hassan_CV.pdf" download="Mohamed_Mohamud_SH_Hassan_CV.pdf">
+              <FileText className="w-5 h-5" />
               Download CV
             </a>
           </Button>
