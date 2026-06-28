@@ -31,7 +31,7 @@ const timeline = [
 ];
 
 const stats = [
-  { icon: FlaskConical, value: "5+", label: "Research Areas" },
+  { icon: FlaskConical, value: "2+", label: "Research Areas" },
   { icon: Users, value: "10+", label: "Workshops" },
   { icon: BookOpen, value: "1", label: "publication" },
   { icon: Globe2, value: "8+", label: "Collaborations" },

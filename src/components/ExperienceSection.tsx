@@ -38,7 +38,7 @@ const experiences = [
     isCurrent: false,
     isLeadership: false,
     achievements: [
-      "Mentored 10+ students in plant pathology and crop protection",
+      "Mentored 2+ students in plant pathology and crop protection",
       "Supervised student research projects in sustainable agriculture",
       "Modernized curriculum to align with global agricultural standards",
       "Introduced evidence-based teaching methodologies",
