@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { FlaskConical, Users } from "lucide-react";
+import { FlaskConical } from "lucide-react";
 
 const projects = [
   {
@@ -7,12 +7,6 @@ const projects = [
     title: "Maize Disease Management Research",
     desc: "Comprehensive research on the management of Curvularia leaf spot of maize using bio-control agents and fungicides — contributing to sustainable crop protection and reduced chemical dependency.",
     tags: ["Bio-control", "Maize", "Plant Pathology"],
-  },
-  {
-    icon: Users,
-    title: "Agricultural Training & Farmer Support",
-    desc: "Designed and delivered hands-on training programs for farming communities in Somalia, focusing on pest identification, seed selection, and climate-resilient practices.",
-    tags: ["Capacity Building", "Farmer Training", "Food Security"],
   },
 ];
 
@@ -29,7 +23,7 @@ const ProjectsSection = () => (
         <h2 className="font-heading text-3xl sm:text-4xl font-bold text-foreground mt-3">Featured Projects</h2>
       </motion.div>
 
-      <div className="grid md:grid-cols-2 gap-8">
+      <div className="grid gap-8 max-w-2xl mx-auto">
         {projects.map((p, i) => (
           <motion.div
             key={p.title}
