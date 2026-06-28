@@ -8,12 +8,6 @@ const projects = [
     desc: "Comprehensive research on the management of Curvularia leaf spot of maize using bio-control agents and fungicides — contributing to sustainable crop protection and reduced chemical dependency.",
     tags: ["Bio-control", "Maize", "Plant Pathology"],
   },
-  {
-    icon: Users,
-    title: "Agricultural Training & Farmer Support",
-    desc: "Designed and delivered hands-on training programs for farming communities in Somalia, focusing on pest identification, seed selection, and climate-resilient practices.",
-    tags: ["Capacity Building", "Farmer Training", "Food Security"],
-  },
 ];
 
 const ProjectsSection = () => (
