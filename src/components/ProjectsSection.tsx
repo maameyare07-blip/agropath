@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { FlaskConical, Users } from "lucide-react";
+import { FlaskConical } from "lucide-react";
 
 const projects = [
   {
@@ -23,7 +23,7 @@ const ProjectsSection = () => (
         <h2 className="font-heading text-3xl sm:text-4xl font-bold text-foreground mt-3">Featured Projects</h2>
       </motion.div>
 
-      <div className="grid md:grid-cols-2 gap-8">
+      <div className="grid gap-8 max-w-2xl mx-auto">
         {projects.map((p, i) => (
           <motion.div
             key={p.title}
