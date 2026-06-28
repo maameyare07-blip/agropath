@@ -13,7 +13,7 @@ const commitments = [
 
 const stats = [
   { value: 50, suffix: "+", label: "Field Inspections" },
-  { value: 3, suffix: "+", label: "Research Projects" },
+  { value: 2, suffix: "", label: "Research Projects" },
   { value: 1000, suffix: "+", label: "Farmers Reached" },
   { value: 6, suffix: "", label: "Core Commitments" },
 ];
