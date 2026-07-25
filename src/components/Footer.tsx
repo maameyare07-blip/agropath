@@ -1,4 +1,4 @@
-import { Leaf, Linkedin, Twitter, Github } from "lucide-react";
+import { Leaf, Linkedin, Twitter, Instagram } from "lucide-react";
 
 const Footer = () => (
   <footer className="bg-foreground py-12">
@@ -21,9 +21,9 @@ const Footer = () => (
             className="w-10 h-10 rounded-full bg-background/10 flex items-center justify-center hover:bg-primary/20 transition-colors">
             <Twitter className="w-5 h-5 text-background/80" />
           </a>
-          <a href="https://github.com/" target="_blank" rel="noopener noreferrer" aria-label="GitHub"
+          <a href="https://www.instagram.com/sh_hassan__/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"
             className="w-10 h-10 rounded-full bg-background/10 flex items-center justify-center hover:bg-primary/20 transition-colors">
-            <Github className="w-5 h-5 text-background/80" />
+            <Instagram className="w-5 h-5 text-background/80" />
           </a>
         </div>
 
