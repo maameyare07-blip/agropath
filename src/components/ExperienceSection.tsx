@@ -36,6 +36,7 @@ const experiences = [
     icon: Award,
     title: "Lecturer & Research Supervisor",
     org: "Afgoye International University, Somalia",
+    orgUrl: undefined as string | undefined,
     date: "April 2025 – September 2025",
     isCurrent: false,
     isLeadership: false,
