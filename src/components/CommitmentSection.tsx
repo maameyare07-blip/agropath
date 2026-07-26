@@ -1,6 +1,6 @@
 import { motion, useInView, useMotionValue, useTransform, animate } from "framer-motion";
 import { useEffect, useRef } from "react";
-import { Wheat, CloudSun, ShieldCheck, Sprout, FlaskConical, Users, Heart } from "lucide-react";
+import { Wheat, CloudSun, ShieldCheck, Sprout, FlaskConical, Users, Heart, Leaf } from "lucide-react";
 
 const commitments = [
   { icon: Wheat, title: "Food Security", text: "Supporting food security initiatives across communities." },
@@ -41,14 +41,14 @@ const Counter = ({ to, suffix }: { to: number; suffix: string }) => {
 };
 
 const CommitmentSection = () => (
-  <section id="commitment" className="relative py-14 lg:py-20 bg-foreground text-background overflow-hidden">
+  <section id="commitment" className="relative py-14 lg:py-20 bg-secondary/30 overflow-hidden">
     {/* Background illustrations */}
-    <div className="absolute inset-0 opacity-[0.06] pointer-events-none">
+    <div className="absolute inset-0 opacity-[0.05] pointer-events-none">
       <Wheat className="absolute top-10 left-10 w-40 h-40 text-primary" />
       <Sprout className="absolute bottom-10 right-10 w-48 h-48 text-primary" />
       <Leaf className="absolute top-1/2 left-1/3 w-32 h-32 text-primary" />
     </div>
-    <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[40rem] h-[40rem] bg-primary/20 rounded-full blur-3xl pointer-events-none" />
+    <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[40rem] h-[40rem] bg-primary/10 rounded-full blur-3xl pointer-events-none" />
 
     <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <motion.div
@@ -59,8 +59,8 @@ const CommitmentSection = () => (
         className="text-center mb-14 max-w-3xl mx-auto"
       >
         <span className="text-primary font-semibold text-sm uppercase tracking-wider">Driven by Purpose</span>
-        <h2 className="font-heading text-4xl sm:text-5xl font-bold mt-3 mb-6">My Commitment</h2>
-        <p className="text-background/70 text-lg leading-relaxed">
+        <h2 className="font-heading text-4xl sm:text-5xl font-bold text-foreground mt-3 mb-6">My Commitment</h2>
+        <p className="text-muted-foreground text-lg leading-relaxed">
           I am committed to promoting sustainable agriculture and scientific excellence through practical
           agricultural solutions, plant disease management, seed quality systems, and farmer-centered innovation.
         </p>
@@ -75,12 +75,12 @@ const CommitmentSection = () => (
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: i * 0.1 }}
-            className="text-center p-6 rounded-2xl bg-background/5 border border-background/10 backdrop-blur-sm"
+            className="text-center p-6 rounded-2xl bg-card border border-border shadow-sm"
           >
             <div className="font-heading text-4xl sm:text-5xl font-bold text-primary mb-1">
               <Counter to={s.value} suffix={s.suffix} />
             </div>
-            <div className="text-background/70 text-sm uppercase tracking-wider">{s.label}</div>
+            <div className="text-muted-foreground text-sm uppercase tracking-wider">{s.label}</div>
           </motion.div>
         ))}
       </div>
@@ -94,13 +94,13 @@ const CommitmentSection = () => (
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: i * 0.08 }}
-            className="group relative rounded-2xl p-6 bg-background/5 border border-background/10 hover:border-primary/50 transition-all hover:shadow-[0_0_40px_-10px_hsl(var(--primary)/0.5)] backdrop-blur-sm"
+            className="group relative rounded-2xl p-6 bg-card border border-border hover:border-primary/50 shadow-sm hover:shadow-md transition-all"
           >
-            <div className="w-12 h-12 rounded-xl bg-primary/20 flex items-center justify-center mb-4 group-hover:bg-primary/30 transition-colors">
+            <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
               <c.icon className="w-6 h-6 text-primary" />
             </div>
-            <h3 className="font-heading text-lg font-semibold mb-2">{c.title}</h3>
-            <p className="text-background/70 text-sm leading-relaxed">{c.text}</p>
+            <h3 className="font-heading text-lg font-semibold text-foreground mb-2">{c.title}</h3>
+            <p className="text-muted-foreground text-sm leading-relaxed">{c.text}</p>
           </motion.div>
         ))}
       </div>
@@ -110,10 +110,10 @@ const CommitmentSection = () => (
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="relative max-w-4xl mx-auto text-center p-8 lg:p-10 rounded-3xl bg-gradient-to-br from-primary/15 to-transparent border border-primary/30"
+        className="relative max-w-4xl mx-auto text-center p-8 lg:p-10 rounded-3xl bg-gradient-to-br from-primary/10 to-transparent border border-primary/30"
       >
         <Heart className="w-8 h-8 text-primary mx-auto mb-4" />
-        <p className="font-heading text-xl sm:text-2xl leading-relaxed text-background/90 italic">
+        <p className="font-heading text-xl sm:text-2xl leading-relaxed text-foreground/90 italic">
           "Every research project, field inspection, and educational initiative I undertake is guided by a
           commitment to agricultural sustainability, scientific integrity, and positive community impact."
         </p>
@@ -121,8 +121,5 @@ const CommitmentSection = () => (
     </div>
   </section>
 );
-
-// Local import to avoid name collision in JSX background
-import { Leaf } from "lucide-react";
 
 export default CommitmentSection;

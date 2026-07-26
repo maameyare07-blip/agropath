@@ -6,6 +6,7 @@ const experiences = [
     icon: Briefcase,
     title: "Seed Inspector",
     org: "Somali Agricultural Regulatory and Inspection Services (SARIS)",
+    orgUrl: "https://saris.gov.so/",
     date: "September 2025 – Present",
     isCurrent: true,
     isLeadership: false,
@@ -20,6 +21,7 @@ const experiences = [
     icon: Rocket,
     title: "Founder & CEO",
     org: "PathoSolutions",
+    orgUrl: undefined as string | undefined,
     date: "2024 – Present",
     isCurrent: true,
     isLeadership: true,
@@ -34,6 +36,7 @@ const experiences = [
     icon: Award,
     title: "Lecturer & Research Supervisor",
     org: "Afgoye International University, Somalia",
+    orgUrl: undefined as string | undefined,
     date: "April 2025 – September 2025",
     isCurrent: false,
     isLeadership: false,
@@ -93,7 +96,20 @@ const ExperienceSection = () => (
                     <span className="px-2.5 py-0.5 text-xs font-semibold rounded-full bg-accent/10 text-accent">Leadership</span>
                   )}
                 </div>
-                <p className="text-muted-foreground font-medium mb-1">{exp.org}</p>
+                <p className="text-muted-foreground font-medium mb-1">
+                  {exp.orgUrl ? (
+                    <a
+                      href={exp.orgUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:text-primary hover:underline underline-offset-2 transition-colors"
+                    >
+                      {exp.org}
+                    </a>
+                  ) : (
+                    exp.org
+                  )}
+                </p>
                 <p className="text-sm text-muted-foreground mb-4">{exp.date}</p>
                 <ul className="space-y-2">
                   {exp.achievements.map((a) => (

@@ -5,6 +5,7 @@ const degrees = [
   {
     degree: "Master of Science (Agri.) in Plant Pathology",
     institution: "Lovely Professional University (LPU), Punjab, India",
+    institutionUrl: "https://www.lpu.in/",
     year: "2024",
     thesis: "Management of Curvularia Leaf Spot of Maize Using Bio-Control Agents and Fungicides",
     specializations: ["Integrated Pest Management", "Bio-control agents", "Fungicides", "Agricultural research"],
@@ -13,6 +14,7 @@ const degrees = [
   {
     degree: "Bachelor of Science in Agriculture",
     institution: "International University of Business Agriculture and Technology (IUBAT), Dhaka, Bangladesh",
+    institutionUrl: "https://iubat.edu/",
     year: "2021",
     thesis: "Identification of Rice Genotypes for Flash Flood Submergence Tolerance",
     specializations: ["Sustainable agriculture", "Research techniques", "Pest and disease management"],
@@ -57,7 +59,16 @@ const EducationSection = () => (
             </div>
 
             <h3 className="font-heading font-bold text-lg text-foreground mb-1">{d.degree}</h3>
-            <p className="text-sm text-muted-foreground mb-5">{d.institution}</p>
+            <p className="text-sm text-muted-foreground mb-5">
+              <a
+                href={d.institutionUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-primary hover:underline underline-offset-2 transition-colors"
+              >
+                {d.institution}
+              </a>
+            </p>
 
             {/* Thesis */}
             <div className="border-l-2 border-primary pl-4 mb-5">
