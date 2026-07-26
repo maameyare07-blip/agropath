@@ -13,11 +13,11 @@ const Footer = () => (
         </p>
 
         <div className="flex items-center gap-4 mb-8">
-          <a href="https://linkedin.com/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"
+          <a href="https://www.linkedin.com/in/mohamed-mohamud-sh-hassan/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"
             className="w-10 h-10 rounded-full bg-background/10 flex items-center justify-center hover:bg-primary/20 transition-colors">
             <Linkedin className="w-5 h-5 text-background/80" />
           </a>
-          <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer" aria-label="Twitter"
+          <a href="https://x.com/SH_Hassan8" target="_blank" rel="noopener noreferrer" aria-label="Twitter"
             className="w-10 h-10 rounded-full bg-background/10 flex items-center justify-center hover:bg-primary/20 transition-colors">
             <Twitter className="w-5 h-5 text-background/80" />
           </a>
