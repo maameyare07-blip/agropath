@@ -59,7 +59,16 @@ const EducationSection = () => (
             </div>
 
             <h3 className="font-heading font-bold text-lg text-foreground mb-1">{d.degree}</h3>
-            <p className="text-sm text-muted-foreground mb-5">{d.institution}</p>
+            <p className="text-sm text-muted-foreground mb-5">
+              <a
+                href={d.institutionUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-primary hover:underline underline-offset-2 transition-colors"
+              >
+                {d.institution}
+              </a>
+            </p>
 
             {/* Thesis */}
             <div className="border-l-2 border-primary pl-4 mb-5">
