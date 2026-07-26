@@ -6,6 +6,7 @@ const experiences = [
     icon: Briefcase,
     title: "Seed Inspector",
     org: "Somali Agricultural Regulatory and Inspection Services (SARIS)",
+    orgUrl: "https://saris.gov.so/",
     date: "September 2025 – Present",
     isCurrent: true,
     isLeadership: false,
