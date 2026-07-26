@@ -21,6 +21,7 @@ const experiences = [
     icon: Rocket,
     title: "Founder & CEO",
     org: "PathoSolutions",
+    orgUrl: undefined as string | undefined,
     date: "2024 – Present",
     isCurrent: true,
     isLeadership: true,
