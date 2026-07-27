@@ -14,18 +14,21 @@ const timeline = [
     icon: Briefcase,
     role: "Seed Inspector",
     org: "Somali Agricultural Regulatory and Inspection Services (SARIS)",
+    orgUrl: "https://saris.gov.so/",
     note: "Seed quality assurance, regulatory compliance, and agricultural standards development.",
   },
   {
     icon: GraduationCap,
     role: "Lecturer — Department of Agriculture",
     org: "Afgoye International University",
+    orgUrl: undefined as string | undefined,
     note: "Teaching plant pathology and supporting agricultural education initiatives.",
   },
   {
     icon: Rocket,
     role: "Founder & CEO",
     org: "PathoSolutions",
+    orgUrl: undefined as string | undefined,
     note: "Plant disease management, knowledge dissemination, and collaborative research.",
   },
 ];
@@ -72,7 +75,7 @@ const AboutSection = () => (
             I am a dedicated agricultural scientist specializing in <strong className="text-foreground">plant pathology</strong>, <strong className="text-foreground">seed inspection</strong>, and <strong className="text-foreground">sustainable agricultural systems</strong>. My professional experience combines scientific research, field-based agricultural practice, and agricultural education to support resilient and productive farming systems.
           </p>
           <p>
-            Currently, I serve as a <strong className="text-foreground">Seed Inspector at Somali Agricultural Regulatory and Inspection Services (SARIS)</strong>, where I contribute to seed quality assurance, regulatory compliance, and agricultural standards development.
+            Currently, I serve as a <strong className="text-foreground">Seed Inspector at <a href="https://saris.gov.so/" target="_blank" rel="noopener noreferrer" className="hover:text-primary hover:underline underline-offset-2 transition-colors">Somali Agricultural Regulatory and Inspection Services (SARIS)</a></strong>, where I contribute to seed quality assurance, regulatory compliance, and agricultural standards development.
           </p>
           <p>
             I also have academic experience as a <strong className="text-foreground">Lecturer in the Department of Agriculture</strong>, where I taught plant pathology and supported agricultural education initiatives for university students.
@@ -99,11 +102,15 @@ const AboutSection = () => (
             </div>
             <div className="space-y-5">
               <div className="pl-4 border-l-2 border-primary/40">
-                <p className="font-semibold text-foreground">Lovely Professional University</p>
+                <p className="font-semibold text-foreground">
+                  <a href="https://www.lpu.in/" target="_blank" rel="noopener noreferrer" className="hover:text-primary hover:underline underline-offset-2 transition-colors">Lovely Professional University</a>
+                </p>
                 <p className="text-sm text-muted-foreground">India — Advanced Plant Pathology</p>
               </div>
               <div className="pl-4 border-l-2 border-accent/50">
-                <p className="font-semibold text-foreground">IUBAT</p>
+                <p className="font-semibold text-foreground">
+                  <a href="https://iubat.edu/" target="_blank" rel="noopener noreferrer" className="hover:text-primary hover:underline underline-offset-2 transition-colors">IUBAT</a>
+                </p>
                 <p className="text-sm text-muted-foreground">
                   International University of Business Agriculture and Technology, Bangladesh
                 </p>
@@ -140,7 +147,15 @@ const AboutSection = () => (
                 <item.icon className="w-5 h-5 text-primary" />
               </div>
               <h4 className="font-heading font-bold text-foreground mb-1.5 leading-snug">{item.role}</h4>
-              <p className="text-sm text-primary font-medium mb-3">{item.org}</p>
+              <p className="text-sm text-primary font-medium mb-3">
+                {item.orgUrl ? (
+                  <a href={item.orgUrl} target="_blank" rel="noopener noreferrer" className="hover:underline underline-offset-2 transition-colors">
+                    {item.org}
+                  </a>
+                ) : (
+                  item.org
+                )}
+              </p>
               <p className="text-sm text-muted-foreground leading-relaxed">{item.note}</p>
             </motion.div>
           ))}
