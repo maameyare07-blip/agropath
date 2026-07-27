@@ -102,11 +102,15 @@ const AboutSection = () => (
             </div>
             <div className="space-y-5">
               <div className="pl-4 border-l-2 border-primary/40">
-                <p className="font-semibold text-foreground">Lovely Professional University</p>
+                <p className="font-semibold text-foreground">
+                  <a href="https://www.lpu.in/" target="_blank" rel="noopener noreferrer" className="hover:text-primary hover:underline underline-offset-2 transition-colors">Lovely Professional University</a>
+                </p>
                 <p className="text-sm text-muted-foreground">India — Advanced Plant Pathology</p>
               </div>
               <div className="pl-4 border-l-2 border-accent/50">
-                <p className="font-semibold text-foreground">IUBAT</p>
+                <p className="font-semibold text-foreground">
+                  <a href="https://iubat.edu/" target="_blank" rel="noopener noreferrer" className="hover:text-primary hover:underline underline-offset-2 transition-colors">IUBAT</a>
+                </p>
                 <p className="text-sm text-muted-foreground">
                   International University of Business Agriculture and Technology, Bangladesh
                 </p>
