@@ -17,8 +17,8 @@ const schema = z.object({
   organization: z.string().trim().min(2, "Organization is required").max(160),
   email: z.string().trim().email("Valid email required").max(255),
   message: z.string().trim().min(20, "Please share at least 20 characters").max(1500),
-  permission_granted: z.literal(true, {
-    errorMap: () => ({ message: "Permission is required to submit" }),
+  permission_granted: z.boolean().refine((v) => v === true, {
+    message: "Permission is required to submit",
   }),
 });
 
@@ -58,7 +58,7 @@ const SubmitTestimonial = () => {
     e.preventDefault();
     const parsed = schema.safeParse(form);
     if (!parsed.success) {
-      const first = parsed.error.errors[0];
+      const first = parsed.error.issues[0];
       toast({ title: "Please check the form", description: first.message, variant: "destructive" });
       return;
     }
