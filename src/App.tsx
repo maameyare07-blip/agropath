@@ -6,6 +6,9 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { Analytics } from "@vercel/analytics/react";
 import Index from "./pages/Index.tsx";
 import NotFound from "./pages/NotFound.tsx";
+import SubmitTestimonial from "./pages/SubmitTestimonial.tsx";
+import AdminLogin from "./pages/AdminLogin.tsx";
+import AdminTestimonials from "./pages/AdminTestimonials.tsx";
 
 const queryClient = new QueryClient();
 
@@ -17,6 +20,9 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
+          <Route path="/testimonial" element={<SubmitTestimonial />} />
+          <Route path="/admin/login" element={<AdminLogin />} />
+          <Route path="/admin/testimonials" element={<AdminTestimonials />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
