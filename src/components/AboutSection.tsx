@@ -147,7 +147,15 @@ const AboutSection = () => (
                 <item.icon className="w-5 h-5 text-primary" />
               </div>
               <h4 className="font-heading font-bold text-foreground mb-1.5 leading-snug">{item.role}</h4>
-              <p className="text-sm text-primary font-medium mb-3">{item.org}</p>
+              <p className="text-sm text-primary font-medium mb-3">
+                {item.orgUrl ? (
+                  <a href={item.orgUrl} target="_blank" rel="noopener noreferrer" className="hover:underline underline-offset-2 transition-colors">
+                    {item.org}
+                  </a>
+                ) : (
+                  item.org
+                )}
+              </p>
               <p className="text-sm text-muted-foreground leading-relaxed">{item.note}</p>
             </motion.div>
           ))}
