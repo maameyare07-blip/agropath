@@ -14,18 +14,21 @@ const timeline = [
     icon: Briefcase,
     role: "Seed Inspector",
     org: "Somali Agricultural Regulatory and Inspection Services (SARIS)",
+    orgUrl: "https://saris.gov.so/",
     note: "Seed quality assurance, regulatory compliance, and agricultural standards development.",
   },
   {
     icon: GraduationCap,
     role: "Lecturer — Department of Agriculture",
     org: "Afgoye International University",
+    orgUrl: undefined as string | undefined,
     note: "Teaching plant pathology and supporting agricultural education initiatives.",
   },
   {
     icon: Rocket,
     role: "Founder & CEO",
     org: "PathoSolutions",
+    orgUrl: undefined as string | undefined,
     note: "Plant disease management, knowledge dissemination, and collaborative research.",
   },
 ];
