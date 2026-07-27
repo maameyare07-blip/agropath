@@ -75,7 +75,7 @@ const AboutSection = () => (
             I am a dedicated agricultural scientist specializing in <strong className="text-foreground">plant pathology</strong>, <strong className="text-foreground">seed inspection</strong>, and <strong className="text-foreground">sustainable agricultural systems</strong>. My professional experience combines scientific research, field-based agricultural practice, and agricultural education to support resilient and productive farming systems.
           </p>
           <p>
-            Currently, I serve as a <strong className="text-foreground">Seed Inspector at Somali Agricultural Regulatory and Inspection Services (SARIS)</strong>, where I contribute to seed quality assurance, regulatory compliance, and agricultural standards development.
+            Currently, I serve as a <strong className="text-foreground">Seed Inspector at <a href="https://saris.gov.so/" target="_blank" rel="noopener noreferrer" className="hover:text-primary hover:underline underline-offset-2 transition-colors">Somali Agricultural Regulatory and Inspection Services (SARIS)</a></strong>, where I contribute to seed quality assurance, regulatory compliance, and agricultural standards development.
           </p>
           <p>
             I also have academic experience as a <strong className="text-foreground">Lecturer in the Department of Agriculture</strong>, where I taught plant pathology and supported agricultural education initiatives for university students.
