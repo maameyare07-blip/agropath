@@ -79,7 +79,36 @@ export type Database = {
       }
     }
     Views: {
-      [_ in never]: never
+      public_testimonials: {
+        Row: {
+          created_at: string | null
+          full_name: string | null
+          id: string | null
+          message: string | null
+          organization: string | null
+          photo_url: string | null
+          position: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          full_name?: string | null
+          id?: string | null
+          message?: string | null
+          organization?: string | null
+          photo_url?: string | null
+          position?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          full_name?: string | null
+          id?: string | null
+          message?: string | null
+          organization?: string | null
+          photo_url?: string | null
+          position?: string | null
+        }
+        Relationships: []
+      }
     }
     Functions: {
       has_role: {

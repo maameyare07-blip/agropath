@@ -56,12 +56,11 @@ const TestimonialsSection = () => {
 
   useEffect(() => {
     (async () => {
-      const { data } = await supabase
-        .from("testimonials")
+      const { data } = await (supabase as any)
+        .from("public_testimonials")
         .select("id, full_name, position, organization, message, photo_url")
-        .eq("status", "approved")
         .order("created_at", { ascending: false });
-      setItems(data ?? []);
+      setItems((data as Testimonial[]) ?? []);
       setLoading(false);
     })();
   }, []);
