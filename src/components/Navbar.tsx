@@ -2,13 +2,12 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Leaf, ExternalLink } from "lucide-react";
 
-const navLinks = [
+const navLinks: { label: string; href: string; external?: boolean }[] = [
   { label: "About", href: "#about" },
   { label: "Experience", href: "#experience" },
   { label: "Education", href: "#education" },
   { label: "Services", href: "#services" },
   { label: "Skills", href: "#skills" },
-  
   { label: "Articles", href: "#articles" },
   { label: "Trainings", href: "/trainings", external: true },
   { label: "Contact", href: "#contact" },
@@ -32,9 +31,11 @@ const Navbar = () => {
               <a
                 key={link.label}
                 href={link.href}
-                className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
+                {...(link.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors flex items-center gap-1"
               >
                 {link.label}
+                {link.external && <ExternalLink className="w-3 h-3" />}
               </a>
             ))}
             <a
@@ -72,10 +73,12 @@ const Navbar = () => {
                 <a
                   key={link.label}
                   href={link.href}
+                  {...(link.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                   onClick={() => setIsOpen(false)}
-                  className="block px-4 py-3 rounded-lg text-base font-medium text-foreground hover:bg-secondary transition-colors"
+                  className="flex items-center gap-2 px-4 py-3 rounded-lg text-base font-medium text-foreground hover:bg-secondary transition-colors"
                 >
                   {link.label}
+                  {link.external && <ExternalLink className="w-4 h-4" />}
                 </a>
               ))}
               <a
