@@ -9,6 +9,7 @@ import NotFound from "./pages/NotFound.tsx";
 import SubmitTestimonial from "./pages/SubmitTestimonial.tsx";
 import AdminLogin from "./pages/AdminLogin.tsx";
 import AdminTestimonials from "./pages/AdminTestimonials.tsx";
+import Trainings from "./pages/Trainings.tsx";
 
 const queryClient = new QueryClient();
 
@@ -23,6 +24,7 @@ const App = () => (
           <Route path="/testimonial" element={<SubmitTestimonial />} />
           <Route path="/admin/login" element={<AdminLogin />} />
           <Route path="/admin/testimonials" element={<AdminTestimonials />} />
+          <Route path="/trainings" element={<Trainings />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
