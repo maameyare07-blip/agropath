@@ -9,7 +9,7 @@ const navLinks: { label: string; href: string; external?: boolean }[] = [
   { label: "Services", href: "#services" },
   { label: "Skills", href: "#skills" },
   { label: "Articles", href: "#articles" },
-  { label: "Trainings", href: "/trainings", external: true },
+  { label: "Trainings", href: "/trainings" },
   { label: "Contact", href: "#contact" },
 ];
 

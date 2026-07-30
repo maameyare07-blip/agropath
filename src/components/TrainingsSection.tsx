@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Award, Calendar, Clock } from "lucide-react";
+import { Award, Calendar } from "lucide-react";
 
 type Training = {
   title: string;
@@ -75,12 +75,6 @@ const TrainingsSection = () => (
                 <span className="inline-flex items-center gap-1.5 text-sm text-muted-foreground">
                   <Calendar className="w-4 h-4" />
                   {training.date}
-                </span>
-              )}
-              {training.note && (
-                <span className="inline-flex items-center gap-1.5 text-xs font-medium text-foreground/80 bg-secondary px-2.5 py-1 rounded-full">
-                  <Clock className="w-3.5 h-3.5" />
-                  {training.note}
                 </span>
               )}
             </div>
