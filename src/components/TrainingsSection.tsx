@@ -1,5 +1,10 @@
 import { motion } from "framer-motion";
-import { Award, Calendar } from "lucide-react";
+import { Award, Calendar, FileText } from "lucide-react";
+import certUnsdcf from "@/assets/certificates/United_Nations_Sustainable_Development_Cooperation_Framework.pdf.asset.json";
+import certClimate from "@/assets/certificates/Climate_Change_Peace_and_Security_Understanding_Climate_Related_Security_Risks.pdf.asset.json";
+import certPrimer from "@/assets/certificates/Foundational_Primer_on_the_2030_Agenda_for_Sustainable_Development.pdf.asset.json";
+import certDrr from "@/assets/certificates/Synergizing_Disaster_Risk_Reduction_and_Climate_Change_Adaptation_Thought_Leadership_Course.pdf.asset.json";
+import certPce from "@/assets/certificates/Conducting_a_Phytosanitary_Capacity_Evaluation_PCE.pdf.asset.json";
 
 type Training = {
   title: string;
@@ -9,6 +14,7 @@ type Training = {
   note?: string;
   photoUrl?: string;
   url?: string;
+  certificateUrl?: string;
 };
 
 const trainings: Training[] = [
@@ -17,28 +23,34 @@ const trainings: Training[] = [
     provider: "UN System Staff College / UN Sustainable Development Group",
     date: "22 November 2023",
     note: "8 study hours",
+    certificateUrl: certUnsdcf.url,
   },
   {
     title: "Climate Change, Peace and Security: Understanding Climate-Related Security Risks Through an Integrated Lens",
     provider: "UNITAR / UN CC:Learn / UNEP / UN Women / UNDPPA / UNDP / adelphi",
     date: "27 November 2023",
+    certificateUrl: certClimate.url,
   },
   {
     title: "Foundational Primer on the 2030 Agenda for Sustainable Development (SDG Primer)",
     provider: "UN System Staff College",
     date: "26 November 2023",
+    certificateUrl: certPrimer.url,
   },
   {
     title: "Synergizing Disaster Risk Reduction and Climate Change Adaptation – Thought Leadership Course",
     provider: "UN System Staff College (UNSSC) & UNDRR",
     date: "",
+    certificateUrl: certDrr.url,
   },
   {
     title: "Conducting a Phytosanitary Capacity Evaluation (PCE)",
     provider: "FAO eLearning Academy / IPPC",
     date: "11 May 2026",
+    certificateUrl: certPce.url,
   },
 ];
+
 
 const TrainingsSection = () => (
   <section id="trainings" className="py-14 lg:py-20">
@@ -97,7 +109,20 @@ const TrainingsSection = () => (
                 training.provider
               )}
             </p>
+
+            {training.certificateUrl && (
+              <a
+                href={training.certificateUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-5 inline-flex items-center gap-2 rounded-xl bg-primary px-4 py-2.5 text-sm font-semibold text-primary-foreground shadow-sm transition-opacity hover:opacity-90 min-h-[44px]"
+              >
+                <FileText className="w-4 h-4" />
+                View Certificate
+              </a>
+            )}
           </motion.article>
+
         ))}
       </div>
     </div>
