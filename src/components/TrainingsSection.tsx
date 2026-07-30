@@ -109,7 +109,20 @@ const TrainingsSection = () => (
                 training.provider
               )}
             </p>
+
+            {training.certificateUrl && (
+              <a
+                href={training.certificateUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-5 inline-flex items-center gap-2 rounded-xl bg-primary px-4 py-2.5 text-sm font-semibold text-primary-foreground shadow-sm transition-opacity hover:opacity-90 min-h-[44px]"
+              >
+                <FileText className="w-4 h-4" />
+                View Certificate
+              </a>
+            )}
           </motion.article>
+
         ))}
       </div>
     </div>
