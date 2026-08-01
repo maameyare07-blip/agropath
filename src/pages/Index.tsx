@@ -6,11 +6,10 @@ import MissionVisionSection from "@/components/MissionVisionSection";
 import ExperienceSection from "@/components/ExperienceSection";
 import EducationSection from "@/components/EducationSection";
 import PublicationsSection from "@/components/PublicationsSection";
-
+import TrainingsPreviewSection from "@/components/TrainingsPreviewSection";
 import MembershipsSection from "@/components/MembershipsSection";
 import ServicesSection from "@/components/ServicesSection";
 import SkillsSection from "@/components/SkillsSection";
-
 import ArticlesSection from "@/components/ArticlesSection";
 import CommitmentSection from "@/components/CommitmentSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
@@ -27,8 +26,9 @@ const Index = () => (
     <MissionVisionSection />
     <ExperienceSection />
     <EducationSection />
-      <PublicationsSection />
-      <MembershipsSection />
+    <PublicationsSection />
+    <TrainingsPreviewSection />
+    <MembershipsSection />
     <ServicesSection />
     <SkillsSection />
     <ArticlesSection />
