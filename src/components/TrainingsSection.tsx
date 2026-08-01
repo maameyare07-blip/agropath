@@ -19,6 +19,32 @@ type Training = {
 
 const trainings: Training[] = [
   {
+    title: "Training on Seed Quality Assurance and Certification Standards (Training of Trainers - ToT)",
+    provider: "Food and Agriculture Organization of the United Nations (FAO) & Somali Agricultural Regulatory & Inspection Service (SARIS)",
+    date: "28–30 July 2026, Mogadishu",
+  },
+  {
+    title: "SARIS Seed Certification and Traceability System",
+    provider: "SARIS HQ",
+    date: "14–16 July 2026, Mogadishu",
+  },
+  {
+    title: "Conducting a Phytosanitary Capacity Evaluation (PCE)",
+    provider: "FAO eLearning Academy / IPPC",
+    date: "11 May 2026",
+    certificateUrl: certPce.url,
+  },
+  {
+    title: "Refresher Training of Trainers (ToT) on Phytosanitary Measures and Integrated Production and Pest Management (IPPM) Principles",
+    provider: "SARIS",
+    date: "14–16 February 2026, Mogadishu",
+  },
+  {
+    title: "Seed Production and Certification ToT Training Workshop",
+    provider: "SARIS",
+    date: "21–25 September 2025, Mogadishu",
+  },
+  {
     title: "United Nations Sustainable Development Cooperation Framework",
     provider: "UN System Staff College / UN Sustainable Development Group",
     date: "22 November 2023",
@@ -42,12 +68,6 @@ const trainings: Training[] = [
     provider: "UN System Staff College (UNSSC) & UNDRR",
     date: "",
     certificateUrl: certDrr.url,
-  },
-  {
-    title: "Conducting a Phytosanitary Capacity Evaluation (PCE)",
-    provider: "FAO eLearning Academy / IPPC",
-    date: "11 May 2026",
-    certificateUrl: certPce.url,
   },
 ];
 

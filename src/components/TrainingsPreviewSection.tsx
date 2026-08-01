@@ -4,6 +4,26 @@ import { Link } from "react-router-dom";
 
 const trainings = [
   {
+    title: "Training on Seed Quality Assurance and Certification Standards (Training of Trainers - ToT)",
+    provider: "Food and Agriculture Organization of the United Nations (FAO) & Somali Agricultural Regulatory & Inspection Service (SARIS)",
+  },
+  {
+    title: "SARIS Seed Certification and Traceability System",
+    provider: "SARIS HQ",
+  },
+  {
+    title: "Conducting a Phytosanitary Capacity Evaluation (PCE)",
+    provider: "FAO eLearning Academy / IPPC",
+  },
+  {
+    title: "Refresher Training of Trainers (ToT) on Phytosanitary Measures and Integrated Production and Pest Management (IPPM) Principles",
+    provider: "SARIS",
+  },
+  {
+    title: "Seed Production and Certification ToT Training Workshop",
+    provider: "SARIS",
+  },
+  {
     title: "United Nations Sustainable Development Cooperation Framework",
     provider: "UN System Staff College / UN Sustainable Development Group",
   },
@@ -18,10 +38,6 @@ const trainings = [
   {
     title: "Synergizing Disaster Risk Reduction and Climate Change Adaptation – Thought Leadership Course",
     provider: "UN System Staff College (UNSSC) & UNDRR",
-  },
-  {
-    title: "Conducting a Phytosanitary Capacity Evaluation (PCE)",
-    provider: "FAO eLearning Academy / IPPC",
   },
 ];
 
