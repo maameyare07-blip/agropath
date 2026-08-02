@@ -1,10 +1,27 @@
 import { motion } from "framer-motion";
 import { Award, Calendar, FileText } from "lucide-react";
+import TrainingGallery from "./TrainingGallery";
 import certUnsdcf from "@/assets/certificates/United_Nations_Sustainable_Development_Cooperation_Framework.pdf.asset.json";
 import certClimate from "@/assets/certificates/Climate_Change_Peace_and_Security_Understanding_Climate_Related_Security_Risks.pdf.asset.json";
 import certPrimer from "@/assets/certificates/Foundational_Primer_on_the_2030_Agenda_for_Sustainable_Development.pdf.asset.json";
 import certDrr from "@/assets/certificates/Synergizing_Disaster_Risk_Reduction_and_Climate_Change_Adaptation_Thought_Leadership_Course.pdf.asset.json";
 import certPce from "@/assets/certificates/Conducting_a_Phytosanitary_Capacity_Evaluation_PCE.pdf.asset.json";
+import g1 from "@/assets/gallery/1.jpeg.asset.json";
+import g1a from "@/assets/gallery/1a.jpeg.asset.json";
+import g1b from "@/assets/gallery/1b.jpeg.asset.json";
+import g2 from "@/assets/gallery/2.jpeg.asset.json";
+import g2a from "@/assets/gallery/2a.jpeg.asset.json";
+import g2b from "@/assets/gallery/2b.jpeg.asset.json";
+import g2c from "@/assets/gallery/2c.jpeg.asset.json";
+import g2d from "@/assets/gallery/2d.jpeg.asset.json";
+import g2e from "@/assets/gallery/2e.jpeg.asset.json";
+import g2f from "@/assets/gallery/2f.jpeg.asset.json";
+import g2g from "@/assets/gallery/2g.jpeg.asset.json";
+import g2h from "@/assets/gallery/2h.jpeg.asset.json";
+import g2i from "@/assets/gallery/2i.jpeg.asset.json";
+import g2j from "@/assets/gallery/2j.jpeg.asset.json";
+import g3 from "@/assets/gallery/3.jpeg.asset.json";
+
 
 type TrainingCategory = "attended" | "course";
 
@@ -17,6 +34,7 @@ type Training = {
   photoUrl?: string;
   url?: string;
   certificateUrl?: string;
+  gallery?: string[];
   category: TrainingCategory;
 };
 
@@ -25,12 +43,14 @@ const trainings: Training[] = [
     title: "Training on Seed Quality Assurance and Certification Standards (Training of Trainers - ToT)",
     provider: "Food and Agriculture Organization of the United Nations (FAO) & Somali Agricultural Regulatory & Inspection Service (SARIS)",
     date: "28–30 July 2026, Mogadishu",
+    gallery: [g2.url, g2a.url, g2b.url, g2c.url, g2d.url, g2e.url, g2f.url, g2g.url, g2h.url, g2i.url, g2j.url],
     category: "attended",
   },
   {
     title: "SARIS Seed Certification and Traceability System",
     provider: "SARIS HQ",
     date: "14–16 July 2026, Mogadishu",
+    gallery: [g3.url],
     category: "attended",
   },
   {
@@ -43,6 +63,7 @@ const trainings: Training[] = [
     title: "Seed Production and Certification ToT Training Workshop",
     provider: "SARIS",
     date: "21–25 September 2025, Mogadishu",
+    gallery: [g1.url, g1a.url, g1b.url],
     category: "attended",
   },
   {
@@ -127,6 +148,10 @@ const TrainingCard = ({ training, index }: { training: Training; index: number }
         training.provider
       )}
     </p>
+
+    {training.gallery && (
+      <TrainingGallery images={training.gallery} title={training.title} />
+    )}
 
     {training.certificateUrl && (
       <a
