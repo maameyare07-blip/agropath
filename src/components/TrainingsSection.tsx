@@ -34,6 +34,7 @@ type Training = {
   photoUrl?: string;
   url?: string;
   certificateUrl?: string;
+  gallery?: string[];
   category: TrainingCategory;
 };
 
@@ -42,12 +43,14 @@ const trainings: Training[] = [
     title: "Training on Seed Quality Assurance and Certification Standards (Training of Trainers - ToT)",
     provider: "Food and Agriculture Organization of the United Nations (FAO) & Somali Agricultural Regulatory & Inspection Service (SARIS)",
     date: "28–30 July 2026, Mogadishu",
+    gallery: [g2.url, g2a.url, g2b.url, g2c.url, g2d.url, g2e.url, g2f.url, g2g.url, g2h.url, g2i.url, g2j.url],
     category: "attended",
   },
   {
     title: "SARIS Seed Certification and Traceability System",
     provider: "SARIS HQ",
     date: "14–16 July 2026, Mogadishu",
+    gallery: [g3.url],
     category: "attended",
   },
   {
@@ -60,6 +63,7 @@ const trainings: Training[] = [
     title: "Seed Production and Certification ToT Training Workshop",
     provider: "SARIS",
     date: "21–25 September 2025, Mogadishu",
+    gallery: [g1.url, g1a.url, g1b.url],
     category: "attended",
   },
   {
@@ -144,6 +148,10 @@ const TrainingCard = ({ training, index }: { training: Training; index: number }
         training.provider
       )}
     </p>
+
+    {training.gallery && (
+      <TrainingGallery images={training.gallery} title={training.title} />
+    )}
 
     {training.certificateUrl && (
       <a
