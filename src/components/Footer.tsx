@@ -1,4 +1,5 @@
 import { Leaf, Linkedin, Twitter, Instagram } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Footer = () => (
   <footer className="bg-foreground py-12">
@@ -27,10 +28,16 @@ const Footer = () => (
           </a>
         </div>
 
-        <div className="border-t border-background/10 pt-6 w-full">
+        <div className="border-t border-background/10 pt-6 w-full flex flex-col items-center gap-3">
           <p className="text-background/40 text-sm">
             © {new Date().getFullYear()} Mohamed Mohamud SH Hassan. All rights reserved.
           </p>
+          <Link
+            to="/privacy-policy"
+            className="text-background/60 text-sm hover:text-primary transition-colors"
+          >
+            Privacy Policy
+          </Link>
         </div>
       </div>
     </div>

@@ -12,6 +12,8 @@ import SubmitTestimonial from "./pages/SubmitTestimonial.tsx";
 import AdminLogin from "./pages/AdminLogin.tsx";
 import AdminTestimonials from "./pages/AdminTestimonials.tsx";
 import Trainings from "./pages/Trainings.tsx";
+import PrivacyPolicy from "./pages/PrivacyPolicy.tsx";
+import CookieConsent from "@/components/CookieConsent.tsx";
 
 const queryClient = new QueryClient();
 
@@ -29,9 +31,11 @@ const App = () => (
           <Route path="/admin/login" element={<AdminLogin />} />
           <Route path="/admin/testimonials" element={<AdminTestimonials />} />
           <Route path="/trainings" element={<Trainings />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
+        <CookieConsent />
       </BrowserRouter>
       <Analytics />
     </TooltipProvider>
