@@ -1,7 +1,8 @@
 import { motion } from "framer-motion";
 import { ArrowDown, Mail } from "lucide-react";
+import heroProfileAsset from "@/assets/hero-profile.jpg.asset.json";
 
-const PHOTO = "https://cdn.phototourl.com/free/2026-04-04-1559576d-37d1-42ac-986d-0dfaa8b2383e.jpg";
+const PHOTO = heroProfileAsset.url;
 
 const HeroSection = () => (
   <section className="relative flex items-center pt-20 lg:pt-16 lg:min-h-[88vh] overflow-hidden">
