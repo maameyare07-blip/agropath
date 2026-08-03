@@ -15,13 +15,14 @@ const TrainingGallery = ({ images, title }: TrainingGalleryProps) => {
 
   return (
     <div className="mt-5">
-      <div className="relative overflow-hidden rounded-xl border border-border bg-muted h-48 sm:h-56">
+      <div className="relative overflow-hidden rounded-xl border border-border bg-muted h-48 sm:h-56 flex items-center justify-center">
         <img
           src={images[index]}
           alt={`${title} — photo ${index + 1} of ${images.length}`}
           loading="lazy"
-          className="w-full h-full object-cover"
+          className="w-full h-full object-contain"
         />
+
 
         {images.length > 1 && (
           <>
