@@ -13,6 +13,10 @@ export default defineConfig(({ mode }) => ({
       overlay: false,
     },
   },
+  build: {
+    // Transpile modern syntax so older mobile browsers don't fail to parse the bundle.
+    target: ["es2017", "chrome80", "safari13", "firefox78"],
+  },
   plugins: [react(), mcpPlugin(), mode === "development" && componentTagger()].filter(Boolean),
   resolve: {
     alias: {
