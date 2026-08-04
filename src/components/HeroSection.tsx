@@ -71,7 +71,7 @@ const HeroSection = () => {
           >
             <div className="relative w-64 h-64 sm:w-80 sm:h-80 lg:w-[26rem] lg:h-[26rem]">
               <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary/20 to-accent/20 animate-pulse-slow" />
-              <div className="relative w-full h-full rounded-full border-4 border-card shadow-2xl overflow-hidden">
+              <div className="relative w-full h-full rounded-full border-4 border-card shadow-2xl overflow-hidden bg-muted">
                 <AnimatePresence mode="wait">
                   <motion.img
                     key={index}
@@ -81,7 +81,7 @@ const HeroSection = () => {
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.6 }}
-                    className="absolute inset-0 w-full h-full object-cover"
+                    className="absolute inset-0 w-full h-full object-contain"
                   />
                 </AnimatePresence>
               </div>
