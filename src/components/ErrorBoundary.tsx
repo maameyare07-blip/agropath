@@ -1,4 +1,5 @@
-import { Component, ReactNode } from "react";
+import { Component, ErrorInfo, ReactNode } from "react";
+import { reportError } from "@/lib/errorLogging";
 
 type Props = { children: ReactNode };
 type State = { error: Error | null };
@@ -14,10 +15,12 @@ class ErrorBoundary extends Component<Props, State> {
     return { error };
   }
 
-  componentDidCatch(error: Error) {
+  componentDidCatch(error: Error, info: ErrorInfo) {
     // Surfaces in the browser console for diagnostics.
     console.error("App crashed:", error);
+    void reportError(error, "react", info.componentStack ?? undefined);
   }
+
 
   render() {
     if (!this.state.error) return this.props.children;
