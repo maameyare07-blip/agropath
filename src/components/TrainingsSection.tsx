@@ -1,5 +1,7 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
-import { Award, Calendar, FileText } from "lucide-react";
+import { Award, Calendar, FileText, MapPin, Users, ChevronDown, Check } from "lucide-react";
+
 import TrainingGallery from "./TrainingGallery";
 import certUnsdcf from "@/assets/certificates/United_Nations_Sustainable_Development_Cooperation_Framework.pdf.asset.json";
 import certClimate from "@/assets/certificates/Climate_Change_Peace_and_Security_Understanding_Climate_Related_Security_Risks.pdf.asset.json";
