@@ -1,5 +1,7 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
-import { Award, Calendar, FileText } from "lucide-react";
+import { Award, Calendar, FileText, MapPin, Users, ChevronDown, Check } from "lucide-react";
+
 import TrainingGallery from "./TrainingGallery";
 import certUnsdcf from "@/assets/certificates/United_Nations_Sustainable_Development_Cooperation_Framework.pdf.asset.json";
 import certClimate from "@/assets/certificates/Climate_Change_Peace_and_Security_Understanding_Climate_Related_Security_Risks.pdf.asset.json";
@@ -23,7 +25,20 @@ import g2j from "@/assets/gallery/2j.jpeg.asset.json";
 import g3 from "@/assets/gallery/3.jpeg.asset.json";
 
 
-type TrainingCategory = "attended" | "course";
+type TrainingCategory = "facilitated" | "attended" | "course";
+
+type TrainingReport = {
+  executiveSummary: string;
+  background: string;
+  objectives: string[];
+  participants: { label: string; count: number }[];
+  methodology: string;
+  programme: { day: string; details: string }[];
+  outcomes: string;
+  challenges: string;
+  recommendations: string[];
+  conclusion: string;
+};
 
 type Training = {
   title: string;
@@ -35,10 +50,74 @@ type Training = {
   url?: string;
   certificateUrl?: string;
   gallery?: string[];
+  role?: string;
+  coFacilitators?: string[];
+  venue?: string;
+  submittedTo?: string;
+  supportedBy?: string;
+  report?: TrainingReport;
   category: TrainingCategory;
 };
 
 const trainings: Training[] = [
+  {
+    title: "Seed Quality Assurance & Certification Standards Training",
+    provider: "Somali Agricultural Regulatory and Inspection Services (SARIS)",
+    role: "Lead Facilitator",
+    coFacilitators: ["Hussein Mohamed Qasim"],
+    venue: "Afgooye District, South West State, Somalia",
+    date: "04–06 August 2026",
+    submittedTo: "Somali Agricultural Regulatory and Inspection Services (SARIS)",
+    supportedBy: "FAO and Green Climate Fund (GCF)",
+    category: "facilitated",
+    report: {
+      executiveSummary:
+        "A three-day cascade training on Seed Quality Assurance and Certification Standards was conducted in Afgooye District from 04–06 August 2026 for 16 participants (6 Extension Officers, 5 Seed Multipliers and 5 Seed Distributors). The training followed the official SARIS Training of Trainers (ToT) Programme and covered the legal framework, seed quality assurance, certification, seed multiplication, field inspection, seed sampling, testing, processing, transportation and certification validity.",
+      background:
+        "The cascade training was organized following the SARIS Training of Trainers Programme to strengthen the capacity of local stakeholders on seed quality assurance and certification.",
+      objectives: [
+        "Strengthen understanding of seed quality assurance.",
+        "Improve knowledge of certification standards.",
+        "Build capacity in inspection, sampling and testing.",
+        "Promote compliance with regulatory requirements.",
+      ],
+      participants: [
+        { label: "Extension Officers", count: 6 },
+        { label: "Seed Multipliers", count: 5 },
+        { label: "Seed Distributors", count: 5 },
+      ],
+      methodology:
+        "The training employed interactive presentations, discussions, group work, and question-and-answer sessions.",
+      programme: [
+        {
+          day: "Day One",
+          details:
+            "Introductions, legal and regulatory framework, seed quality assurance, quality control, certification process, research and product development, crop variety maintenance and check plot procedures.",
+        },
+        {
+          day: "Day Two",
+          details:
+            "Breeder and certified seed multiplication, registration of seed merchants and growers, seed field inspection.",
+        },
+        {
+          day: "Day Three",
+          details:
+            "Transportation of harvested seed; processing inspection, seed sampling, seed testing, certification validity; group work, closing ceremony.",
+        },
+      ],
+      outcomes:
+        "Participants improved their understanding of seed quality assurance systems, certification procedures and inspection requirements.",
+      challenges: "Lack of a projector at the venue limited the delivery of visual presentations.",
+      recommendations: [
+        "Conduct refresher training and increase practical sessions.",
+        "Strengthen follow-up support.",
+        "Continue collaboration among SARIS, FAO and stakeholders.",
+      ],
+      conclusion:
+        "The training achieved its objectives and enhanced participants' capacity to support quality seed production and certification in South West State.",
+    },
+  },
+
   {
     title: "Training on Seed Quality Assurance and Certification Standards (Training of Trainers - ToT)",
     provider: "Food and Agriculture Organization of the United Nations (FAO) & Somali Agricultural Regulatory & Inspection Service (SARIS)",
@@ -105,67 +184,200 @@ const trainings: Training[] = [
 ];
 
 const trainingGroups: { category: TrainingCategory; heading: string }[] = [
+  { category: "facilitated", heading: "Trainings Facilitated" },
   { category: "attended", heading: "Trainings Attended" },
   { category: "course", heading: "Courses Completed" },
 ];
 
-const TrainingCard = ({ training, index }: { training: Training; index: number }) => (
-  <motion.article
-    key={training.title}
-    initial={{ opacity: 0, y: 30 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true }}
-    transition={{ duration: 0.5, delay: index * 0.1 }}
-    className="bg-card rounded-2xl p-6 lg:p-8 border border-border shadow-sm hover:shadow-md transition-shadow"
-  >
-    <div className="flex flex-wrap items-center gap-3 mb-4">
-      <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
-        <Award className="w-6 h-6 text-primary" />
-      </div>
-      {training.date && (
-        <span className="inline-flex items-center gap-1.5 text-sm text-muted-foreground">
-          <Calendar className="w-4 h-4" />
-          {training.date}
-        </span>
-      )}
-    </div>
+const ReportBlock = ({ heading, children }: { heading: string; children: React.ReactNode }) => (
+  <div>
+    <h4 className="font-heading text-sm font-bold uppercase tracking-wider text-primary mb-2">
+      {heading}
+    </h4>
+    <div className="text-sm text-muted-foreground leading-relaxed">{children}</div>
+  </div>
+);
 
-    <h3 className="font-heading font-bold text-xl text-foreground mb-2 leading-snug">
-      {training.title}
-    </h3>
-    <p className="text-sm text-muted-foreground">
-      <span className="font-semibold text-foreground">Provider:</span>{" "}
-      {training.providerUrl ? (
+const TrainingReportView = ({ report }: { report: TrainingReport }) => {
+  const total = report.participants.reduce((sum, p) => sum + p.count, 0);
+  return (
+    <div className="mt-5 pt-5 border-t border-border grid gap-6">
+      <ReportBlock heading="Executive Summary">{report.executiveSummary}</ReportBlock>
+      <ReportBlock heading="Background">{report.background}</ReportBlock>
+      <ReportBlock heading="Objectives">
+        <ul className="grid gap-2">
+          {report.objectives.map((o) => (
+            <li key={o} className="flex items-start gap-2">
+              <Check className="w-4 h-4 text-primary mt-0.5 shrink-0" />
+              <span>{o}</span>
+            </li>
+          ))}
+        </ul>
+      </ReportBlock>
+      <ReportBlock heading="Participants">
+        <div className="overflow-hidden rounded-xl border border-border">
+          <table className="w-full text-sm">
+            <tbody>
+              {report.participants.map((p) => (
+                <tr key={p.label} className="border-b border-border last:border-0">
+                  <td className="px-4 py-2.5">{p.label}</td>
+                  <td className="px-4 py-2.5 text-right font-semibold text-foreground">{p.count}</td>
+                </tr>
+              ))}
+              <tr className="bg-secondary/50">
+                <td className="px-4 py-2.5 font-semibold text-foreground">Total</td>
+                <td className="px-4 py-2.5 text-right font-bold text-foreground">{total}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </ReportBlock>
+      <ReportBlock heading="Methodology">{report.methodology}</ReportBlock>
+      <ReportBlock heading="Training Programme Summary">
+        <div className="grid gap-3">
+          {report.programme.map((d) => (
+            <div key={d.day}>
+              <span className="font-semibold text-foreground">{d.day}: </span>
+              {d.details}
+            </div>
+          ))}
+        </div>
+      </ReportBlock>
+      <ReportBlock heading="Key Outcomes">{report.outcomes}</ReportBlock>
+      <ReportBlock heading="Challenges">{report.challenges}</ReportBlock>
+      <ReportBlock heading="Recommendations">
+        <ul className="grid gap-2">
+          {report.recommendations.map((r) => (
+            <li key={r} className="flex items-start gap-2">
+              <Check className="w-4 h-4 text-primary mt-0.5 shrink-0" />
+              <span>{r}</span>
+            </li>
+          ))}
+        </ul>
+      </ReportBlock>
+      <ReportBlock heading="Conclusion">{report.conclusion}</ReportBlock>
+    </div>
+  );
+};
+
+const TrainingCard = ({ training, index }: { training: Training; index: number }) => {
+  const [expanded, setExpanded] = useState(false);
+
+  return (
+    <motion.article
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
+      className="bg-card rounded-2xl p-6 lg:p-8 border border-border shadow-sm hover:shadow-md transition-shadow"
+    >
+      <div className="flex flex-wrap items-center gap-3 mb-4">
+        <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
+          <Award className="w-6 h-6 text-primary" />
+        </div>
+        {training.date && (
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-secondary/60 px-3 py-1 text-sm text-muted-foreground">
+            <Calendar className="w-4 h-4" />
+            {training.date}
+          </span>
+        )}
+      </div>
+
+      <h3 className="font-heading font-bold text-xl text-foreground mb-2 leading-snug">
+        {training.title}
+      </h3>
+
+      {training.role && (
+        <p className="text-sm text-muted-foreground flex items-start gap-1.5">
+          <Users className="w-4 h-4 text-primary mt-0.5 shrink-0" />
+          <span>
+            <span className="font-semibold text-foreground">{training.role}</span>
+            {training.coFacilitators?.length
+              ? ` — with co-facilitator ${training.coFacilitators.join(", ")}`
+              : ""}
+          </span>
+        </p>
+      )}
+
+      {training.venue && (
+        <p className="text-sm text-muted-foreground flex items-start gap-1.5 mt-1.5">
+          <MapPin className="w-4 h-4 text-primary mt-0.5 shrink-0" />
+          {training.venue}
+        </p>
+      )}
+
+      {!training.role && (
+        <p className="text-sm text-muted-foreground">
+          <span className="font-semibold text-foreground">Provider:</span>{" "}
+          {training.providerUrl ? (
+            <a
+              href={training.providerUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-primary hover:underline underline-offset-2 transition-colors"
+            >
+              {training.provider}
+            </a>
+          ) : (
+            training.provider
+          )}
+        </p>
+      )}
+
+      {(training.submittedTo || training.supportedBy) && (
+        <div className="mt-3 grid gap-1 text-sm text-muted-foreground">
+          {training.submittedTo && (
+            <p>
+              <span className="font-semibold text-foreground">Submitted to:</span>{" "}
+              {training.submittedTo}
+            </p>
+          )}
+          {training.supportedBy && (
+            <p>
+              <span className="font-semibold text-foreground">Supported by:</span>{" "}
+              {training.supportedBy}
+            </p>
+          )}
+        </div>
+      )}
+
+      {training.gallery && (
+        <TrainingGallery images={training.gallery} title={training.title} />
+      )}
+
+      {training.certificateUrl && (
         <a
-          href={training.providerUrl}
+          href={training.certificateUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="hover:text-primary hover:underline underline-offset-2 transition-colors"
+          className="mt-5 inline-flex items-center gap-2 rounded-xl bg-primary px-4 py-2.5 text-sm font-semibold text-primary-foreground shadow-sm transition-opacity hover:opacity-90 min-h-[44px]"
         >
-          {training.provider}
+          <FileText className="w-4 h-4" />
+          View Certificate
         </a>
-      ) : (
-        training.provider
       )}
-    </p>
 
-    {training.gallery && (
-      <TrainingGallery images={training.gallery} title={training.title} />
-    )}
+      {training.report && (
+        <>
+          <button
+            type="button"
+            onClick={() => setExpanded((v) => !v)}
+            aria-expanded={expanded}
+            className="mt-5 inline-flex items-center gap-2 rounded-xl bg-primary px-4 py-2.5 text-sm font-semibold text-primary-foreground shadow-sm transition-opacity hover:opacity-90 min-h-[44px]"
+          >
+            <FileText className="w-4 h-4" />
+            {expanded ? "Hide Full Report" : "View Full Report"}
+            <ChevronDown
+              className={`w-4 h-4 transition-transform ${expanded ? "rotate-180" : ""}`}
+            />
+          </button>
+          {expanded && <TrainingReportView report={training.report} />}
+        </>
+      )}
+    </motion.article>
+  );
+};
 
-    {training.certificateUrl && (
-      <a
-        href={training.certificateUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="mt-5 inline-flex items-center gap-2 rounded-xl bg-primary px-4 py-2.5 text-sm font-semibold text-primary-foreground shadow-sm transition-opacity hover:opacity-90 min-h-[44px]"
-      >
-        <FileText className="w-4 h-4" />
-        View Certificate
-      </a>
-    )}
-  </motion.article>
-);
 
 const TrainingsSection = () => (
   <section id="trainings" className="py-14 lg:py-20">

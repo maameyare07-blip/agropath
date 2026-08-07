@@ -18,8 +18,9 @@ const TrainingsPreviewSection = () => (
           Trainings & Professional Development
         </h2>
         <p className="text-base sm:text-lg text-muted-foreground mt-4 leading-relaxed">
-          A record of certifications, courses, and professional development activities undertaken with UN agencies, FAO, and other leading institutions.
+          A record of trainings facilitated, trainings attended, and courses completed with UN agencies, FAO, SARIS, and other leading institutions.
         </p>
+
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
