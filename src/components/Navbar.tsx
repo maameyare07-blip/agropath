@@ -39,7 +39,7 @@ const Navbar = () => {
               </a>
             ))}
             <a
-              href="https://pathosolutions.blogspot.com/"
+              href="https://pathosolutions.lovable.app/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors flex items-center gap-1"
@@ -82,7 +82,7 @@ const Navbar = () => {
                 </a>
               ))}
               <a
-                href="https://pathosolutions.blogspot.com/"
+                href="https://pathosolutions.lovable.app/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 px-4 py-3 rounded-lg text-base font-medium text-primary hover:bg-secondary transition-colors"
