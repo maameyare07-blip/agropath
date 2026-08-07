@@ -33,7 +33,7 @@ const ArticlesSection = () => (
           Covering topics in plant pathology, pest management, seed quality, and agricultural innovation — written for researchers, students, and practitioners alike.
         </p>
         <a
-          href="https://pathosolutions.blogspot.com/"
+          href="https://pathosolutions.lovable.app/"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-primary text-primary-foreground font-semibold hover:opacity-90 transition-opacity shadow-lg"
