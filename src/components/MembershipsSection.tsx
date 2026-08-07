@@ -9,6 +9,13 @@ const memberships = [
     organization: "Food and Agriculture Organization of the United Nations (FAO)",
     country: "Somalia",
   },
+  {
+    title: "IGAD Regional Youth Coalition on Climate-Resilient Agri-Food Systems — Member",
+    description:
+      "Welcomed as a member of the IGAD Regional Youth Coalition on Climate-Resilient Agri-Food Systems, a growing network of young leaders working to advance climate action and resilient agri-food systems across the IGAD region, ensuring youth voices help drive the design of climate and food security solutions.",
+    organization: "Intergovernmental Authority on Development (IGAD) / IGAD Climate Prediction and Applications Centre (ICPAC)",
+    country: "Regional (IGAD Member States)",
+  },
 ];
 
 const MembershipsSection = () => (
