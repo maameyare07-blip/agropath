@@ -147,6 +147,18 @@ export type Database = {
       }
     }
     Functions: {
+      get_approved_testimonials: {
+        Args: never
+        Returns: {
+          created_at: string
+          full_name: string
+          id: string
+          message: string
+          organization: string
+          photo_url: string
+          position: string
+        }[]
+      }
       has_role: {
         Args: {
           _role: Database["public"]["Enums"]["app_role"]
