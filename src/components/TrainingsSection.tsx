@@ -233,23 +233,6 @@ const TrainingCard = ({ training, index }: { training: Training; index: number }
         </a>
       )}
 
-      {training.report && (
-        <>
-          <button
-            type="button"
-            onClick={() => setExpanded((v) => !v)}
-            aria-expanded={expanded}
-            className="mt-5 inline-flex items-center gap-2 rounded-xl bg-primary px-4 py-2.5 text-sm font-semibold text-primary-foreground shadow-sm transition-opacity hover:opacity-90 min-h-[44px]"
-          >
-            <FileText className="w-4 h-4" />
-            {expanded ? "Hide Full Report" : "View Full Report"}
-            <ChevronDown
-              className={`w-4 h-4 transition-transform ${expanded ? "rotate-180" : ""}`}
-            />
-          </button>
-          {expanded && <TrainingReportView report={training.report} />}
-        </>
-      )}
     </motion.article>
   );
 };
