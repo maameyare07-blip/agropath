@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { motion } from "framer-motion";
 import { Award, Calendar, FileText, MapPin, Users } from "lucide-react";
 
