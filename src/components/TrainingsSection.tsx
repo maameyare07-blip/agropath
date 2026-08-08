@@ -138,7 +138,6 @@ const trainingGroups: { category: TrainingCategory; heading: string }[] = [
 
 
 const TrainingCard = ({ training, index }: { training: Training; index: number }) => {
-  const [expanded, setExpanded] = useState(false);
 
   return (
     <motion.article
