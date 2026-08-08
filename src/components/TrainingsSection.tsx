@@ -23,6 +23,12 @@ import g2h from "@/assets/gallery/2h.jpeg.asset.json";
 import g2i from "@/assets/gallery/2i.jpeg.asset.json";
 import g2j from "@/assets/gallery/2j.jpeg.asset.json";
 import g3 from "@/assets/gallery/3.jpeg.asset.json";
+import f11 from "@/assets/gallery/11-2.jpeg.asset.json";
+import f12 from "@/assets/gallery/12-2.jpeg.asset.json";
+import f13 from "@/assets/gallery/13-2.jpeg.asset.json";
+import f14 from "@/assets/gallery/14.jpeg.asset.json";
+import f15 from "@/assets/gallery/15.jpeg.asset.json";
+import f16 from "@/assets/gallery/16.jpeg.asset.json";
 
 
 type TrainingCategory = "facilitated" | "attended" | "course";
