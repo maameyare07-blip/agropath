@@ -75,6 +75,7 @@ const trainings: Training[] = [
     date: "04–06 August 2026",
     submittedTo: "Somali Agricultural Regulatory and Inspection Services (SARIS)",
     supportedBy: "FAO and Green Climate Fund (GCF)",
+    gallery: [f11.url, f12.url, f13.url, f14.url, f15.url, f16.url],
     category: "facilitated",
     report: {
       executiveSummary:
