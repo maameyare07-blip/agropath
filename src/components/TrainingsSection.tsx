@@ -63,52 +63,6 @@ const trainings: Training[] = [
     supportedBy: "FAO and Green Climate Fund (GCF)",
     gallery: [f11.url, f12.url, f13.url, f14.url, f15.url, f16.url],
     category: "facilitated",
-    report: {
-      executiveSummary:
-        "A three-day cascade training on Seed Quality Assurance and Certification Standards was conducted in Afgooye District from 04–06 August 2026 for 16 participants (6 Extension Officers, 5 Seed Multipliers and 5 Seed Distributors). The training followed the official SARIS Training of Trainers (ToT) Programme and covered the legal framework, seed quality assurance, certification, seed multiplication, field inspection, seed sampling, testing, processing, transportation and certification validity.",
-      background:
-        "The cascade training was organized following the SARIS Training of Trainers Programme to strengthen the capacity of local stakeholders on seed quality assurance and certification.",
-      objectives: [
-        "Strengthen understanding of seed quality assurance.",
-        "Improve knowledge of certification standards.",
-        "Build capacity in inspection, sampling and testing.",
-        "Promote compliance with regulatory requirements.",
-      ],
-      participants: [
-        { label: "Extension Officers", count: 6 },
-        { label: "Seed Multipliers", count: 5 },
-        { label: "Seed Distributors", count: 5 },
-      ],
-      methodology:
-        "The training employed interactive presentations, discussions, group work, and question-and-answer sessions.",
-      programme: [
-        {
-          day: "Day One",
-          details:
-            "Introductions, legal and regulatory framework, seed quality assurance, quality control, certification process, research and product development, crop variety maintenance and check plot procedures.",
-        },
-        {
-          day: "Day Two",
-          details:
-            "Breeder and certified seed multiplication, registration of seed merchants and growers, seed field inspection.",
-        },
-        {
-          day: "Day Three",
-          details:
-            "Transportation of harvested seed; processing inspection, seed sampling, seed testing, certification validity; group work, closing ceremony.",
-        },
-      ],
-      outcomes:
-        "Participants improved their understanding of seed quality assurance systems, certification procedures and inspection requirements.",
-      challenges: "Lack of a projector at the venue limited the delivery of visual presentations.",
-      recommendations: [
-        "Conduct refresher training and increase practical sessions.",
-        "Strengthen follow-up support.",
-        "Continue collaboration among SARIS, FAO and stakeholders.",
-      ],
-      conclusion:
-        "The training achieved its objectives and enhanced participants' capacity to support quality seed production and certification in South West State.",
-    },
   },
 
   {
