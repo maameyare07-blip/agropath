@@ -33,19 +33,6 @@ import f16 from "@/assets/gallery/16.jpeg.asset.json";
 
 type TrainingCategory = "facilitated" | "attended" | "course";
 
-type TrainingReport = {
-  executiveSummary: string;
-  background: string;
-  objectives: string[];
-  participants: { label: string; count: number }[];
-  methodology: string;
-  programme: { day: string; details: string }[];
-  outcomes: string;
-  challenges: string;
-  recommendations: string[];
-  conclusion: string;
-};
-
 type Training = {
   title: string;
   provider: string;
@@ -61,7 +48,6 @@ type Training = {
   venue?: string;
   submittedTo?: string;
   supportedBy?: string;
-  report?: TrainingReport;
   category: TrainingCategory;
 };
 
