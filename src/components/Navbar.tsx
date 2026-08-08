@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Leaf, ExternalLink } from "lucide-react";
 
@@ -15,29 +16,47 @@ const navLinks: { label: string; href: string; external?: boolean }[] = [
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const location = useLocation();
+  const isHome = location.pathname === "/";
+
+  // On pages other than the homepage, hash links must include the home path
+  // so they actually navigate back instead of only changing the hash.
+  const resolveHref = (href: string) =>
+    href.startsWith("#") && !isHome ? `/${href}` : href;
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-card/80 backdrop-blur-lg border-b border-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          <a href="#" className="flex items-center gap-2">
+          <Link to="/" onClick={() => setIsOpen(false)} className="flex items-center gap-2">
             <Leaf className="w-7 h-7 text-primary" />
             <span className="font-heading font-bold text-xl text-foreground">AgroPath</span>
-          </a>
+          </Link>
 
           {/* Desktop Nav */}
           <div className="hidden lg:flex items-center gap-6">
-            {navLinks.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                {...(link.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors flex items-center gap-1"
-              >
-                {link.label}
-                {link.external && <ExternalLink className="w-3 h-3" />}
-              </a>
-            ))}
+            {navLinks.map((link) =>
+              link.external ? (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors flex items-center gap-1"
+                >
+                  {link.label}
+                  <ExternalLink className="w-3 h-3" />
+                </a>
+              ) : (
+                <Link
+                  key={link.label}
+                  to={resolveHref(link.href)}
+                  className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors flex items-center gap-1"
+                >
+                  {link.label}
+                </Link>
+              )
+            )}
             <a
               href="https://pathosolutions.lovable.app/"
               target="_blank"
@@ -69,18 +88,30 @@ const Navbar = () => {
             className="lg:hidden bg-card border-b border-border overflow-hidden"
           >
             <div className="px-4 py-4 space-y-1">
-              {navLinks.map((link) => (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  {...(link.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                  onClick={() => setIsOpen(false)}
-                  className="flex items-center gap-2 px-4 py-3 rounded-lg text-base font-medium text-foreground hover:bg-secondary transition-colors"
-                >
-                  {link.label}
-                  {link.external && <ExternalLink className="w-4 h-4" />}
-                </a>
-              ))}
+              {navLinks.map((link) =>
+                link.external ? (
+                  <a
+                    key={link.label}
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => setIsOpen(false)}
+                    className="flex items-center gap-2 px-4 py-3 rounded-lg text-base font-medium text-foreground hover:bg-secondary transition-colors"
+                  >
+                    {link.label}
+                    <ExternalLink className="w-4 h-4" />
+                  </a>
+                ) : (
+                  <Link
+                    key={link.label}
+                    to={resolveHref(link.href)}
+                    onClick={() => setIsOpen(false)}
+                    className="flex items-center gap-2 px-4 py-3 rounded-lg text-base font-medium text-foreground hover:bg-secondary transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                )
+              )}
               <a
                 href="https://pathosolutions.lovable.app/"
                 target="_blank"
