@@ -14,6 +14,7 @@ import AdminTestimonials from "./pages/AdminTestimonials.tsx";
 import Trainings from "./pages/Trainings.tsx";
 import PrivacyPolicy from "./pages/PrivacyPolicy.tsx";
 import CookieConsent from "@/components/CookieConsent.tsx";
+import ScrollToHash from "@/components/ScrollToHash.tsx";
 
 const queryClient = new QueryClient();
 
@@ -24,6 +25,7 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <GoogleAnalytics />
+        <ScrollToHash />
         <Routes>
 
           <Route path="/" element={<Index />} />
