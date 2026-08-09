@@ -14,8 +14,8 @@ const TrainingGallery = ({ images, title }: TrainingGalleryProps) => {
     setIndex((prev) => (prev + dir + images.length) % images.length);
 
   return (
-    <div className="mt-5">
-      <div className="relative overflow-hidden rounded-xl border border-border bg-muted h-48 sm:h-56 flex items-center justify-center">
+    <div className="mt-4">
+      <div className="relative overflow-hidden rounded-xl border border-border bg-muted aspect-video flex items-center justify-center">
         <img
           src={images[index]}
           alt={`${title} — photo ${index + 1} of ${images.length}`}
