@@ -16,6 +16,13 @@ const memberships = [
     organization: "Intergovernmental Authority on Development (IGAD) / IGAD Climate Prediction and Applications Centre (ICPAC)",
     country: "Regional (IGAD Member States)",
   },
+  {
+    title: "African Young Leaders Foundation (AYLF) — Member",
+    description:
+      "Duly accepted as a Member of the African Young Leaders Foundation, a network recognizing young leaders contributing to the organization's mission across Africa. Membership valid June 2026 to July 2027.",
+    organization: "African Young Leaders Foundation (AYLF)",
+    country: "Africa-wide",
+  },
 ];
 
 const MembershipsSection = () => (
