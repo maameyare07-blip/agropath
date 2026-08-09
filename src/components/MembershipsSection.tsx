@@ -15,6 +15,12 @@ const memberships = [
       "Welcomed as a member of the IGAD Regional Youth Coalition on Climate-Resilient Agri-Food Systems, a growing network of young leaders working to advance climate action and resilient agri-food systems across the IGAD region, ensuring youth voices help drive the design of climate and food security solutions.",
     organization: "Intergovernmental Authority on Development (IGAD) / IGAD Climate Prediction and Applications Centre (ICPAC)",
     country: "Regional (IGAD Member States)",
+  {
+    title: "African Young Leaders Foundation (AYLF) — Member",
+    description:
+      "Duly accepted as a Member of the African Young Leaders Foundation, a network recognizing young leaders contributing to the organization's mission across Africa. Membership valid June 2026 to July 2027.",
+    organization: "African Young Leaders Foundation (AYLF)",
+    country: "Africa-wide",
   },
 ];
 
