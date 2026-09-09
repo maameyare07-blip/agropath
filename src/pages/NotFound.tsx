@@ -3,10 +3,17 @@ import { motion } from "framer-motion";
 import { Home, Leaf } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import Seo from "@/components/Seo";
 
 const NotFound = () => {
   return (
     <div className="min-h-screen bg-background">
+      <Seo
+        title="Page Not Found | AgroPath"
+        description="This page doesn't exist. Return to the AgroPath homepage to explore plant pathology, seed certification and food security work."
+        path="/404"
+        noindex
+      />
       <Navbar />
       <main className="pt-24">
         <section className="py-14 lg:py-20 bg-secondary/30 min-h-[60vh] flex items-center">

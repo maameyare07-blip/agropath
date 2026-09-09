@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { toast } from "@/hooks/use-toast";
+import Seo from "@/components/Seo";
 
 const AdminLogin = () => {
   const navigate = useNavigate();
@@ -33,6 +34,7 @@ const AdminLogin = () => {
 
   return (
     <div className="min-h-screen bg-background flex items-center justify-center px-4">
+      <Seo title="Admin Login | AgroPath" description="Administrator sign-in." path="/admin/login" noindex />
       <div className="w-full max-w-md">
         <Link to="/" className="flex items-center gap-2 justify-center mb-8">
           <Leaf className="w-7 h-7 text-primary" />

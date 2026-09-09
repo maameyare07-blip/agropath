@@ -10,6 +10,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
 import { toast } from "@/hooks/use-toast";
+import Seo from "@/components/Seo";
 
 const schema = z.object({
   full_name: z.string().trim().min(2, "Full name is required").max(120),
@@ -103,6 +104,11 @@ const SubmitTestimonial = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <Seo
+        title="Share a Testimonial | AgroPath"
+        description="Colleagues, collaborators and partners can share a professional testimonial about working with Mohamed Mohamud SH Hassan in plant pathology and seed certification."
+        path="/testimonial"
+      />
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-14 lg:py-20">
         <Link
           to="/"
