@@ -75,10 +75,16 @@ const PartnerCTASection = () => (
           Ready to Partner With Me?
         </h2>
 
-        <p className="text-muted-foreground text-lg sm:text-xl leading-relaxed max-w-3xl mx-auto mb-10">
+        <p className="text-muted-foreground text-lg sm:text-xl leading-relaxed max-w-3xl mx-auto mb-6">
           Let's work together to advance sustainable agriculture, strengthen plant health systems, and build
           resilient food production solutions through research, innovation, and collaboration.
         </p>
+
+        <p className="text-muted-foreground text-base sm:text-lg leading-relaxed max-w-3xl mx-auto mb-10">
+          Actively seeking co-authors and collaborators interested in writing and publishing research
+          articles and review papers in plant pathology, seed science, and food security.
+        </p>
+
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
           <Button

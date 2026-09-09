@@ -6,6 +6,7 @@ type Publication = {
   title: string;
   inBook: string;
   year: number;
+  role: string;
   authors: string[];
   description: string;
   url?: string;
@@ -17,11 +18,17 @@ const publications: Publication[] = [
     title: "Plant Virus Transmission",
     inBook: "Plant Virology: Theoretical Concepts",
     year: 2024,
-    authors: ["Mohamed Mohamud SH Hassan"],
+    role: "Co-Author",
+    authors: [
+      "Meenakshi Rana (Corresponding Author)",
+      "Mohamed Mohamud SH Hassan (Co-Author)",
+      "Seweta Srivastava",
+    ],
     description:
-      "Contributed a chapter titled 'Plant Virus Transmission' to the book 'Plant Virology: Theoretical Concepts,' published in 2024. The chapter explores theoretical and practical aspects of plant virus transmission, providing insights into mechanisms and management strategies.",
+      "Co-authored a chapter titled 'Plant Virus Transmission' in the book 'Plant Virology: Theoretical Concepts,' published in 2024. The chapter explores theoretical and practical aspects of plant virus transmission, providing insights into mechanisms and management strategies.",
   },
 ];
+
 
 const PublicationsSection = () => (
   <section id="publications" className="py-14 lg:py-20">
@@ -57,6 +64,10 @@ const PublicationsSection = () => (
               <span className="px-3 py-1 text-xs font-semibold rounded-full bg-primary/10 text-primary uppercase tracking-wide">
                 {pub.type}
               </span>
+              <span className="px-3 py-1 text-xs font-semibold rounded-full bg-accent/15 text-accent-foreground border border-border uppercase tracking-wide">
+                {pub.role}
+              </span>
+
               <span className="inline-flex items-center gap-1.5 text-sm text-muted-foreground">
                 <Calendar className="w-4 h-4" />
                 {pub.year}
@@ -73,8 +84,12 @@ const PublicationsSection = () => (
 
             <div className="flex items-start gap-2 mb-4 text-sm text-muted-foreground">
               <Users className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
-              <span>{pub.authors.join(", ")}</span>
+              <span>
+                <span className="font-medium text-foreground">Authors: </span>
+                {pub.authors.join("; ")}
+              </span>
             </div>
+
 
             <p className="text-sm text-muted-foreground leading-relaxed">
               {pub.description}

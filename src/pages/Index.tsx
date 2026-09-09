@@ -16,9 +16,16 @@ import TestimonialsSection from "@/components/TestimonialsSection";
 import PartnerCTASection from "@/components/PartnerCTASection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
+import Seo from "@/components/Seo";
 
 const Index = () => (
   <div className="min-h-screen bg-background">
+    <Seo
+      title="Mohamed Mohamud SH Hassan | AgroPath — Plant Pathology Specialist"
+      description="Plant Pathology Specialist, Seed Inspector, and Founder of PathoSolutions. Advancing sustainable agriculture and food security in Somalia."
+      path="/"
+      ogType="profile"
+    />
     <Navbar />
     <HeroSection />
     <WelcomeSection />
