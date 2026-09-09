@@ -84,8 +84,12 @@ const PublicationsSection = () => (
 
             <div className="flex items-start gap-2 mb-4 text-sm text-muted-foreground">
               <Users className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
-              <span>{pub.authors.join(", ")}</span>
+              <span>
+                <span className="font-medium text-foreground">Authors: </span>
+                {pub.authors.join("; ")}
+              </span>
             </div>
+
 
             <p className="text-sm text-muted-foreground leading-relaxed">
               {pub.description}
