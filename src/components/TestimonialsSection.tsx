@@ -54,6 +54,7 @@ const Card = ({ t }: { t: Testimonial }) => (
 const TestimonialsSection = () => {
   const [items, setItems] = useState<Testimonial[]>([]);
   const [loading, setLoading] = useState(true);
+  const [index, setIndex] = useState(0);
 
   useEffect(() => {
     (async () => {
@@ -63,6 +64,10 @@ const TestimonialsSection = () => {
       setLoading(false);
     })();
   }, []);
+
+  const total = items.length;
+  const go = (dir: number) => setIndex((prev) => (prev + dir + total) % total);
+  const active = total > 0 ? items[Math.min(index, total - 1)] : null;
 
   return (
     <section id="testimonials" className="py-14 lg:py-20 bg-secondary/30">
@@ -87,25 +92,63 @@ const TestimonialsSection = () => {
 
         {loading ? (
           <div className="text-center text-muted-foreground py-10">Loading testimonials…</div>
-        ) : items.length === 0 ? (
+        ) : !active ? (
           <div className="text-center text-muted-foreground py-10">
             No testimonials yet. Be the first to share your experience.
           </div>
         ) : (
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {items.map((t, i) => (
+          <div className="max-w-3xl mx-auto">
+            <div className="relative">
               <motion.div
-                key={t.id}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
+                key={active.id}
+                initial={{ opacity: 0, x: 24 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.35 }}
               >
-                <Card t={t} />
+                <Card t={active} />
               </motion.div>
-            ))}
+
+              {total > 1 && (
+                <>
+                  <button
+                    type="button"
+                    onClick={() => go(-1)}
+                    aria-label="Previous testimonial"
+                    className="absolute -left-2 lg:-left-14 top-1/2 -translate-y-1/2 h-11 w-11 rounded-full bg-background/90 border border-border flex items-center justify-center text-foreground shadow-sm transition-colors hover:bg-background"
+                  >
+                    <ChevronLeft className="w-5 h-5" />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => go(1)}
+                    aria-label="Next testimonial"
+                    className="absolute -right-2 lg:-right-14 top-1/2 -translate-y-1/2 h-11 w-11 rounded-full bg-background/90 border border-border flex items-center justify-center text-foreground shadow-sm transition-colors hover:bg-background"
+                  >
+                    <ChevronRight className="w-5 h-5" />
+                  </button>
+                </>
+              )}
+            </div>
+
+            {total > 1 && (
+              <div className="mt-6 flex items-center justify-center gap-2">
+                {items.map((t, i) => (
+                  <button
+                    key={t.id}
+                    type="button"
+                    onClick={() => setIndex(i)}
+                    aria-label={`Go to testimonial ${i + 1}`}
+                    aria-current={i === index}
+                    className={`h-2 rounded-full transition-all ${
+                      i === index ? "w-5 bg-primary" : "w-2 bg-border hover:bg-primary/40"
+                    }`}
+                  />
+                ))}
+              </div>
+            )}
           </div>
         )}
+
 
         <div className="mt-12 text-center">
           <Button asChild size="lg" className="gap-2">
