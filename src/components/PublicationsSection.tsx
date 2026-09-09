@@ -6,6 +6,7 @@ type Publication = {
   title: string;
   inBook: string;
   year: number;
+  role: string;
   authors: string[];
   description: string;
   url?: string;
@@ -17,11 +18,17 @@ const publications: Publication[] = [
     title: "Plant Virus Transmission",
     inBook: "Plant Virology: Theoretical Concepts",
     year: 2024,
-    authors: ["Mohamed Mohamud SH Hassan"],
+    role: "Co-Author",
+    authors: [
+      "Meenakshi Rana (Corresponding Author)",
+      "Mohamed Mohamud SH Hassan (Co-Author)",
+      "Seweta Srivastava",
+    ],
     description:
-      "Contributed a chapter titled 'Plant Virus Transmission' to the book 'Plant Virology: Theoretical Concepts,' published in 2024. The chapter explores theoretical and practical aspects of plant virus transmission, providing insights into mechanisms and management strategies.",
+      "Co-authored a chapter titled 'Plant Virus Transmission' in the book 'Plant Virology: Theoretical Concepts,' published in 2024. The chapter explores theoretical and practical aspects of plant virus transmission, providing insights into mechanisms and management strategies.",
   },
 ];
+
 
 const PublicationsSection = () => (
   <section id="publications" className="py-14 lg:py-20">
