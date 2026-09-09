@@ -1,9 +1,10 @@
 import { motion } from "framer-motion";
-import { Quote, MessageSquarePlus } from "lucide-react";
+import { Quote, MessageSquarePlus, ChevronLeft, ChevronRight } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
+
 
 type Testimonial = {
   id: string;
