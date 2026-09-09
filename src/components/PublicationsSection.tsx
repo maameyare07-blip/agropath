@@ -64,6 +64,10 @@ const PublicationsSection = () => (
               <span className="px-3 py-1 text-xs font-semibold rounded-full bg-primary/10 text-primary uppercase tracking-wide">
                 {pub.type}
               </span>
+              <span className="px-3 py-1 text-xs font-semibold rounded-full bg-accent/15 text-accent-foreground border border-border uppercase tracking-wide">
+                {pub.role}
+              </span>
+
               <span className="inline-flex items-center gap-1.5 text-sm text-muted-foreground">
                 <Calendar className="w-4 h-4" />
                 {pub.year}
