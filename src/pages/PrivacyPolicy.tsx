@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
+import Seo from "@/components/Seo";
 
 const EMAIL = "maameyare07@gmail.com";
 const LAST_UPDATED = "2 August 2026";
@@ -14,6 +15,11 @@ const Section = ({ title, children }: { title: string; children: React.ReactNode
 
 const PrivacyPolicy = () => (
   <div className="min-h-screen bg-background">
+    <Seo
+      title="Privacy Policy | AgroPath"
+      description="How agropath.lovable.app handles the limited personal information it collects, including contact form details, testimonials and analytics cookies."
+      path="/privacy-policy"
+    />
     <Navbar />
     <main className="pt-24">
       <section className="py-14 lg:py-20 bg-secondary/30">

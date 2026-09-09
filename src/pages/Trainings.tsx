@@ -2,9 +2,15 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import TrainingsSection from "@/components/TrainingsSection";
 import { motion } from "framer-motion";
+import Seo from "@/components/Seo";
 
 const Trainings = () => (
   <div className="min-h-screen bg-background">
+    <Seo
+      title="Trainings & Professional Development | AgroPath"
+      description="Trainings facilitated and attended, plus certified courses completed with the UN, UNITAR, FAO and other leading institutions in seed science and plant health."
+      path="/trainings"
+    />
     <Navbar />
     <main className="pt-24">
       <section className="py-14 lg:py-20 bg-secondary/30">
