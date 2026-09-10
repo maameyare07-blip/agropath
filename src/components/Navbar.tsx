@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Leaf, ExternalLink, ChevronDown } from "lucide-react";
+import { Menu, X, ExternalLink, ChevronDown } from "lucide-react";
+import AgroPathLogo from "./AgroPathLogo";
 import {
   DropdownMenu,
   DropdownMenuContent,

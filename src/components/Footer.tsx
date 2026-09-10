@@ -1,4 +1,5 @@
-import { Leaf, Linkedin, Twitter, Instagram } from "lucide-react";
+import { Linkedin, Twitter, Instagram } from "lucide-react";
+import AgroPathLogo from "./AgroPathLogo";
 import { Link } from "react-router-dom";
 
 const Footer = () => (
