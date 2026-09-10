@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Award, Calendar, FileText, MapPin, Users } from "lucide-react";
+import { Award, Calendar, Clock, FileText, MapPin, Users } from "lucide-react";
 
 import TrainingGallery from "./TrainingGallery";
 import certUnsdcf from "@/assets/certificates/United_Nations_Sustainable_Development_Cooperation_Framework.pdf.asset.json";
@@ -168,6 +168,12 @@ const TrainingCard = ({ training, index }: { training: Training; index: number }
           <span className="inline-flex items-center gap-1.5 rounded-full bg-secondary/60 px-3 py-1 text-sm text-muted-foreground">
             <Calendar className="w-4 h-4" />
             {training.date}
+          </span>
+        )}
+        {training.status && (
+          <span className="inline-flex items-center gap-1.5 rounded-full border border-amber-500/40 bg-amber-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-amber-700 dark:text-amber-400">
+            <Clock className="w-3.5 h-3.5" />
+            {training.status}
           </span>
         )}
       </div>
