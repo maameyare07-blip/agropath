@@ -65,6 +65,12 @@ const trainings: Training[] = [
   },
 
   {
+    title: "Training on Multiplication and Workflow of Seed Classes, Standards, and Seed Label Colours",
+    provider: "Facilitated by SARIS and FAO, supported by Green Climate Fund (GCF), under the Ugbaad Project",
+    date: "8–10 September 2026, Mogadishu, Somalia",
+    category: "attended",
+  },
+  {
     title: "Training on Seed Quality Assurance and Certification Standards (Training of Trainers - ToT)",
     provider: "Food and Agriculture Organization of the United Nations (FAO) & Somali Agricultural Regulatory & Inspection Service (SARIS)",
     date: "28–30 July 2026, Mogadishu",

@@ -1,0 +1,17 @@
+# Mohamed Mohamud SH Hassan — AgroPath
+
+> Personal portfolio of Mohamed Mohamud SH Hassan, a Plant Pathology Specialist, Seed Inspector, and Founder & CEO of PathoSolutions, based in Somalia. Focused on plant disease management, seed quality assurance and certification, climate-smart agriculture, and food security.
+
+## Key pages
+
+- [Home](https://agropath.lovable.app/): Overview of professional profile, mission and vision, experience, education, services, and FAQ.
+- [Trainings](https://agropath.lovable.app/trainings): Trainings facilitated, trainings attended, and completed courses with certificates and photos.
+- [Publications](https://agropath.lovable.app/#publications): Research and book chapter contributions in plant pathology and plant virology.
+- [Testimonials](https://agropath.lovable.app/#testimonials): Approved testimonials from colleagues, partners, and institutions.
+- [Submit a Testimonial](https://agropath.lovable.app/testimonial): Form for colleagues and partners to submit a testimonial.
+- [Contact](https://agropath.lovable.app/#contact): Contact form, email, and WhatsApp for inquiries and collaboration requests.
+- [Privacy Policy](https://agropath.lovable.app/privacy-policy): How visitor data, cookies, and form submissions are handled.
+
+## Optional
+
+- [Blog — PathoSolutions](https://pathosolutions.lovable.app/): Articles on plant health, seed systems, and sustainable agriculture.

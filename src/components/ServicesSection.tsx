@@ -1,11 +1,12 @@
 import { motion } from "framer-motion";
-import { Search, ShieldCheck, MessageSquare, Users } from "lucide-react";
+import { Search, ShieldCheck, MessageSquare, Users, BookOpen } from "lucide-react";
 
 const services = [
   { icon: Search, title: "Plant Disease Diagnosis", desc: "Accurate identification and management of crop diseases using evidence-based diagnostic methods." },
   { icon: ShieldCheck, title: "Seed Inspection & Certification", desc: "Comprehensive seed quality assurance aligned with national and international standards." },
   { icon: MessageSquare, title: "Agricultural Consulting", desc: "Strategic advisory on crop protection, pest management, and sustainable farming practices." },
   { icon: Users, title: "Farmer Training & Capacity Building", desc: "Hands-on workshops and knowledge transfer programs for farming communities." },
+  { icon: BookOpen, title: "Research Collaboration", desc: "Co-authoring research articles and review papers in plant pathology, seed science, and food security with fellow researchers and institutions." },
 ];
 
 const ServicesSection = () => (
@@ -21,7 +22,7 @@ const ServicesSection = () => (
         <h2 className="font-heading text-3xl sm:text-4xl font-bold text-foreground mt-3">Services</h2>
       </motion.div>
 
-      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
         {services.map((s, i) => (
           <motion.div
             key={s.title}
