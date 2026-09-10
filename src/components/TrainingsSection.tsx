@@ -47,6 +47,7 @@ type Training = {
   venue?: string;
   submittedTo?: string;
   supportedBy?: string;
+  status?: string;
   category: TrainingCategory;
 };
 
@@ -64,6 +65,13 @@ const trainings: Training[] = [
     category: "facilitated",
   },
 
+  {
+    title: "Climate Smart Irrigation and Precision Fertigation Fellowship",
+    provider: "Mawa Sustainable Agri-Solutions",
+    date: "14 September 2026 – 8 November 2026 (8-week program)",
+    status: "Upcoming / Enrolled",
+    category: "attended",
+  },
   {
     title: "Training on Multiplication and Workflow of Seed Classes, Standards, and Seed Label Colours",
     provider: "Facilitated by SARIS and FAO, supported by Green Climate Fund (GCF), under the Ugbaad Project",
