@@ -14,6 +14,7 @@ const cards = [
       { icon: Sprout, text: "Seed system improvement" },
       { icon: Users, text: "Farmer empowerment" },
       { icon: FlaskConical, text: "Research-based agricultural solutions" },
+      { icon: GraduationCap, text: "Capacity building & training" },
     ],
   },
   {
@@ -27,6 +28,7 @@ const cards = [
       { icon: FlaskConical, text: "Advance plant disease research" },
       { icon: CloudSun, text: "Promote climate-resilient agriculture" },
       { icon: GraduationCap, text: "Strengthen agricultural education and innovation" },
+      { icon: Users, text: "Publish research and mentor emerging plant health professionals" },
     ],
   },
 ];
