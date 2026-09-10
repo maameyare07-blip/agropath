@@ -1,4 +1,5 @@
-import { Leaf, Linkedin, Twitter, Instagram } from "lucide-react";
+import { Linkedin, Twitter, Instagram } from "lucide-react";
+import AgroPathLogo from "./AgroPathLogo";
 import { Link } from "react-router-dom";
 
 const Footer = () => (
@@ -6,7 +7,7 @@ const Footer = () => (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className="flex flex-col items-center text-center">
         <div className="flex items-center gap-2 mb-4">
-          <Leaf className="w-6 h-6 text-primary" />
+          <AgroPathLogo className="w-6 h-6" />
           <span className="font-heading font-bold text-lg text-background">AgroPath</span>
         </div>
         <p className="text-background/60 text-sm mb-6 max-w-md">
