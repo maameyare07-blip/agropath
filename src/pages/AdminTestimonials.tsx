@@ -3,6 +3,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { Leaf, LogOut, Loader2, Check, X, Trash2, Pencil, ExternalLink } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
+import Wordmark from "@/components/Wordmark";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
@@ -164,7 +165,7 @@ const AdminTestimonials = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           <Link to="/" className="flex items-center gap-2">
             <Leaf className="w-6 h-6 text-primary" />
-            <span className="font-heading font-bold text-foreground">AgroPath Admin</span>
+            <span className="font-heading font-bold text-foreground"><Wordmark /> Admin</span>
           </Link>
           <Button variant="ghost" size="sm" onClick={signOut}>
             <LogOut className="w-4 h-4 mr-2" /> Sign out

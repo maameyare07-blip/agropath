@@ -11,15 +11,19 @@ const AgroPathLogo = ({ className }: AgroPathLogoProps) => (
     role="img"
     aria-label="AgroPath logo"
   >
-    <path
-      d="M8 26 C 8 18, 14 10, 22 10"
-      stroke="#2f6b3a"
-      strokeWidth="4"
-      fill="none"
-      strokeLinecap="round"
-    />
-    <circle cx="22" cy="10" r="3" fill="#c9a227" />
-    <circle cx="8" cy="26" r="3" fill="#2f6b3a" />
+    <rect x="1" y="1" width="30" height="30" rx="6" fill="#2f6b3a" />
+    <text
+      x="16"
+      y="22"
+      textAnchor="middle"
+      fontFamily="Arial, Helvetica, sans-serif"
+      fontSize="15"
+      fontWeight="700"
+      letterSpacing="0.5"
+    >
+      <tspan fill="#eef5ea">A</tspan>
+      <tspan fill="#c9a227">P</tspan>
+    </text>
   </svg>
 );
 

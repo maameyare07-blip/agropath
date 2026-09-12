@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Leaf, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import Wordmark from "./Wordmark";
 
 const PROFILE_IMG = "https://cdn.phototourl.com/member/2026-04-04-215aadad-fe88-4068-996e-868ec3072992.jpg";
 
@@ -46,12 +47,12 @@ const WelcomeSection = () => (
             transition={{ duration: 0.7, delay: 0.1 }}
             className="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground leading-[1.1] tracking-tight mb-8"
           >
-            Welcome to <span className="text-primary">AgroPath</span>.
+            Welcome to <Wordmark />.
           </motion.h2>
 
           <div className="space-y-5 text-muted-foreground text-base sm:text-lg leading-relaxed max-w-2xl">
             {[
-              <>I am <strong className="text-foreground font-semibold">Mohamed Mohamud SH Hassan</strong>, an Agricultural Scientist and Plant Pathology Specialist passionate about advancing sustainable agriculture, strengthening food security systems, and promoting science-driven agricultural solutions.</>,
+              <>I am <strong className="text-brand-green font-semibold">Mohamed Mohamud SH Hassan</strong>, an Agricultural Scientist and Plant Pathology Specialist passionate about advancing sustainable agriculture, strengthening food security systems, and promoting science-driven agricultural solutions.</>,
               <>My work focuses on agricultural research, seed quality assurance, plant disease management, and climate-smart farming practices aimed at supporting farmers, institutions, and agricultural development initiatives.</>,
               <>Through research, education, and field-based agricultural systems, I strive to contribute to resilient farming communities and sustainable crop production for future generations.</>,
             ].map((p, i) => (
@@ -76,7 +77,7 @@ const WelcomeSection = () => (
             className="mt-10 pl-5 border-l-2 border-primary/40"
           >
             <p
-              className="text-2xl text-foreground/90 mb-1"
+              className="text-2xl text-brand-green mb-1"
               style={{ fontFamily: "'Cormorant Garamond', 'Outfit', serif", fontStyle: "italic", fontWeight: 500 }}
             >
               Mohamed M. SH Hassan
