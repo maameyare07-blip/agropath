@@ -18,6 +18,11 @@ export default {
         body: ['Figtree', 'sans-serif'],
       },
       colors: {
+        brand: {
+          green: "hsl(var(--brand-green))",
+          "green-light": "hsl(var(--brand-green-light))",
+          gold: "hsl(var(--brand-gold))",
+        },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

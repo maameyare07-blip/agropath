@@ -36,6 +36,11 @@
 
     --radius: 0.75rem;
 
+    /* Brand marks */
+    --brand-green: 132 39% 30%;
+    --brand-green-light: 132 39% 58%;
+    --brand-gold: 46 68% 47%;
+
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
     --sidebar-primary: 240 5.9% 10%;
@@ -71,6 +76,9 @@
     --border: 150 15% 18%;
     --input: 150 15% 18%;
     --ring: 145 63% 42%;
+    --brand-green: 132 39% 58%;
+    --brand-green-light: 132 39% 62%;
+    --brand-gold: 46 68% 55%;
   }
 }
 
