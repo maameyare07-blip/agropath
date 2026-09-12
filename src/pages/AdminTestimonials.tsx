@@ -164,7 +164,7 @@ const AdminTestimonials = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           <Link to="/" className="flex items-center gap-2">
             <Leaf className="w-6 h-6 text-primary" />
-            <span className="font-heading font-bold text-foreground">AgroPath Admin</span>
+            <span className="font-heading font-bold text-foreground"><Wordmark /> Admin</span>
           </Link>
           <Button variant="ghost" size="sm" onClick={signOut}>
             <LogOut className="w-4 h-4 mr-2" /> Sign out

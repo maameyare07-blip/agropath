@@ -1,5 +1,6 @@
 import { Linkedin, Twitter, Instagram } from "lucide-react";
 import AgroPathLogo from "./AgroPathLogo";
+import Wordmark from "./Wordmark";
 import { Link } from "react-router-dom";
 
 const Footer = () => (
@@ -8,7 +9,7 @@ const Footer = () => (
       <div className="flex flex-col items-center text-center">
         <div className="flex items-center gap-2 mb-4">
           <AgroPathLogo className="w-6 h-6" />
-          <span className="font-heading font-bold text-lg text-background">AgroPath</span>
+          <Wordmark onDark className="font-heading font-bold text-lg" />
         </div>
         <p className="text-background/60 text-sm mb-6 max-w-md">
           Advancing sustainable agriculture through science, innovation, and community empowerment.
@@ -31,7 +32,8 @@ const Footer = () => (
 
         <div className="border-t border-background/10 pt-6 w-full flex flex-col items-center gap-3">
           <p className="text-background/40 text-sm">
-            © {new Date().getFullYear()} Mohamed Mohamud SH Hassan. All rights reserved.
+            © {new Date().getFullYear()}{" "}
+            <span className="text-brand-green-light font-medium">Mohamed Mohamud SH Hassan</span>. All rights reserved.
           </p>
           <Link
             to="/privacy-policy"

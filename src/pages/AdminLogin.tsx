@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { toast } from "@/hooks/use-toast";
+import Wordmark from "@/components/Wordmark";
 import Seo from "@/components/Seo";
 
 const AdminLogin = () => {
@@ -38,7 +39,7 @@ const AdminLogin = () => {
       <div className="w-full max-w-md">
         <Link to="/" className="flex items-center gap-2 justify-center mb-8">
           <Leaf className="w-7 h-7 text-primary" />
-          <span className="font-heading font-bold text-xl text-foreground">AgroPath</span>
+          <Wordmark className="font-heading font-bold text-xl" />
         </Link>
 
         <div className="bg-card border border-border rounded-2xl shadow-sm p-8">
