@@ -35,8 +35,31 @@ const publications: Publication[] = [
 ];
 
 
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  headline: "Plant Virus Transmission",
+  name: "Plant Virus Transmission",
+  datePublished: "2024",
+  inLanguage: "en",
+  author: [
+    { "@type": "Person", name: "Meenakshi Rana" },
+    { "@type": "Person", name: "Mohamed Mohamud SH Hassan" },
+    { "@type": "Person", name: "Seweta Srivastava" },
+  ],
+  isPartOf: {
+    "@type": "Book",
+    name: "Plant Virology: Theoretical Concepts",
+  },
+  about: ["Plant virology", "Plant pathology", "Plant virus transmission"],
+  url: "https://agropath.lovable.app/#publications",
+};
+
 const PublicationsSection = () => (
   <section id="publications" className="py-14 lg:py-20">
+    <Helmet>
+      <script type="application/ld+json">{JSON.stringify(articleSchema)}</script>
+    </Helmet>
     <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
       <motion.div
         initial={{ opacity: 0, y: 30 }}
