@@ -3,9 +3,57 @@ import Footer from "@/components/Footer";
 import TrainingsSection from "@/components/TrainingsSection";
 import { motion } from "framer-motion";
 import Seo from "@/components/Seo";
+import { Helmet } from "react-helmet-async";
+
+const completedCourses = [
+  {
+    name: "Conducting a Phytosanitary Capacity Evaluation (PCE)",
+    provider: "FAO eLearning Academy / IPPC",
+  },
+  {
+    name: "United Nations Sustainable Development Cooperation Framework",
+    provider: "UN System Staff College",
+  },
+  {
+    name: "Climate Change, Peace and Security: Understanding Climate-Related Security Risks Through an Integrated Lens",
+    provider: "UNITAR / UN CC:Learn",
+  },
+  {
+    name: "Foundational Primer on the 2030 Agenda for Sustainable Development (SDG Primer)",
+    provider: "UN System Staff College",
+  },
+  {
+    name: "Synergizing Disaster Risk Reduction and Climate Change Adaptation – Thought Leadership Course",
+    provider: "UN System Staff College (UNSSC) & UNDRR",
+  },
+];
+
+const coursesSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: "Completed courses and certifications",
+  itemListElement: completedCourses.map((course, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    item: {
+      "@type": "Course",
+      name: course.name,
+      provider: { "@type": "Organization", name: course.provider },
+      url: "https://agropath.lovable.app/trainings",
+      hasCourseInstance: {
+        "@type": "CourseInstance",
+        courseMode: "online",
+        courseWorkload: "P8H",
+      },
+    },
+  })),
+};
 
 const Trainings = () => (
   <div className="min-h-screen bg-background">
+    <Helmet>
+      <script type="application/ld+json">{JSON.stringify(coursesSchema)}</script>
+    </Helmet>
     <Seo
       title="Trainings & Professional Development | AgroPath"
       description="Trainings facilitated and attended, plus certified courses completed with the UN, UNITAR, FAO and other leading institutions in seed science and plant health."
