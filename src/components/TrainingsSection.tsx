@@ -78,6 +78,7 @@ const trainings: Training[] = [
     title: "Training on Multiplication and Workflow of Seed Classes, Standards, and Seed Label Colours",
     provider: "Facilitated by SARIS and FAO, supported by Green Climate Fund (GCF), under the Ugbaad Project",
     date: "8–10 September 2026, Mogadishu, Somalia",
+    gallery: [u1.url, u2.url],
     category: "attended",
   },
   {
