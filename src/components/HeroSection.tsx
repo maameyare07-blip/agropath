@@ -33,6 +33,13 @@ const HeroSection = () => {
             transition={{ duration: 0.8 }}
             className="text-center lg:text-left"
           >
+            <div className="text-center mb-6 lg:text-left">
+              <Wordmark className="block font-heading text-3xl sm:text-4xl font-bold tracking-tight" />
+              <p className="mt-1.5 font-heading text-base sm:text-lg font-semibold text-brand-green">
+                Mohamed Mohamud SH Hassan
+              </p>
+            </div>
+
             <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6">
               Plant Pathology Specialist | Seed Inspector | Agricultural Researcher
             </span>
