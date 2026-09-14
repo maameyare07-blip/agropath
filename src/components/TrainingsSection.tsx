@@ -28,6 +28,8 @@ import f13 from "@/assets/gallery/13-2.jpeg.asset.json";
 import f14 from "@/assets/gallery/14.jpeg.asset.json";
 import f15 from "@/assets/gallery/15.jpeg.asset.json";
 import f16 from "@/assets/gallery/16.jpeg.asset.json";
+import u1 from "@/assets/gallery/ugbaad-1.jpg.asset.json";
+import u2 from "@/assets/gallery/ugbaad-2.jpg.asset.json";
 
 
 type TrainingCategory = "facilitated" | "attended" | "course";
@@ -76,6 +78,7 @@ const trainings: Training[] = [
     title: "Training on Multiplication and Workflow of Seed Classes, Standards, and Seed Label Colours",
     provider: "Facilitated by SARIS and FAO, supported by Green Climate Fund (GCF), under the Ugbaad Project",
     date: "8–10 September 2026, Mogadishu, Somalia",
+    gallery: [u1.url, u2.url],
     category: "attended",
   },
   {
