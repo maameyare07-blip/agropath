@@ -29,6 +29,7 @@ const publications: Publication[] = [
     ],
     description:
       "Co-authored a chapter titled 'Plant Virus Transmission' in the book 'Plant Virology: Theoretical Concepts,' published in 2024. The chapter explores theoretical and practical aspects of plant virus transmission, providing insights into mechanisms and management strategies.",
+    chapterUrl: chapterPdf.url,
   },
 ];
 
