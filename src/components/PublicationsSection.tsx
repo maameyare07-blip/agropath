@@ -12,6 +12,7 @@ type Publication = {
   authors: string[];
   description: string;
   url?: string;
+  chapterUrl?: string;
 };
 
 const publications: Publication[] = [
