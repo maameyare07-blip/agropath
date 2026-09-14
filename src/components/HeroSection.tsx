@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowDown, Mail } from "lucide-react";
+import Wordmark from "@/components/Wordmark";
 import img1 from "@/assets/gallery/1.jpeg.asset.json";
 import img2 from "@/assets/gallery/1a.jpeg.asset.json";
 import img3 from "@/assets/gallery/1b.jpeg.asset.json";
