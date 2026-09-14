@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
-import { BookOpen, Calendar, Users } from "lucide-react";
+import { BookOpen, Calendar, FileText, Users } from "lucide-react";
+
+import chapterPdf from "@/assets/publications/Plant_Virus_Transmission_Chapter.pdf.asset.json";
 
 type Publication = {
   type: string;
