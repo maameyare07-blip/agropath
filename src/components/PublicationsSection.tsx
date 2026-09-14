@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
-import { BookOpen, Calendar, Users } from "lucide-react";
+import { BookOpen, Calendar, FileText, Users } from "lucide-react";
+
+import chapterPdf from "@/assets/publications/Plant_Virus_Transmission_Chapter.pdf.asset.json";
 
 type Publication = {
   type: string;
@@ -10,6 +12,7 @@ type Publication = {
   authors: string[];
   description: string;
   url?: string;
+  chapterUrl?: string;
 };
 
 const publications: Publication[] = [
@@ -26,6 +29,7 @@ const publications: Publication[] = [
     ],
     description:
       "Co-authored a chapter titled 'Plant Virus Transmission' in the book 'Plant Virology: Theoretical Concepts,' published in 2024. The chapter explores theoretical and practical aspects of plant virus transmission, providing insights into mechanisms and management strategies.",
+    chapterUrl: chapterPdf.url,
   },
 ];
 
@@ -94,6 +98,18 @@ const PublicationsSection = () => (
             <p className="text-sm text-muted-foreground leading-relaxed">
               {pub.description}
             </p>
+
+            {pub.chapterUrl && (
+              <a
+                href={pub.chapterUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-5 inline-flex items-center gap-2 rounded-xl bg-primary px-4 py-2.5 text-sm font-semibold text-primary-foreground shadow-sm transition-opacity hover:opacity-90 min-h-[44px]"
+              >
+                <FileText className="w-4 h-4" />
+                View Chapter
+              </a>
+            )}
           </motion.article>
         ))}
       </div>
