@@ -3,7 +3,7 @@
 // supabase function: mcp
 // Bundled from src/lib/mcp/index.ts by @lovable.dev/mcp-js.
 // src/lib/mcp/index.ts
-import { defineMcp } from "npm:@lovable.dev/mcp-js@0.24.0";
+import { auth, defineMcp } from "npm:@lovable.dev/mcp-js@0.24.0";
 
 // src/lib/mcp/tools/get-profile.ts
 import { defineTool } from "npm:@lovable.dev/mcp-js@0.24.0";
@@ -160,13 +160,85 @@ var get_contact_default = defineTool4({
   }
 });
 
+// src/lib/mcp/tools/list-testimonials.ts
+import { defineTool as defineTool5 } from "npm:@lovable.dev/mcp-js@0.24.0";
+import { z } from "npm:zod@^4.4.3";
+var deny = (text) => ({
+  content: [{ type: "text", text }],
+  isError: true
+});
+var list_testimonials_default = defineTool5({
+  name: "list_testimonials",
+  title: "List testimonial submissions (admin only)",
+  description: "Private tool. Returns testimonial submissions including pending ones and the submitter's email. Requires a signed-in administrator of AgroPath; any other caller is refused.",
+  inputSchema: {
+    status: z.enum(["pending", "approved", "rejected", "all"]).optional().describe("Filter by submission status. Defaults to all.")
+  },
+  annotations: { readOnlyHint: true, idempotentHint: true, openWorldHint: true },
+  handler: async (args, ctx) => {
+    const token = ctx.getToken();
+    const userId = ctx.getUserId();
+    if (!token || !userId) {
+      return deny("Sign-in required: this tool only works for a signed-in AgroPath administrator.");
+    }
+    const baseUrl = globalThis.Deno?.env.get(
+      "SUPABASE_URL"
+    );
+    const apiKey = globalThis.Deno?.env.get(
+      "SUPABASE_ANON_KEY"
+    );
+    if (!baseUrl || !apiKey) {
+      return deny("Backend is not configured for this tool.");
+    }
+    const headers = {
+      apikey: apiKey,
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json"
+    };
+    const roleRes = await fetch(`${baseUrl}/rest/v1/rpc/has_role`, {
+      method: "POST",
+      headers,
+      body: JSON.stringify({ _user_id: userId, _role: "admin" })
+    });
+    if (!roleRes.ok) {
+      return deny("Could not verify your permissions.");
+    }
+    const isAdmin = await roleRes.json() === true;
+    if (!isAdmin) {
+      return deny("Access denied: administrator access is required for testimonial submissions.");
+    }
+    const status = args?.status ?? "all";
+    const query = new URLSearchParams({
+      select: "id,full_name,email,organization,position,message,status,permission_granted,created_at",
+      order: "created_at.desc",
+      limit: "100"
+    });
+    if (status !== "all") query.set("status", `eq.${status}`);
+    const res = await fetch(`${baseUrl}/rest/v1/testimonials?${query.toString()}`, { headers });
+    if (!res.ok) {
+      return deny("Could not load testimonial submissions.");
+    }
+    const testimonials = await res.json();
+    return {
+      content: [{ type: "text", text: JSON.stringify(testimonials, null, 2) }],
+      structuredContent: { count: testimonials.length, testimonials }
+    };
+  }
+});
+
 // src/lib/mcp/index.ts
 var mcp_default = defineMcp({
   name: "agropath-mcp",
   title: "AgroPath \u2014 Mohamed Mohamud SH Hassan",
   version: "0.1.0",
-  instructions: "Public portfolio MCP server for Mohamed Mohamud SH Hassan (AgroPath), a plant pathology specialist and seed inspector. Use these tools to answer questions about his profile, professional experience, education and memberships, and public contact channels.",
-  tools: [get_profile_default, get_experience_default, get_education_default, get_contact_default]
+  auth: auth.oauth.issuer({
+    issuer: "https://vojjqwxitkfcsulyxfzy.supabase.co/auth/v1",
+    resourceName: "AgroPath \u2014 Mohamed Mohamud SH Hassan",
+    resourceDocumentation: "https://agropath.lovable.app",
+    acceptedAudiences: ["authenticated"]
+  }),
+  instructions: "MCP server for Mohamed Mohamud SH Hassan (AgroPath), a plant pathology specialist and seed inspector. Connecting requires signing in. The profile, experience, education and contact tools return information that is also published on agropath.lovable.app. The list_testimonials tool returns private submission data and only works for a signed-in administrator.",
+  tools: [get_profile_default, get_experience_default, get_education_default, get_contact_default, list_testimonials_default]
 });
 
 // lovable-mcp-supabase-entry.ts
