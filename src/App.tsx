@@ -11,6 +11,7 @@ import NotFound from "./pages/NotFound.tsx";
 import SubmitTestimonial from "./pages/SubmitTestimonial.tsx";
 import AdminLogin from "./pages/AdminLogin.tsx";
 import AdminTestimonials from "./pages/AdminTestimonials.tsx";
+import OAuthConsent from "./pages/OAuthConsent.tsx";
 import Trainings from "./pages/Trainings.tsx";
 import PrivacyPolicy from "./pages/PrivacyPolicy.tsx";
 import CookieConsent from "@/components/CookieConsent.tsx";
@@ -34,6 +35,7 @@ const App = () => (
           <Route path="/admin/testimonials" element={<AdminTestimonials />} />
           <Route path="/trainings" element={<Trainings />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/.lovable/oauth/consent" element={<OAuthConsent />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
