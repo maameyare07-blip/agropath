@@ -3,7 +3,13 @@
   "sdk_version": "0.24.0",
   "path": "/functions/v1/mcp",
   "auth": {
-    "type": "none"
+    "type": "oauth",
+    "issuer": "https://vojjqwxitkfcsulyxfzy.supabase.co/auth/v1",
+    "resource_name": "AgroPath — Mohamed Mohamud SH Hassan",
+    "resource_documentation": "https://agropath.lovable.app",
+    "accepted_audiences": [
+      "authenticated"
+    ]
   },
   "mcp": {
     "server": {
@@ -73,6 +79,33 @@
           "$schema": "http://json-schema.org/draft-07/schema#",
           "type": "object",
           "properties": {}
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "list_testimonials",
+        "title": "List testimonial submissions (admin only)",
+        "description": "Private tool. Returns testimonial submissions including pending ones and the submitter's email. Requires a signed-in administrator of AgroPath; any other caller is refused.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": true
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "status": {
+              "description": "Filter by submission status. Defaults to all.",
+              "type": "string",
+              "enum": [
+                "pending",
+                "approved",
+                "rejected",
+                "all"
+              ]
+            }
+          }
         },
         "outputSchema": null
       }

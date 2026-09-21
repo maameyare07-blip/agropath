@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link, useSearchParams } from "react-router-dom";
 import { Leaf, Loader2 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
@@ -11,15 +11,20 @@ import Seo from "@/components/Seo";
 
 const AdminLogin = () => {
   const navigate = useNavigate();
+  const [params] = useSearchParams();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
 
+  // Only same-origin relative paths are honoured as a post-login destination.
+  const rawNext = params.get("next");
+  const next = rawNext && rawNext.startsWith("/") && !rawNext.startsWith("//") ? rawNext : "/admin/testimonials";
+
   useEffect(() => {
     supabase.auth.getSession().then(({ data }) => {
-      if (data.session) navigate("/admin/testimonials", { replace: true });
+      if (data.session) navigate(next, { replace: true });
     });
-  }, [navigate]);
+  }, [navigate, next]);
 
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -30,7 +35,7 @@ const AdminLogin = () => {
       toast({ title: "Login failed", description: error.message, variant: "destructive" });
       return;
     }
-    navigate("/admin/testimonials", { replace: true });
+    navigate(next, { replace: true });
   };
 
   return (
