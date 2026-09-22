@@ -63,7 +63,7 @@ const HeroSection = () => {
                 <Mail className="w-5 h-5" /> Contact Me
               </a>
               <a
-                href="#projects"
+                href="#experience"
                 className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl border-2 border-primary text-primary font-semibold text-base hover:bg-primary/5 transition-colors"
               >
                 View My Work <ArrowDown className="w-5 h-5" />
