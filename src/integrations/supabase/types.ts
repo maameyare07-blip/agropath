@@ -50,6 +50,99 @@ export type Database = {
         }
         Relationships: []
       }
+      crop_notes: {
+        Row: {
+          body: string
+          created_at: string
+          crop: string | null
+          id: string
+          title: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          body?: string
+          created_at?: string
+          crop?: string | null
+          id?: string
+          title: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          body?: string
+          created_at?: string
+          crop?: string | null
+          id?: string
+          title?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      diagnoses: {
+        Row: {
+          answer: string
+          created_at: string
+          crop: string | null
+          id: string
+          photo_paths: string[]
+          symptoms: string | null
+          user_id: string
+        }
+        Insert: {
+          answer: string
+          created_at?: string
+          crop?: string | null
+          id?: string
+          photo_paths?: string[]
+          symptoms?: string | null
+          user_id: string
+        }
+        Update: {
+          answer?: string
+          created_at?: string
+          crop?: string | null
+          id?: string
+          photo_paths?: string[]
+          symptoms?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
+      symptom_logs: {
+        Row: {
+          created_at: string
+          crop: string
+          id: string
+          notes: string | null
+          observed_on: string
+          plot: string | null
+          severity: number
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          crop: string
+          id?: string
+          notes?: string | null
+          observed_on?: string
+          plot?: string | null
+          severity: number
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          crop?: string
+          id?: string
+          notes?: string | null
+          observed_on?: string
+          plot?: string | null
+          severity?: number
+          user_id?: string
+        }
+        Relationships: []
+      }
       testimonials: {
         Row: {
           created_at: string
