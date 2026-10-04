@@ -9,6 +9,9 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { supabase } from "@/integrations/supabase/client";
+import { Link } from "react-router-dom";
+import { useAuthUser } from "@/hooks/useAuthUser";
+import { useFarmerLang } from "@/lib/farmerI18n";
 
 const MAX_IMAGES = 3;
 
@@ -75,6 +78,9 @@ const CropDoctor = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [answer, setAnswer] = useState<string | null>(null);
+  const [saved, setSaved] = useState(false);
+  const { user } = useAuthUser();
+  const { t } = useFarmerLang();
   const fileRef = useRef<HTMLInputElement>(null);
 
   const addFiles = async (files: FileList | null) => {
@@ -116,7 +122,25 @@ const CropDoctor = () => {
       setError(msg);
       return;
     }
-    setAnswer((data as { answer?: string })?.answer ?? null);
+    const result = (data as { answer?: string })?.answer ?? null;
+    setAnswer(result);
+    if (result && user) {
+      try {
+        const photo_paths: string[] = [];
+        for (const img of images) {
+          const blob = await (await fetch(img)).blob();
+          const path = `${user.id}/${crypto.randomUUID()}.jpg`;
+          const { error: upErr } = await supabase.storage.from("crop-photos").upload(path, blob, { contentType: "image/jpeg" });
+          if (!upErr) photo_paths.push(path);
+        }
+        const { error: dbErr } = await supabase.from("diagnoses").insert({
+          user_id: user.id, crop: crop || null, symptoms: symptoms || null, answer: result, photo_paths,
+        });
+        setSaved(!dbErr);
+      } catch {
+        setSaved(false);
+      }
+    }
   };
 
   return (
@@ -207,6 +231,16 @@ const CropDoctor = () => {
               <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} className="bg-card rounded-2xl border border-border shadow-sm p-6 lg:p-8">
                 <h2 className="font-heading text-2xl font-bold text-foreground">Preliminary assessment</h2>
                 <Answer text={answer} />
+                <p className="mt-6 text-sm">
+                  {user ? (
+                    <>
+                      {saved && <span className="text-primary">{t.saved} </span>}
+                      <Link to="/farmer/dashboard" className="text-primary underline">{t.openDashboard}</Link>
+                    </>
+                  ) : (
+                    <Link to="/farmer/login" className="text-primary underline">{t.signInToSave}</Link>
+                  )}
+                </p>
               </motion.div>
             )}
 

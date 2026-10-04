@@ -16,6 +16,7 @@ const primaryLinks: { label: string; href: string }[] = [
   { label: "About", href: "#about" },
   { label: "Trainings", href: "/trainings" },
   { label: "Crop Doctor", href: "/crop-doctor" },
+  { label: "My Farm", href: "/farmer/dashboard" },
   { label: "FAQ", href: "#faq" },
   { label: "Contact", href: "#contact" },
 ];

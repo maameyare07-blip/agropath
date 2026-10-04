@@ -15,6 +15,10 @@ import OAuthConsent from "./pages/OAuthConsent.tsx";
 import Trainings from "./pages/Trainings.tsx";
 import PrivacyPolicy from "./pages/PrivacyPolicy.tsx";
 import CropDoctor from "./pages/CropDoctor.tsx";
+import FarmerAuth from "./pages/FarmerAuth.tsx";
+import FarmerDashboard from "./pages/FarmerDashboard.tsx";
+import ResetPassword from "./pages/ResetPassword.tsx";
+import { FarmerLangProvider } from "@/lib/farmerI18n";
 import CookieConsent from "@/components/CookieConsent.tsx";
 import ScrollToHash from "@/components/ScrollToHash.tsx";
 
@@ -25,6 +29,7 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
+      <FarmerLangProvider>
       <BrowserRouter>
         <GoogleAnalytics />
         <ScrollToHash />
@@ -37,12 +42,16 @@ const App = () => (
           <Route path="/trainings" element={<Trainings />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/crop-doctor" element={<CropDoctor />} />
+          <Route path="/farmer/login" element={<FarmerAuth />} />
+          <Route path="/farmer/dashboard" element={<FarmerDashboard />} />
+          <Route path="/reset-password" element={<ResetPassword />} />
           <Route path="/.lovable/oauth/consent" element={<OAuthConsent />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
         <CookieConsent />
       </BrowserRouter>
+      </FarmerLangProvider>
       <Analytics />
     </TooltipProvider>
   </QueryClientProvider>
