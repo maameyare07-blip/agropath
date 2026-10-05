@@ -2,6 +2,7 @@ import { Linkedin, Twitter, Instagram } from "lucide-react";
 import AgroPathLogo from "./AgroPathLogo";
 import Wordmark from "./Wordmark";
 import { Link } from "react-router-dom";
+import NewsletterSignup from "./NewsletterSignup";
 
 const Footer = () => (
   <footer className="bg-foreground py-12">
@@ -30,7 +31,9 @@ const Footer = () => (
           </a>
         </div>
 
-        <div className="border-t border-background/10 pt-6 w-full flex flex-col items-center gap-3">
+        <NewsletterSignup />
+
+        <div className="w-full flex flex-col items-center gap-3">
           <p className="text-background/40 text-sm">
             © {new Date().getFullYear()}{" "}
             <span className="text-brand-green-light font-medium">Mohamed Mohamud SH Hassan</span>. All rights reserved.
