@@ -158,7 +158,7 @@ const CropDoctor = () => {
               <span className="text-primary font-semibold text-sm uppercase tracking-wider">For Farmers</span>
               <h1 className="font-heading text-4xl sm:text-5xl font-bold text-foreground mt-3 mb-4">Crop Doctor</h1>
               <p className="text-muted-foreground text-lg">
-                Share photos of your crop and describe what you see. You'll get a quick, AI-powered first opinion
+                Share photos of your crop and describe what you see. You'll get a quick first opinion
                 on possible problems and what you can do about them.
               </p>
             </motion.div>
