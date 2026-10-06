@@ -107,7 +107,7 @@ const CropDoctor = () => {
     setError(null);
     setAnswer(null);
     const { data, error: fnError } = await supabase.functions.invoke("crop-diagnosis", {
-      body: { crop, symptoms, images },
+      body: { crop, symptoms, images, lang },
     });
     setLoading(false);
     if (fnError) {
