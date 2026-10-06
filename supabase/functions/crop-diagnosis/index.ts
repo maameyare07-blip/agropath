@@ -21,7 +21,7 @@ const corsHeaders = {
 
 const SYSTEM = `You are an experienced plant pathologist supporting smallholder farmers in East Africa (especially Somalia).
 Given crop photos and/or a symptom description, give a PRELIMINARY assessment only.
-Reply in clear, simple English using Markdown with exactly these sections:
+Reply in clear, simple language using Markdown with exactly these sections (translate the section headings into the reply language):
 ## Likely possibilities
 A numbered list of 1-3 possible causes (disease, pest, nutrient deficiency or abiotic stress). For each: name, likelihood (High/Medium/Low), and the visible signs that support it.
 ## What to check next
@@ -48,7 +48,7 @@ Deno.serve(async (req) => {
   const apiKey = Deno.env.get("LOVABLE_API_KEY");
   if (!apiKey) return json({ error: "AI is not configured." }, 500);
 
-  let body: { crop?: unknown; symptoms?: unknown; images?: unknown };
+  let body: { crop?: unknown; symptoms?: unknown; images?: unknown; lang?: unknown };
   try {
     body = await req.json();
   } catch {
@@ -58,6 +58,8 @@ Deno.serve(async (req) => {
   const crop = typeof body.crop === "string" ? body.crop.trim().slice(0, 100) : "";
   const symptoms = typeof body.symptoms === "string" ? body.symptoms.trim().slice(0, 2000) : "";
   const images = Array.isArray(body.images) ? body.images : [];
+  const LANG_NAMES: Record<string, string> = { en: "English", so: "Somali (Af-Soomaali)", ar: "Modern Standard Arabic" };
+  const replyLang = LANG_NAMES[typeof body.lang === "string" ? body.lang : "en"] ?? "English";
 
   if (images.length > MAX_IMAGES) return json({ error: `Up to ${MAX_IMAGES} photos allowed.` }, 400);
   for (const img of images) {
@@ -91,7 +93,7 @@ Deno.serve(async (req) => {
   let upstreamError: unknown = null;
   const result = streamText({
     model: provider.responses(MODEL),
-    system: SYSTEM,
+    system: `${SYSTEM}\nWrite the entire reply in ${replyLang}, whatever language the farmer used.`,
     messages,
     abortSignal: req.signal,
     onError: ({ error }) => {

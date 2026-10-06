@@ -80,7 +80,7 @@ const CropDoctor = () => {
   const [answer, setAnswer] = useState<string | null>(null);
   const [saved, setSaved] = useState(false);
   const { user } = useAuthUser();
-  const { t } = useFarmerLang();
+  const { t, lang } = useFarmerLang();
   const fileRef = useRef<HTMLInputElement>(null);
 
   const addFiles = async (files: FileList | null) => {
@@ -107,7 +107,7 @@ const CropDoctor = () => {
     setError(null);
     setAnswer(null);
     const { data, error: fnError } = await supabase.functions.invoke("crop-diagnosis", {
-      body: { crop, symptoms, images },
+      body: { crop, symptoms, images, lang },
     });
     setLoading(false);
     if (fnError) {

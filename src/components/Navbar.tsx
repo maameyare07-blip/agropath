@@ -5,6 +5,7 @@ import { Menu, X, ExternalLink, ChevronDown } from "lucide-react";
 import AgroPathLogo from "./AgroPathLogo";
 import Wordmark from "./Wordmark";
 import ThemeToggle from "./ThemeToggle";
+import LangToggle from "./LangToggle";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -92,11 +93,13 @@ const Navbar = () => {
             >
               Blog <ExternalLink className="w-3 h-3" />
             </a>
+            <LangToggle compact />
             <ThemeToggle />
           </div>
 
           {/* Mobile toggle */}
           <div className="flex items-center gap-1 lg:hidden">
+            <LangToggle compact />
             <ThemeToggle />
             <button
               onClick={() => setIsOpen(!isOpen)}
