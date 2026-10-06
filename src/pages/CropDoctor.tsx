@@ -80,7 +80,7 @@ const CropDoctor = () => {
   const [answer, setAnswer] = useState<string | null>(null);
   const [saved, setSaved] = useState(false);
   const { user } = useAuthUser();
-  const { t } = useFarmerLang();
+  const { t, lang } = useFarmerLang();
   const fileRef = useRef<HTMLInputElement>(null);
 
   const addFiles = async (files: FileList | null) => {
