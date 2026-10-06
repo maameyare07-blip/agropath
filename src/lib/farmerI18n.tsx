@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
 
-export type Lang = "en" | "so";
+export type Lang = "en" | "so" | "ar";
 
 const en = {
   dashboard: "My Farm Dashboard",
@@ -101,7 +101,7 @@ const so: typeof en = {
   signInToSave: "Gal si aad natiijooyinka ugu kaydiso shaxdaada.",
   openDashboard: "Fur shaxdayda",
   error: "Khalad ayaa dhacay. Fadlan isku day mar kale.",
-  language: "English",
+  language: "Af-Soomaali",
 };
 
 const ar: typeof en = {
