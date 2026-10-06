@@ -104,18 +104,91 @@ const so: typeof en = {
   language: "English",
 };
 
-const dict = { en, so };
-type Ctx = { lang: Lang; t: typeof en; toggle: () => void };
+const ar: typeof en = {
+  dashboard: "لوحة مزرعتي",
+  dashboardIntro: "تشخيصاتك المحفوظة وسجلات الأعراض وملاحظات المحاصيل — خاصة بحسابك فقط.",
+  signIn: "تسجيل الدخول",
+  signUp: "إنشاء حساب",
+  signOut: "تسجيل الخروج",
+  email: "البريد الإلكتروني",
+  password: "كلمة المرور",
+  google: "المتابعة باستخدام Google",
+  or: "أو",
+  forgot: "نسيت كلمة المرور؟",
+  sendReset: "إرسال رابط إعادة التعيين",
+  resetSent: "تحقق من بريدك الإلكتروني للحصول على رابط إعادة تعيين كلمة المرور.",
+  checkEmail: "تحقق من بريدك الإلكتروني لتأكيد حسابك، ثم سجّل الدخول.",
+  noAccount: "جديد هنا؟ أنشئ حساباً",
+  haveAccount: "لديك حساب بالفعل؟ سجّل الدخول",
+  authIntro: "سجّل الدخول لحفظ نتائج طبيب المحاصيل وتتبع الأعراض وتدوين ملاحظات المحاصيل.",
+  newPassword: "كلمة المرور الجديدة",
+  savePassword: "حفظ كلمة المرور الجديدة",
+  passwordSaved: "تم تحديث كلمة المرور.",
+  diagnoses: "التشخيصات",
+  tracker: "متتبع الأعراض",
+  notes: "ملاحظات المحاصيل",
+  noDiagnoses: "لا توجد تشخيصات محفوظة بعد.",
+  newDiagnosis: "تشخيص جديد",
+  crop: "المحصول",
+  plot: "الحقل / القطعة (اختياري)",
+  severity: "الشدة",
+  severityHint: "1 = خفيفة جداً، 5 = شديدة جداً",
+  observedOn: "تاريخ الملاحظة",
+  notesField: "ملاحظات",
+  addEntry: "إضافة سجل",
+  noLogs: "لا توجد سجلات أعراض بعد. أضف سجلاً لبدء التتبع.",
+  allCrops: "جميع المحاصيل",
+  title: "العنوان",
+  addNote: "حفظ الملاحظة",
+  noNotes: "لا توجد ملاحظات بعد.",
+  edit: "تعديل",
+  del: "حذف",
+  cancel: "إلغاء",
+  update: "تحديث",
+  show: "عرض التفاصيل",
+  hide: "إخفاء التفاصيل",
+  symptomsLabel: "الأعراض",
+  saved: "تم الحفظ في لوحتك.",
+  signInToSave: "سجّل الدخول لحفظ النتائج في لوحتك.",
+  openDashboard: "افتح لوحتي",
+  error: "حدث خطأ ما. يرجى المحاولة مرة أخرى.",
+  language: "العربية",
+};
+
+export const LANGS: { code: Lang; label: string; short: string }[] = [
+  { code: "en", label: "English", short: "EN" },
+  { code: "so", label: "Af-Soomaali", short: "SO" },
+  { code: "ar", label: "العربية", short: "ع" },
+];
+
+const dict = { en, so, ar };
+const STORAGE_KEY = "site-lang";
+type Ctx = { lang: Lang; t: typeof en; setLang: (l: Lang) => void; toggle: () => void };
 const LangContext = createContext<Ctx | null>(null);
 
+const readLang = (): Lang => {
+  try {
+    const v = localStorage.getItem(STORAGE_KEY) ?? localStorage.getItem("farmer-lang");
+    if (v === "so" || v === "ar" || v === "en") return v;
+  } catch {
+    // storage unavailable
+  }
+  return "en";
+};
+
 export const FarmerLangProvider = ({ children }: { children: ReactNode }) => {
-  const [lang, setLang] = useState<Lang>(() => (localStorage.getItem("farmer-lang") === "so" ? "so" : "en"));
-  useEffect(() => localStorage.setItem("farmer-lang", lang), [lang]);
-  return (
-    <LangContext.Provider value={{ lang, t: dict[lang], toggle: () => setLang((l) => (l === "en" ? "so" : "en")) }}>
-      {children}
-    </LangContext.Provider>
-  );
+  const [lang, setLang] = useState<Lang>(readLang);
+  useEffect(() => {
+    document.documentElement.lang = lang;
+    document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
+    try {
+      localStorage.setItem(STORAGE_KEY, lang);
+    } catch {
+      // choice still applies for this visit
+    }
+  }, [lang]);
+  const toggle = () => setLang((l) => (l === "en" ? "so" : l === "so" ? "ar" : "en"));
+  return <LangContext.Provider value={{ lang, t: dict[lang], setLang, toggle }}>{children}</LangContext.Provider>;
 };
 
 export const useFarmerLang = () => {
@@ -123,3 +196,11 @@ export const useFarmerLang = () => {
   if (!ctx) throw new Error("useFarmerLang must be used inside FarmerLangProvider");
   return ctx;
 };
+
+/** Site-wide language hook. */
+export const useLang = useFarmerLang;
+
+/** Pick the current-language entry from a per-component copy object. */
+export function useCopy<T>(copy: Record<Lang, T>): T {
+  return copy[useFarmerLang().lang];
+}
