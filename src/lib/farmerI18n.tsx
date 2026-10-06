@@ -50,7 +50,7 @@ const en = {
   signInToSave: "Sign in to save results to your dashboard.",
   openDashboard: "Open my dashboard",
   error: "Something went wrong. Please try again.",
-  language: "Af-Soomaali",
+  language: "English",
 };
 
 const so: typeof en = {
