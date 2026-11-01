@@ -1,4 +1,5 @@
 import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
+import { translateText } from "./siteText";
 
 export type Lang = "en" | "so" | "ar";
 
@@ -199,6 +200,11 @@ export const useFarmerLang = () => {
 
 /** Site-wide language hook. */
 export const useLang = useFarmerLang;
+
+export const useText = () => {
+  const { lang } = useFarmerLang();
+  return (text: string, values?: Record<string, string | number>) => translateText(text, lang, values);
+};
 
 /** Pick the current-language entry from a per-component copy object. */
 export function useCopy<T>(copy: Record<Lang, T>): T {

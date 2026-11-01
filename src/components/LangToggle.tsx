@@ -5,7 +5,7 @@ import { LANGS, useFarmerLang } from "@/lib/farmerI18n";
 
 const LangToggle = ({ compact = false }: { compact?: boolean }) => {
   const { lang, setLang } = useFarmerLang();
-  const current = LANGS.find((l) => l.code === lang)!;
+  const current = LANGS.find((l) => l.code === lang) ?? LANGS[0];
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
