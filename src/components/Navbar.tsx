@@ -6,6 +6,8 @@ import AgroPathLogo from "./AgroPathLogo";
 import Wordmark from "./Wordmark";
 import ThemeToggle from "./ThemeToggle";
 import LangToggle from "./LangToggle";
+import { useText } from "@/lib/farmerI18n";
+import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -33,6 +35,7 @@ const credentialLinks: { label: string; href: string }[] = [
 const BLOG_URL = "https://pathosolutions.lovable.app/";
 
 const Navbar = () => {
+  const text = useText();
   const [isOpen, setIsOpen] = useState(false);
   const [credentialsOpen, setCredentialsOpen] = useState(false);
   const location = useLocation();
@@ -65,20 +68,20 @@ const Navbar = () => {
                 to={resolveHref(link.href)}
                 className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
               >
-                {link.label}
+                {text(link.label)}
               </Link>
             ))}
 
             <DropdownMenu>
               <DropdownMenuTrigger className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors flex items-center gap-1 outline-none">
-                Credentials
+                {text("Credentials")}
                 <ChevronDown className="w-4 h-4" />
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end" className="bg-card border-border">
                 {credentialLinks.map((link) => (
                   <DropdownMenuItem key={link.label} asChild>
                     <Link to={resolveHref(link.href)} className="cursor-pointer">
-                      {link.label}
+                      {text(link.label)}
                     </Link>
                   </DropdownMenuItem>
                 ))}
@@ -91,7 +94,7 @@ const Navbar = () => {
               rel="noopener noreferrer"
               className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors flex items-center gap-1"
             >
-              Blog <ExternalLink className="w-3 h-3" />
+              {text("Blog")} <ExternalLink className="w-3 h-3" />
             </a>
             <LangToggle compact />
             <ThemeToggle />
@@ -101,13 +104,16 @@ const Navbar = () => {
           <div className="flex items-center gap-1 lg:hidden">
             <LangToggle compact />
             <ThemeToggle />
-            <button
+            <Button
+              variant="ghost"
+              size="icon"
               onClick={() => setIsOpen(!isOpen)}
               className="p-2 rounded-lg text-foreground hover:bg-secondary transition-colors min-h-11 min-w-11"
-              aria-label="Toggle menu"
+              aria-label={text("Toggle menu")}
+              aria-expanded={isOpen}
             >
               {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-            </button>
+            </Button>
           </div>
         </div>
       </div>
@@ -129,20 +135,21 @@ const Navbar = () => {
                   onClick={closeAll}
                   className="flex items-center gap-2 px-4 py-3 rounded-lg text-base font-medium text-foreground hover:bg-secondary transition-colors min-h-[44px]"
                 >
-                  {link.label}
+                  {text(link.label)}
                 </Link>
               ))}
 
-              <button
+              <Button
+                variant="ghost"
                 onClick={() => setCredentialsOpen((v) => !v)}
                 aria-expanded={credentialsOpen}
                 className="w-full flex items-center justify-between px-4 py-3 rounded-lg text-base font-medium text-foreground hover:bg-secondary transition-colors min-h-[44px]"
               >
-                Credentials
+                {text("Credentials")}
                 <ChevronDown
                   className={`w-5 h-5 transition-transform ${credentialsOpen ? "rotate-180" : ""}`}
                 />
-              </button>
+              </Button>
               <AnimatePresence>
                 {credentialsOpen && (
                   <motion.div
@@ -151,7 +158,7 @@ const Navbar = () => {
                     exit={{ opacity: 0, height: 0 }}
                     className="overflow-hidden"
                   >
-                    <div className="pl-4 space-y-1">
+                    <div className="ps-4 space-y-1">
                       {credentialLinks.map((link) => (
                         <Link
                           key={link.label}
@@ -159,7 +166,7 @@ const Navbar = () => {
                           onClick={closeAll}
                           className="flex items-center gap-2 px-4 py-3 rounded-lg text-base text-muted-foreground hover:bg-secondary hover:text-primary transition-colors min-h-[44px]"
                         >
-                          {link.label}
+                          {text(link.label)}
                         </Link>
                       ))}
                     </div>
@@ -174,7 +181,7 @@ const Navbar = () => {
                 onClick={closeAll}
                 className="flex items-center gap-2 px-4 py-3 rounded-lg text-base font-medium text-primary hover:bg-secondary transition-colors min-h-[44px]"
               >
-                Blog <ExternalLink className="w-4 h-4" />
+                {text("Blog")} <ExternalLink className="w-4 h-4" />
               </a>
             </div>
           </motion.div>
