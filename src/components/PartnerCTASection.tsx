@@ -87,7 +87,7 @@ const PartnerCTASection = () => {
         </p>
 
 
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
+        <div className="flex flex-col sm:flex-row sm:flex-wrap items-center justify-center gap-4 mb-12">
           <Button
             asChild
             size="lg"
