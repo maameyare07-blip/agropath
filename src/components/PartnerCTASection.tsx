@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Mail, FileText, Handshake, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useText } from "@/lib/farmerI18n";
 
 const trustItems = [
   "Research collaborations",
@@ -13,7 +14,9 @@ const trustItems = [
 
 const particles = Array.from({ length: 18 });
 
-const PartnerCTASection = () => (
+const PartnerCTASection = () => {
+  const text = useText();
+  return (
   <section id="partner" className="relative py-24 lg:py-32 overflow-hidden bg-background">
     {/* Animated gradient background */}
     <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-background to-accent/20" />
@@ -68,21 +71,19 @@ const PartnerCTASection = () => (
           className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/15 border border-primary/30 mb-6"
         >
           <Sparkles className="w-4 h-4 text-primary" />
-          <span className="text-primary text-sm font-semibold tracking-wide">Let's Collaborate</span>
+           <span className="text-primary text-sm font-semibold tracking-wide">{text("Let's Collaborate")}</span>
         </motion.div>
 
         <h2 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-foreground via-primary to-foreground bg-clip-text text-transparent mb-6">
-          Ready to Partner With Me?
+          {text("Ready to Partner With Me?")}
         </h2>
 
         <p className="text-muted-foreground text-lg sm:text-xl leading-relaxed max-w-3xl mx-auto mb-6">
-          Let's work together to advance sustainable agriculture, strengthen plant health systems, and build
-          resilient food production solutions through research, innovation, and collaboration.
+          {text("Let's work together to advance sustainable agriculture, strengthen plant health systems, and build resilient food production solutions through research, innovation, and collaboration.")}
         </p>
 
         <p className="text-muted-foreground text-base sm:text-lg leading-relaxed max-w-3xl mx-auto mb-10">
-          Actively seeking co-authors and collaborators interested in writing and publishing research
-          articles and review papers in plant pathology, seed science, and food security.
+          {text("Actively seeking co-authors and collaborators interested in writing and publishing research articles and review papers in plant pathology, seed science, and food security.")}
         </p>
 
 
@@ -94,7 +95,7 @@ const PartnerCTASection = () => (
           >
             <a href="#contact">
               <Mail className="w-5 h-5" />
-              Contact Me
+              {text("Contact Me")}
             </a>
           </Button>
           <Button
@@ -105,7 +106,7 @@ const PartnerCTASection = () => (
           >
             <a href="/assets/Mohamed_Mohamud_SH_Hassan_CV.pdf" download="Mohamed_Mohamud_SH_Hassan_CV.pdf">
               <FileText className="w-5 h-5" />
-              Download CV
+              {text("Download CV")}
             </a>
           </Button>
           <Button
@@ -116,20 +117,20 @@ const PartnerCTASection = () => (
           >
             <a href="#contact">
               <Handshake className="w-5 h-5" />
-              Collaborate on Research
+              {text("Collaborate on Research")}
             </a>
           </Button>
         </div>
 
         <div>
-          <p className="text-sm uppercase tracking-widest text-primary font-semibold mb-4">Open To</p>
+          <p className="text-sm uppercase tracking-widest text-primary font-semibold mb-4">{text("Open To")}</p>
           <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3">
             {trustItems.map((t) => (
               <span
                 key={t}
                 className="px-4 py-2 rounded-full text-sm bg-background/60 border border-border text-foreground/80 backdrop-blur-sm"
               >
-                {t}
+                {text(t)}
               </span>
             ))}
           </div>
@@ -137,6 +138,7 @@ const PartnerCTASection = () => (
       </motion.div>
     </div>
   </section>
-);
+  );
+};
 
 export default PartnerCTASection;

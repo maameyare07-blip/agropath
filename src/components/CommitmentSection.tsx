@@ -1,6 +1,7 @@
 import { motion, useInView, useMotionValue, useTransform, animate } from "framer-motion";
 import { useEffect, useRef } from "react";
 import { Wheat, CloudSun, ShieldCheck, Sprout, FlaskConical, Users, Heart, Leaf } from "lucide-react";
+import { useFarmerLang, useText } from "@/lib/farmerI18n";
 
 const commitments = [
   { icon: Wheat, title: "Food Security", text: "Supporting food security initiatives across communities." },
@@ -19,10 +20,11 @@ const stats = [
 ];
 
 const Counter = ({ to, suffix }: { to: number; suffix: string }) => {
+  const { lang } = useFarmerLang();
   const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: true });
   const count = useMotionValue(0);
-  const rounded = useTransform(count, (v) => Math.round(v).toLocaleString());
+  const rounded = useTransform(count, (v) => Math.round(v).toLocaleString(lang));
 
   useEffect(() => {
     if (inView) {
@@ -40,7 +42,9 @@ const Counter = ({ to, suffix }: { to: number; suffix: string }) => {
   return <span ref={ref}>0{suffix}</span>;
 };
 
-const CommitmentSection = () => (
+const CommitmentSection = () => {
+  const text = useText();
+  return (
   <section id="commitment" className="relative py-14 lg:py-20 bg-secondary/30 overflow-hidden">
     {/* Background illustrations */}
     <div className="absolute inset-0 opacity-[0.05] pointer-events-none">
@@ -58,11 +62,10 @@ const CommitmentSection = () => (
         transition={{ duration: 0.6 }}
         className="text-center mb-14 max-w-3xl mx-auto"
       >
-        <span className="text-primary font-semibold text-sm uppercase tracking-wider">Driven by Purpose</span>
-        <h2 className="font-heading text-4xl sm:text-5xl font-bold text-foreground mt-3 mb-6">My Commitment</h2>
+        <span className="text-primary font-semibold text-sm uppercase tracking-wider">{text("Driven by Purpose")}</span>
+        <h2 className="font-heading text-4xl sm:text-5xl font-bold text-foreground mt-3 mb-6">{text("My Commitment")}</h2>
         <p className="text-muted-foreground text-lg leading-relaxed">
-          I am committed to promoting sustainable agriculture and scientific excellence through practical
-          agricultural solutions, plant disease management, seed quality systems, and farmer-centered innovation.
+          {text("I am committed to promoting sustainable agriculture and scientific excellence through practical agricultural solutions, plant disease management, seed quality systems, and farmer-centered innovation.")}
         </p>
       </motion.div>
 
@@ -80,7 +83,7 @@ const CommitmentSection = () => (
             <div className="font-heading text-4xl sm:text-5xl font-bold text-primary mb-1">
               <Counter to={s.value} suffix={s.suffix} />
             </div>
-            <div className="text-muted-foreground text-sm uppercase tracking-wider">{s.label}</div>
+            <div className="text-muted-foreground text-sm uppercase tracking-wider">{text(s.label)}</div>
           </motion.div>
         ))}
       </div>
@@ -99,8 +102,8 @@ const CommitmentSection = () => (
             <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
               <c.icon className="w-6 h-6 text-primary" />
             </div>
-            <h3 className="font-heading text-lg font-semibold text-foreground mb-2">{c.title}</h3>
-            <p className="text-muted-foreground text-sm leading-relaxed">{c.text}</p>
+            <h3 className="font-heading text-lg font-semibold text-foreground mb-2">{text(c.title)}</h3>
+            <p className="text-muted-foreground text-sm leading-relaxed">{text(c.text)}</p>
           </motion.div>
         ))}
       </div>
@@ -114,12 +117,12 @@ const CommitmentSection = () => (
       >
         <Heart className="w-8 h-8 text-primary mx-auto mb-4" />
         <p className="font-heading text-xl sm:text-2xl leading-relaxed text-foreground/90 italic">
-          "Every research project, field inspection, and educational initiative I undertake is guided by a
-          commitment to agricultural sustainability, scientific integrity, and positive community impact."
+          “{text("Every research project, field inspection, and educational initiative I undertake is guided by a commitment to agricultural sustainability, scientific integrity, and positive community impact.")}”
         </p>
       </motion.div>
     </div>
   </section>
-);
+  );
+};
 
 export default CommitmentSection;

@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { HelpCircle } from "lucide-react";
+import { useText } from "@/lib/farmerI18n";
 import {
   Accordion,
   AccordionContent,
@@ -34,7 +35,9 @@ const faqs = [
   },
 ];
 
-const FAQSection = () => (
+const FAQSection = () => {
+  const text = useText();
+  return (
   <section id="faq" className="py-14 lg:py-20 bg-secondary/30">
     <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
       <motion.div
@@ -44,10 +47,10 @@ const FAQSection = () => (
         className="text-center mb-12"
       >
         <span className="text-primary font-semibold text-sm uppercase tracking-wider">
-          Good to Know
+          {text("Good to Know")}
         </span>
         <h2 className="font-heading text-3xl sm:text-4xl font-bold text-foreground mt-3">
-          Frequently Asked Questions
+          {text("Frequently Asked Questions")}
         </h2>
       </motion.div>
 
@@ -61,14 +64,14 @@ const FAQSection = () => (
         <Accordion type="single" collapsible className="w-full">
           {faqs.map((f, i) => (
             <AccordionItem key={f.q} value={`faq-${i}`}>
-              <AccordionTrigger className="text-left font-heading font-semibold text-foreground min-h-[44px] px-3">
+              <AccordionTrigger className="text-start font-heading font-semibold text-foreground min-h-[44px] px-3">
                 <span className="flex items-start gap-3">
                   <HelpCircle className="w-5 h-5 text-primary mt-0.5 shrink-0" />
-                  {f.q}
+                  {text(f.q)}
                 </span>
               </AccordionTrigger>
-              <AccordionContent className="px-3 pl-11 text-muted-foreground leading-relaxed">
-                {f.a}
+              <AccordionContent className="px-3 ps-11 text-muted-foreground leading-relaxed">
+                {text(f.a)}
               </AccordionContent>
             </AccordionItem>
           ))}
@@ -76,6 +79,7 @@ const FAQSection = () => (
       </motion.div>
     </div>
   </section>
-);
+  );
+};
 
 export default FAQSection;
