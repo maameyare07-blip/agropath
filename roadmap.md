@@ -1,3 +1,9 @@
+# Admin panel
+- [ ] Add admin-only navigation and subscriber management.
+- [ ] Integrate testimonial moderation into the admin panel.
+- [ ] Add publication/article editing with draft and published states.
+- [ ] Verify admin management, public visibility, and access restrictions.
+
 # Language versions
 - [x] Finish Somali and Arabic FAQ, Commitment, and partnership sections and shared navigation.
 - [x] Walk both languages through FAQs, partnership links, navigation, and persistence in the preview.
