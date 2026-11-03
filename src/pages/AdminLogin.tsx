@@ -18,7 +18,7 @@ const AdminLogin = () => {
 
   // Only same-origin relative paths are honoured as a post-login destination.
   const rawNext = params.get("next");
-  const next = rawNext && rawNext.startsWith("/") && !rawNext.startsWith("//") ? rawNext : "/admin/testimonials";
+  const next = rawNext && rawNext.startsWith("/") && !rawNext.startsWith("//") && !rawNext.includes("\\") ? rawNext : "/admin/subscribers";
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data }) => {
@@ -50,7 +50,7 @@ const AdminLogin = () => {
         <div className="bg-card border border-border rounded-2xl shadow-sm p-8">
           <h1 className="font-heading text-2xl font-bold text-foreground mb-2">Admin Login</h1>
           <p className="text-sm text-muted-foreground mb-6">
-            Sign in to manage testimonials.
+            Sign in to manage subscribers, testimonials and published content.
           </p>
 
           <form onSubmit={onSubmit} className="space-y-4">

@@ -1,7 +1,13 @@
 import { motion } from "framer-motion";
 import { Newspaper, ArrowRight, ExternalLink } from "lucide-react";
+import { usePublishedContent, safeContentUrl } from "@/lib/publishedContent";
+import { Button } from "@/components/ui/button";
+import { useText } from "@/lib/farmerI18n";
 
-const ArticlesSection = () => (
+const ArticlesSection = () => {
+  const { data: articles = [] } = usePublishedContent("article");
+  const text = useText();
+  return (
   <section id="articles" className="py-14 lg:py-20 bg-secondary/30">
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       <motion.div
@@ -16,6 +22,7 @@ const ArticlesSection = () => (
           A platform where I share practical knowledge, research insights, and solutions for plant disease management and sustainable agriculture.
         </p>
       </motion.div>
+      {articles.length > 0 && <div className="divide-y border-y mt-8">{articles.map(article => <article key={article.id} className="py-6"><h3 className="font-heading text-xl font-semibold break-words">{article.title}</h3><p className="text-muted-foreground mt-3 whitespace-pre-wrap break-words">{article.summary}</p>{safeContentUrl(article.url) && <Button asChild variant="outline" className="mt-4 min-h-11"><a href={safeContentUrl(article.url)} target="_blank" rel="noopener noreferrer">{text("Read Articles")}<ExternalLink /></a></Button>}</article>)}</div>}
 
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -44,5 +51,6 @@ const ArticlesSection = () => (
     </div>
   </section>
 );
+};
 
 export default ArticlesSection;
