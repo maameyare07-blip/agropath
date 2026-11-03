@@ -1,5 +1,5 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -11,6 +11,9 @@ import NotFound from "./pages/NotFound.tsx";
 import SubmitTestimonial from "./pages/SubmitTestimonial.tsx";
 import AdminLogin from "./pages/AdminLogin.tsx";
 import AdminTestimonials from "./pages/AdminTestimonials.tsx";
+import AdminLayout from "./components/admin/AdminLayout";
+import AdminSubscribers from "./pages/AdminSubscribers";
+import AdminContent from "./pages/AdminContent";
 import OAuthConsent from "./pages/OAuthConsent.tsx";
 import Trainings from "./pages/Trainings.tsx";
 import PrivacyPolicy from "./pages/PrivacyPolicy.tsx";
@@ -38,7 +41,12 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/testimonial" element={<SubmitTestimonial />} />
           <Route path="/admin/login" element={<AdminLogin />} />
-          <Route path="/admin/testimonials" element={<AdminTestimonials />} />
+          <Route path="/admin" element={<AdminLayout />}>
+            <Route index element={<Navigate to="subscribers" replace />} />
+            <Route path="subscribers" element={<AdminSubscribers />} />
+            <Route path="testimonials" element={<AdminTestimonials />} />
+            <Route path="content" element={<AdminContent />} />
+          </Route>
           <Route path="/trainings" element={<Trainings />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/crop-doctor" element={<CropDoctor />} />

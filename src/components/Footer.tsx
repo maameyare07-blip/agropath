@@ -44,6 +44,7 @@ const Footer = () => (
           >
             Privacy Policy
           </Link>
+          <Link to="/admin" className="text-background/60 text-sm hover:text-primary transition-colors">Admin</Link>
         </div>
       </div>
     </div>
