@@ -110,6 +110,48 @@ export type Database = {
         }
         Relationships: []
       }
+      published_content: {
+        Row: {
+          authors: string[]
+          created_at: string
+          id: string
+          in_book: string
+          kind: string
+          publication_year: number | null
+          status: string
+          summary: string
+          title: string
+          updated_at: string
+          url: string | null
+        }
+        Insert: {
+          authors?: string[]
+          created_at?: string
+          id?: string
+          in_book?: string
+          kind?: string
+          publication_year?: number | null
+          status?: string
+          summary?: string
+          title: string
+          updated_at?: string
+          url?: string | null
+        }
+        Update: {
+          authors?: string[]
+          created_at?: string
+          id?: string
+          in_book?: string
+          kind?: string
+          publication_year?: number | null
+          status?: string
+          summary?: string
+          title?: string
+          updated_at?: string
+          url?: string | null
+        }
+        Relationships: []
+      }
       subscribers: {
         Row: {
           created_at: string
