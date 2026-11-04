@@ -1,4 +1,3 @@
-import { useText } from "@/lib/farmerI18n";
 import { motion } from "framer-motion";
 import { Newspaper, ExternalLink } from "lucide-react";
 import { usePublishedContent, safeContentUrl } from "@/lib/publishedContent";
