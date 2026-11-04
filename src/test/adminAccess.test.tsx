@@ -11,10 +11,10 @@ beforeEach(() => { vi.clearAllMocks(); });
 it("blocks a signed-in farmer without the admin role", async () => {
   mocks.rpc.mockResolvedValue({ data: false, error: null }); show();
   await screen.findByText("Admin access required");
-  expect(screen.queryByText("Private subscriber records")).not.toBeInTheDocument();
+  expect(screen.queryByText("Private subscriber records")).toBeNull();
   expect(mocks.rpc).toHaveBeenCalledWith("has_role", { _user_id: "farmer-id", _role: "admin" });
 });
 it("shows private management only after the server confirms admin", async () => {
   mocks.rpc.mockResolvedValue({ data: true, error: null }); show();
-  await waitFor(() => expect(screen.getByText("Private subscriber records")).toBeInTheDocument());
+  await waitFor(() => expect(screen.getByText("Private subscriber records")).not.toBeNull());
 });
