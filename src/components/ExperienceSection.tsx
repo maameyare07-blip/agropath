@@ -89,7 +89,7 @@ const ExperienceSection = () => { const tr = useText(); return (
               }`}>
                 <div className="flex flex-wrap items-center gap-3 mb-3">
                   <exp.icon className="w-5 h-5 text-primary" />
-                  <h3 className="font-heading font-bold text-lg text-foreground">{exp.title}</h3>
+                  <h3 className="font-heading font-bold text-lg text-foreground">{tr(exp.title)}</h3>
                   {exp.isCurrent && (
                     <span className="px-2.5 py-0.5 text-xs font-semibold rounded-full bg-primary/10 text-primary">{tr("Current")}</span>
                   )}
@@ -105,18 +105,18 @@ const ExperienceSection = () => { const tr = useText(); return (
                       rel="noopener noreferrer"
                       className="hover:text-primary hover:underline underline-offset-2 transition-colors"
                     >
-                      {exp.org}
+                      {tr(exp.org)}
                     </a>
                   ) : (
-                    exp.org
+                    tr(exp.org)
                   )}
                 </p>
-                <p className="text-sm text-muted-foreground mb-4">{exp.date}</p>
+                <p className="text-sm text-muted-foreground mb-4">{tr(exp.date)}</p>
                 <ul className="space-y-2">
                   {exp.achievements.map((a) => (
-                    <li key={a} className="flex items-start gap-2 text-sm text-muted-foreground">
+                    <li key={tr(a)} className="flex items-start gap-2 text-sm text-muted-foreground">
                       <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                      {a}
+                      {tr(a)}
                     </li>
                   ))}
                 </ul>

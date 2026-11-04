@@ -26,7 +26,7 @@ const SkillsSection = () => { const tr = useText(); return (
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
         {skills.map((s, i) => (
           <motion.div
-            key={s.name}
+            key={tr(s.name)}
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
@@ -36,7 +36,7 @@ const SkillsSection = () => { const tr = useText(); return (
             <div className="w-12 h-12 mx-auto rounded-xl bg-primary/10 flex items-center justify-center mb-3">
               <s.icon className="w-6 h-6 text-primary" />
             </div>
-            <p className="text-sm font-medium text-foreground leading-tight">{s.name}</p>
+            <p className="text-sm font-medium text-foreground leading-tight">{tr(s.name)}</p>
           </motion.div>
         ))}
       </div>

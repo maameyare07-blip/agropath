@@ -173,11 +173,11 @@ const CropDoctor = () => {
               </div>
 
               <div className="space-y-2">
-                <Label>{tr("Photos (up to")}{MAX_IMAGES})</Label>
+                <Label>{tr("Photos (up to {MAX_IMAGES})", { MAX_IMAGES })}</Label>
                 <div className="flex flex-wrap gap-3">
                   {images.map((src, i) => (
                     <div key={i} className="relative w-24 h-24 rounded-xl overflow-hidden border border-border">
-                      <img src={src} alt={`Crop photo ${i + 1}`} className="w-full h-full object-cover" />
+                      <img src={src} alt={tr("Crop photo {number}", { number: i + 1 })} className="w-full h-full object-cover" />
                       <button
                         type="button"
                         onClick={() => setImages((p) => p.filter((_, j) => j !== i))}
@@ -216,7 +216,7 @@ const CropDoctor = () => {
 
               {error && (
                 <p className="text-destructive text-sm flex items-center gap-2">
-                  <AlertTriangle className="w-4 h-4" /> {error}
+                  <AlertTriangle className="w-4 h-4" /> {tr(error)}
                 </p>
               )}
 

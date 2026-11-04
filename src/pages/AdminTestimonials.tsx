@@ -43,6 +43,7 @@ type Filter = "all" | "pending" | "approved" | "rejected";
 
 const StatusBadge = ({ s }: { s: Row["status"] }) => {
   const tr = useText();
+  const tr = useText();
   const styles: Record<Row["status"], string> = {
     pending: "bg-muted text-muted-foreground border-border",
     approved: "bg-primary/10 text-primary border-primary/20",
@@ -50,7 +51,7 @@ const StatusBadge = ({ s }: { s: Row["status"] }) => {
   };
   return (
     <span className={`text-xs px-2 py-1 rounded-full border font-medium capitalize ${styles[s]}`}>
-      {s}
+      {tr(s)}
     </span>
   );
 };
@@ -143,7 +144,7 @@ const AdminTestimonials = () => {
           <div className="flex gap-2 flex-wrap">
             {(["pending", "approved", "rejected", "all"] as Filter[]).map((f) => (
               <Button
-                key={f}
+                key={tr(f)}
                 onClick={() => setFilter(f)}
                 className={`px-3 py-1.5 rounded-lg text-sm font-medium border transition-colors capitalize ${
                   filter === f
@@ -151,7 +152,7 @@ const AdminTestimonials = () => {
                     : "bg-card text-foreground border-border hover:bg-secondary"
                 }`}
               >
-                {f} ({counts[f]})
+                {tr(f)} ({counts[f]})
               </Button>
             ))}
           </div>

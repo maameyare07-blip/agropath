@@ -26,7 +26,7 @@ const ServicesSection = () => { const tr = useText(); return (
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
         {services.map((s, i) => (
           <motion.div
-            key={s.title}
+            key={tr(s.title)}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -36,8 +36,8 @@ const ServicesSection = () => { const tr = useText(); return (
             <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-5 group-hover:bg-primary/20 transition-colors">
               <s.icon className="w-7 h-7 text-primary" />
             </div>
-            <h3 className="font-heading font-semibold text-foreground text-lg mb-2">{s.title}</h3>
-            <p className="text-sm text-muted-foreground leading-relaxed">{s.desc}</p>
+            <h3 className="font-heading font-semibold text-foreground text-lg mb-2">{tr(s.title)}</h3>
+            <p className="text-sm text-muted-foreground leading-relaxed">{tr(s.desc)}</p>
           </motion.div>
         ))}
       </div>

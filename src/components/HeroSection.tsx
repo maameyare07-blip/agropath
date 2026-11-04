@@ -73,7 +73,7 @@ const HeroSection = () => {
                   <motion.img
                     key={index}
                     src={SLIDES[index]}
-                    alt={`Mohamed Mohamud SH Hassan — photo ${index + 1} of ${SLIDES.length}`}
+                    alt={tr("{title} — photo {number} of {total}", { title: "Mohamed Mohamud SH Hassan", number: index + 1, total: SLIDES.length })}
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
@@ -83,13 +83,13 @@ const HeroSection = () => {
                 </AnimatePresence>
               </div>
 
-              <div className="absolute -bottom-3 start-1/2 -translate-x-1/2 flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-background/90 border border-border shadow-sm">
+              <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-background/90 border border-border shadow-sm">
                 {SLIDES.map((_, i) => (
                   <button
                     key={i}
                     type="button"
                     onClick={() => setIndex(i)}
-                    aria-label={`Go to photo ${i + 1}`}
+                    aria-label={tr("Go to photo {number}", { number: i + 1 })}
                     aria-current={i === index}
                     className={`h-1.5 rounded-full transition-all ${
                       i === index ? "w-4 bg-primary" : "w-1.5 bg-border hover:bg-primary/40"

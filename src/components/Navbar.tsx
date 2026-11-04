@@ -53,7 +53,7 @@ const Navbar = () => {
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-card/80 backdrop-blur-lg border-b border-border">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 xl:px-8">
         <div className="flex items-center justify-between h-16">
           <Link to="/" onClick={closeAll} className="flex items-center gap-2">
             <AgroPathLogo className="w-7 h-7" />
@@ -61,7 +61,7 @@ const Navbar = () => {
           </Link>
 
           {/* Desktop Nav */}
-          <div className="hidden lg:flex items-center gap-6">
+          <div className="hidden xl:flex items-center gap-3">
             {primaryLinks.map((link) => (
               <Link
                 key={link.label}
@@ -101,7 +101,7 @@ const Navbar = () => {
           </div>
 
           {/* Mobile toggle */}
-          <div className="flex items-center gap-1 lg:hidden">
+          <div className="flex items-center gap-1 xl:hidden">
             <LangToggle compact />
             <ThemeToggle />
             <Button
@@ -125,7 +125,7 @@ const Navbar = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden bg-card border-b border-border overflow-hidden"
+            className="xl:hidden bg-card border-b border-border overflow-hidden"
           >
             <div className="px-4 py-4 space-y-1">
               {primaryLinks.map((link) => (

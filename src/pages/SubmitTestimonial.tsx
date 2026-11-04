@@ -47,11 +47,11 @@ const SubmitTestimonial = () => {
   const handleFile = (f: File | null) => {
     if (!f) return setFile(null);
     if (!ACCEPT.includes(f.type)) {
-      toast({ title: "Invalid image", description: "Use JPG, PNG, WEBP or GIF.", variant: "destructive" });
+      toast({ title: tr("Invalid image"), description: tr("Use JPG, PNG, WEBP or GIF."), variant: "destructive" });
       return;
     }
     if (f.size > MAX_BYTES) {
-      toast({ title: "Image too large", description: "Max 5MB.", variant: "destructive" });
+      toast({ title: tr("Image too large"), description: tr("Max 5MB."), variant: "destructive" });
       return;
     }
     setFile(f);
@@ -62,7 +62,7 @@ const SubmitTestimonial = () => {
     const parsed = schema.safeParse(form);
     if (!parsed.success) {
       const first = parsed.error.issues[0];
-      toast({ title: "Please check the form", description: first.message, variant: "destructive" });
+      toast({ title: tr("Please check the form"), description: tr(first.message), variant: "destructive" });
       return;
     }
     setSubmitting(true);
@@ -95,7 +95,7 @@ const SubmitTestimonial = () => {
       setDone(true);
     } catch (err: any) {
       toast({
-        title: "Submission failed",
+        title: tr("Submission failed"),
         description: err?.message ?? "Please try again in a moment.",
         variant: "destructive",
       });
@@ -230,7 +230,7 @@ const SubmitTestimonial = () => {
                     placeholder={tr("Share your experience working with Mohamed…")}
                   />
                   <p className="text-xs text-muted-foreground mt-1.5">
-                    {form.message.length}{tr("/1500 characters")}</p>
+                    {tr("{count}/1500 characters", { count: form.message.length })}</p>
                 </div>
 
                 <label className="flex items-start gap-3 p-4 rounded-lg bg-secondary/50 border border-border cursor-pointer">

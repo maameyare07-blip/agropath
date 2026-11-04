@@ -172,28 +172,28 @@ const TrainingCard = ({ training, index }: { training: Training; index: number }
         {training.date && (
           <span className="inline-flex items-center gap-1.5 rounded-full bg-secondary/60 px-3 py-1 text-sm text-muted-foreground">
             <Calendar className="w-4 h-4" />
-            {training.date}
+            {tr(training.date)}
           </span>
         )}
         {training.status && (
           <span className="inline-flex items-center gap-1.5 rounded-full border border-amber-500/40 bg-amber-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-amber-700 dark:text-amber-400">
             <Clock className="w-3.5 h-3.5" />
-            {training.status}
+            {tr(training.status)}
           </span>
         )}
       </div>
 
       <h3 className="font-heading font-bold text-xl text-foreground mb-2 leading-snug">
-        {training.title}
+        {tr(training.title)}
       </h3>
 
       {training.role && (
         <p className="text-sm text-muted-foreground flex items-start gap-1.5">
           <Users className="w-4 h-4 text-primary mt-0.5 shrink-0" />
           <span>
-            <span className="font-semibold text-foreground">{training.role}</span>
+            <span className="font-semibold text-foreground">{tr(training.role)}</span>
             {training.coFacilitators?.length
-              ? ` — with co-facilitator ${training.coFacilitators.join(", ")}`
+              ? ` — ${tr("with co-facilitator")} ${training.coFacilitators.join(", ")}`
               : ""}
           </span>
         </p>
@@ -202,7 +202,7 @@ const TrainingCard = ({ training, index }: { training: Training; index: number }
       {training.venue && (
         <p className="text-sm text-muted-foreground flex items-start gap-1.5 mt-1.5">
           <MapPin className="w-4 h-4 text-primary mt-0.5 shrink-0" />
-          {training.venue}
+          {tr(training.venue)}
         </p>
       )}
 
@@ -216,10 +216,10 @@ const TrainingCard = ({ training, index }: { training: Training; index: number }
               rel="noopener noreferrer"
               className="hover:text-primary hover:underline underline-offset-2 transition-colors"
             >
-              {training.provider}
+              {tr(training.provider)}
             </a>
           ) : (
-            training.provider
+            tr(training.provider)
           )}
         </p>
       )}
@@ -229,20 +229,20 @@ const TrainingCard = ({ training, index }: { training: Training; index: number }
           {training.submittedTo && (
             <p>
               <span className="font-semibold text-foreground">{tr("Submitted to:")}</span>{" "}
-              {training.submittedTo}
+              {tr(training.submittedTo)}
             </p>
           )}
           {training.supportedBy && (
             <p>
               <span className="font-semibold text-foreground">{tr("Supported by:")}</span>{" "}
-              {training.supportedBy}
+              {tr(training.supportedBy)}
             </p>
           )}
         </div>
       )}
 
       {training.gallery && (
-        <TrainingGallery images={training.gallery} title={training.title} />
+        <TrainingGallery images={training.gallery} title={tr(training.title)} />
       )}
 
       {training.certificateUrl && (
@@ -269,11 +269,11 @@ const TrainingsSection = () => { const tr = useText(); return (
           return (
             <div key={group.category}>
               <h3 className="font-heading text-2xl font-semibold text-foreground mb-6">
-                {group.heading}
+                {tr(group.heading)}
               </h3>
               <div className="grid gap-6">
                 {groupTrainings.map((training, i) => (
-                  <TrainingCard key={training.title} training={training} index={i} />
+                  <TrainingCard key={tr(training.title)} training={training} index={i} />
                 ))}
               </div>
             </div>

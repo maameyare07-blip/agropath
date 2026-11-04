@@ -48,7 +48,7 @@ const MembershipsSection = () => { const tr = useText(); return (
       <div className="space-y-6">
         {memberships.map((item, i) => (
           <motion.div
-            key={item.title}
+            key={tr(item.title)}
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -70,7 +70,7 @@ const MembershipsSection = () => { const tr = useText(); return (
                   </div>
                   <div>
                     <h3 className="font-heading font-bold text-lg sm:text-xl text-foreground">
-                      {item.title}
+                      {tr(item.title)}
                     </h3>
                     <span className="inline-flex items-center gap-1.5 mt-1 px-2.5 py-0.5 text-xs font-semibold rounded-full bg-primary/10 text-primary">
                       <Globe2 className="w-3 h-3" />{tr("International Membership")}</span>
@@ -79,7 +79,7 @@ const MembershipsSection = () => { const tr = useText(); return (
 
                 {/* Description */}
                 <p className="text-muted-foreground text-base leading-relaxed mb-6 max-w-3xl">
-                  {item.description}
+                  {tr(item.description)}
                 </p>
 
                 {/* Meta */}
@@ -91,7 +91,7 @@ const MembershipsSection = () => { const tr = useText(); return (
                     <div>
                       <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">{tr("Organization")}</p>
                       <p className="text-sm font-medium text-foreground mt-0.5">
-                        {item.organization}
+                        {tr(item.organization)}
                       </p>
                     </div>
                   </div>
@@ -102,7 +102,7 @@ const MembershipsSection = () => { const tr = useText(); return (
                     <div>
                       <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">{tr("Country")}</p>
                       <p className="text-sm font-medium text-foreground mt-0.5">
-                        {item.country}
+                        {tr(item.country)}
                       </p>
                     </div>
                   </div>

@@ -136,16 +136,16 @@ const OAuthConsent = () => {
                 <span className="text-sm font-medium">{tr("Authorization request")}</span>
               </div>
 
-              <h1 className="font-heading text-2xl font-bold text-foreground mb-2">{tr("Connect")}{clientName}{tr("to AgroPath")}</h1>
+              <h1 className="font-heading text-2xl font-bold text-foreground mb-2">{tr("Connect {clientName} to AgroPath", { clientName })}</h1>
               {account && (
-                <p className="text-sm text-muted-foreground mb-4">{tr("Signed in as")}{account}</p>
+                <p className="text-sm text-muted-foreground mb-4">{tr("Signed in as {account}", { account })}</p>
               )}
 
               {error ? (
-                <p className="text-sm text-destructive mb-6">{error}</p>
+                <p className="text-sm text-destructive mb-6">{tr(error)}</p>
               ) : (
                 <>
-                  <p className="text-sm text-foreground mb-4">{tr("This lets")}{clientName}{tr("use this app as you.")}</p>
+                  <p className="text-sm text-foreground mb-4">{tr("This lets {clientName} use this app as you.", { clientName })}</p>
                   {details?.client?.redirect_uri && (
                     <p className="text-xs text-muted-foreground mb-4 break-all">{tr("Returns to:")}{details.client.redirect_uri}
                     </p>
@@ -154,7 +154,7 @@ const OAuthConsent = () => {
                     <ul className="space-y-2 mb-4">
                       {scopes.map((scope) => (
                         <li key={scope} className="text-sm text-muted-foreground">
-                          • {SCOPE_LABELS[scope] ?? `Additional permission requested: ${scope}`}
+                          • {SCOPE_LABELS[scope] ? tr(SCOPE_LABELS[scope]) : tr("Additional permission requested: {scope}", { scope })}
                         </li>
                       ))}
                     </ul>

@@ -39,7 +39,7 @@ const EducationSection = () => { const tr = useText(); return (
       <div className="grid md:grid-cols-2 gap-8">
         {degrees.map((d, i) => (
           <motion.div
-            key={d.degree}
+            key={tr(d.degree)}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -59,7 +59,7 @@ const EducationSection = () => { const tr = useText(); return (
               </div>
             </div>
 
-            <h3 className="font-heading font-bold text-lg text-foreground mb-1">{d.degree}</h3>
+            <h3 className="font-heading font-bold text-lg text-foreground mb-1">{tr(d.degree)}</h3>
             <p className="text-sm text-muted-foreground mb-5">
               <a
                 href={d.institutionUrl}
@@ -67,7 +67,7 @@ const EducationSection = () => { const tr = useText(); return (
                 rel="noopener noreferrer"
                 className="hover:text-primary hover:underline underline-offset-2 transition-colors"
               >
-                {d.institution}
+                {tr(d.institution)}
               </a>
             </p>
 
@@ -77,7 +77,7 @@ const EducationSection = () => { const tr = useText(); return (
                 <Microscope className="w-4 h-4 text-primary" />
                 <span className="text-xs font-semibold text-primary uppercase">{tr("Research Thesis")}</span>
               </div>
-              <p className="text-sm text-foreground font-semibold italic">{d.thesis}</p>
+              <p className="text-sm text-foreground font-semibold italic">{tr(d.thesis)}</p>
             </div>
 
             {/* Specializations */}
@@ -88,7 +88,7 @@ const EducationSection = () => { const tr = useText(); return (
               </div>
               <div className="flex flex-wrap gap-2">
                 {d.specializations.map((s) => (
-                  <span key={s} className="px-3 py-1 text-xs rounded-full bg-secondary text-secondary-foreground">{s}</span>
+                  <span key={tr(s)} className="px-3 py-1 text-xs rounded-full bg-secondary text-secondary-foreground">{tr(s)}</span>
                 ))}
               </div>
             </div>
@@ -99,7 +99,7 @@ const EducationSection = () => { const tr = useText(); return (
                 <Leaf className="w-4 h-4 text-primary" />
                 <span className="text-xs font-semibold text-primary uppercase">{tr("Impact & Resilience")}</span>
               </div>
-              <p className="text-sm text-muted-foreground leading-relaxed">{d.impact}</p>
+              <p className="text-sm text-muted-foreground leading-relaxed">{tr(d.impact)}</p>
             </div>
           </motion.div>
         ))}

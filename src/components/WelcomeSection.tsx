@@ -47,12 +47,12 @@ const WelcomeSection = () => { const tr = useText(); return (
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.1 }}
             className="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground leading-[1.1] tracking-tight mb-8"
-          >{tr("Welcome to")}<Wordmark />.
+          >{tr("Welcome to")} {" "}<Wordmark />.
           </motion.h2>
 
           <div className="space-y-5 text-muted-foreground text-base sm:text-lg leading-relaxed max-w-2xl">
             {[
-              <>{tr("I am")}<strong className="text-brand-green font-semibold">{tr("Mohamed Mohamud SH Hassan")}</strong>{tr(", an Agricultural Scientist and Plant Pathology Specialist passionate about advancing sustainable agriculture, strengthening food security systems, and promoting science-driven agricultural solutions.")}</>,
+              <>{tr("I am")} {" "}<strong className="text-brand-green font-semibold">{tr("Mohamed Mohamud SH Hassan")}</strong>{" "}{tr(", an Agricultural Scientist and Plant Pathology Specialist passionate about advancing sustainable agriculture, strengthening food security systems, and promoting science-driven agricultural solutions.")}</>,
               <>{tr("My work focuses on agricultural research, seed quality assurance, plant disease management, and climate-smart farming practices aimed at supporting farmers, institutions, and agricultural development initiatives.")}</>,
               <>{tr("Through research, education, and field-based agricultural systems, I strive to contribute to resilient farming communities and sustainable crop production for future generations.")}</>,
             ].map((p, i) => (

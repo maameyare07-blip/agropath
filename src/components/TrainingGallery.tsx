@@ -20,7 +20,7 @@ const TrainingGallery = ({ images, title }: TrainingGalleryProps) => {
       <div className="relative overflow-hidden rounded-xl border border-border bg-muted aspect-video flex items-center justify-center">
         <img
           src={images[index]}
-          alt={`${title} — photo ${index + 1} of ${images.length}`}
+          alt={tr("{title} — photo {number} of {total}", { title, number: index + 1, total: images.length })}
           loading="lazy"
           className="w-full h-full object-contain"
         />
@@ -55,7 +55,7 @@ const TrainingGallery = ({ images, title }: TrainingGalleryProps) => {
               key={img}
               type="button"
               onClick={() => setIndex(i)}
-              aria-label={`Go to photo ${i + 1}`}
+              aria-label={tr("Go to photo {number}", { number: i + 1 })}
               aria-current={i === index}
               className={`h-2 rounded-full transition-all ${
                 i === index ? "w-5 bg-primary" : "w-2 bg-border hover:bg-primary/40"

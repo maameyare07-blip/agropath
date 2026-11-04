@@ -131,7 +131,7 @@ const TestimonialsSection = () => {
                     key={t.id}
                     type="button"
                     onClick={() => setIndex(i)}
-                    aria-label={`Go to testimonial ${i + 1}`}
+                    aria-label={tr("Go to testimonial {number}", { number: i + 1 })}
                     aria-current={i === index}
                     className={`h-2 rounded-full transition-all ${
                       i === index ? "w-5 bg-primary" : "w-2 bg-border hover:bg-primary/40"

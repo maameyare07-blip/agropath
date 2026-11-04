@@ -18,7 +18,7 @@ const NewsletterSignup = () => {
     event.preventDefault();
     const parsed = emailSchema.safeParse(email);
     if (!parsed.success) {
-      toast({ title: "Please check your email", description: parsed.error.issues[0]?.message, variant: "destructive" });
+      toast({ title: tr("Please check your email"), description: tr(parsed.error.issues[0]?.message ?? "Enter a valid email address."), variant: "destructive" });
       return;
     }
 
@@ -27,16 +27,16 @@ const NewsletterSignup = () => {
     setSubmitting(false);
 
     if (error?.code === "23505") {
-      toast({ title: "You're already subscribed!" });
+      toast({ title: tr("You're already subscribed!") });
       return;
     }
     if (error) {
-      toast({ title: "Subscription failed", description: "Please try again in a moment.", variant: "destructive" });
+      toast({ title: tr("Subscription failed"), description: tr("Please try again in a moment."), variant: "destructive" });
       return;
     }
 
     setEmail("");
-    toast({ title: "Thanks! You'll hear about new publications, trainings, and articles." });
+    toast({ title: tr("Thanks! You'll hear about new publications, trainings, and articles.") });
   };
 
   return (

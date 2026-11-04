@@ -68,10 +68,10 @@ const AboutSection = () => { const tr = useText(); return (
           transition={{ duration: 0.6 }}
           className="lg:col-span-7 space-y-5 text-muted-foreground text-base sm:text-lg leading-relaxed"
         >
-          <p>{tr("I am a dedicated agricultural scientist specializing in")}<strong className="text-foreground">{tr("plant pathology")}</strong>, <strong className="text-foreground">{tr("seed inspection")}</strong>{tr(", and")}<strong className="text-foreground">{tr("sustainable agricultural systems")}</strong>{tr(". My professional experience combines scientific research, field-based agricultural practice, and agricultural education to support resilient and productive farming systems.")}</p>
-          <p>{tr("Currently, I serve as a")}<strong className="text-foreground">{tr("Seed Inspector at")}<a href="https://saris.gov.so/" target="_blank" rel="noopener noreferrer" className="hover:text-primary hover:underline underline-offset-2 transition-colors">{tr("Somali Agricultural Regulatory and Inspection Services (SARIS)")}</a></strong>{tr(", where I contribute to seed quality assurance, regulatory compliance, and agricultural standards development.")}</p>
-          <p>{tr("I also have academic experience as a")}<strong className="text-foreground">{tr("Lecturer in the Department of Agriculture")}</strong>{tr(", where I taught plant pathology and supported agricultural education initiatives for university students.")}</p>
-          <p>{tr("As")}<strong className="text-foreground">{tr("Founder & CEO of PathoSolutions")}</strong>{tr(", I lead an agricultural innovation platform focused on plant disease management, agricultural knowledge dissemination, and collaborative research initiatives with national and international stakeholders.")}</p>
+          <p>{tr("I am a dedicated agricultural scientist specializing in")} {" "}<strong className="text-foreground">{tr("plant pathology")}</strong>, <strong className="text-foreground">{tr("seed inspection")}</strong>{" "}{tr(", and")} {" "}<strong className="text-foreground">{tr("sustainable agricultural systems")}</strong>{" "}{tr(". My professional experience combines scientific research, field-based agricultural practice, and agricultural education to support resilient and productive farming systems.")}</p>
+          <p>{tr("Currently, I serve as a")} {" "}<strong className="text-foreground">{tr("Seed Inspector at")}<a href="https://saris.gov.so/" target="_blank" rel="noopener noreferrer" className="hover:text-primary hover:underline underline-offset-2 transition-colors">{tr("Somali Agricultural Regulatory and Inspection Services (SARIS)")}</a></strong>{" "}{tr(", where I contribute to seed quality assurance, regulatory compliance, and agricultural standards development.")}</p>
+          <p>{tr("I also have academic experience as a")} {" "}<strong className="text-foreground">{tr("Lecturer in the Department of Agriculture")}</strong>{" "}{tr(", where I taught plant pathology and supported agricultural education initiatives for university students.")}</p>
+          <p>{tr("As")} {" "}<strong className="text-foreground">{tr("Founder & CEO of PathoSolutions")}</strong>{" "}{tr(", I lead an agricultural innovation platform focused on plant disease management, agricultural knowledge dissemination, and collaborative research initiatives with national and international stakeholders.")}</p>
         </motion.div>
 
         {/* Academic credentials card */}
@@ -120,7 +120,7 @@ const AboutSection = () => { const tr = useText(); return (
         <div className="grid md:grid-cols-3 gap-5">
           {timeline.map((item, i) => (
             <motion.div
-              key={item.role}
+              key={tr(item.role)}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -131,17 +131,17 @@ const AboutSection = () => { const tr = useText(); return (
               <div className="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/15 transition-colors">
                 <item.icon className="w-5 h-5 text-primary" />
               </div>
-              <h4 className="font-heading font-bold text-foreground mb-1.5 leading-snug">{item.role}</h4>
+              <h4 className="font-heading font-bold text-foreground mb-1.5 leading-snug">{tr(item.role)}</h4>
               <p className="text-sm text-primary font-medium mb-3">
                 {item.orgUrl ? (
                   <a href={item.orgUrl} target="_blank" rel="noopener noreferrer" className="hover:underline underline-offset-2 transition-colors">
-                    {item.org}
+                    {tr(item.org)}
                   </a>
                 ) : (
-                  item.org
+                  tr(item.org)
                 )}
               </p>
-              <p className="text-sm text-muted-foreground leading-relaxed">{item.note}</p>
+              <p className="text-sm text-muted-foreground leading-relaxed">{tr(item.note)}</p>
             </motion.div>
           ))}
         </div>
@@ -158,7 +158,7 @@ const AboutSection = () => { const tr = useText(); return (
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
           {stats.map((s, i) => (
             <motion.div
-              key={s.label}
+              key={tr(s.label)}
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -169,7 +169,7 @@ const AboutSection = () => { const tr = useText(); return (
                 <s.icon className="w-5 h-5 text-primary-foreground" />
               </div>
               <div className="font-heading text-3xl sm:text-4xl font-bold text-primary-foreground">{s.value}</div>
-              <div className="text-primary-foreground/80 text-sm mt-1 font-medium tracking-wide">{s.label}</div>
+              <div className="text-primary-foreground/80 text-sm mt-1 font-medium tracking-wide">{tr(s.label)}</div>
             </motion.div>
           ))}
         </div>

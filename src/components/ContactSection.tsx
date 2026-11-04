@@ -43,7 +43,7 @@ const ContactSection = () => {
   const validate = () => {
     const result = contactSchema.safeParse(form);
     if (!result.success) {
-      toast({ title: "Please check the form", description: result.error.issues[0].message, variant: "destructive" });
+      toast({ title: tr("Please check the form"), description: tr(result.error.issues[0].message), variant: "destructive" });
       return false;
     }
     return true;
@@ -152,7 +152,7 @@ const ContactSection = () => {
                 </SelectTrigger>
                 <SelectContent className="bg-popover">
                   {inquiryTypes.map((t) => (
-                    <SelectItem key={t} value={t}>{t}</SelectItem>
+                    <SelectItem key={tr(t)} value={tr(t)}>{tr(t)}</SelectItem>
                   ))}
                 </SelectContent>
               </Select>
