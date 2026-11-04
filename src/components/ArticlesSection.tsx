@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Newspaper, ArrowRight, ExternalLink } from "lucide-react";
+import { Newspaper, ExternalLink } from "lucide-react";
 import { usePublishedContent, safeContentUrl } from "@/lib/publishedContent";
 import { Button } from "@/components/ui/button";
 import { useText } from "@/lib/farmerI18n";
