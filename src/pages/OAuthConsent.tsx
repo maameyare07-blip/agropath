@@ -1,3 +1,4 @@
+import { useText } from "@/lib/farmerI18n";
 import { useEffect, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import { Loader2, ShieldCheck } from "lucide-react";
@@ -31,6 +32,7 @@ const SCOPE_LABELS: Record<string, string> = {
 };
 
 const OAuthConsent = () => {
+  const tr = useText();
   const [params] = useSearchParams();
   const authorizationId = params.get("authorization_id");
 
@@ -131,55 +133,46 @@ const OAuthConsent = () => {
             <>
               <div className="flex items-center gap-2 mb-4 text-primary">
                 <ShieldCheck className="w-5 h-5" />
-                <span className="text-sm font-medium">Authorization request</span>
+                <span className="text-sm font-medium">{tr("Authorization request")}</span>
               </div>
 
-              <h1 className="font-heading text-2xl font-bold text-foreground mb-2">
-                Connect {clientName} to AgroPath
-              </h1>
+              <h1 className="font-heading text-2xl font-bold text-foreground mb-2">{tr("Connect {clientName} to AgroPath", { clientName })}</h1>
               {account && (
-                <p className="text-sm text-muted-foreground mb-4">Signed in as {account}</p>
+                <p className="text-sm text-muted-foreground mb-4">{tr("Signed in as {account}", { account })}</p>
               )}
 
               {error ? (
-                <p className="text-sm text-destructive mb-6">{error}</p>
+                <p className="text-sm text-destructive mb-6">{tr(error)}</p>
               ) : (
                 <>
-                  <p className="text-sm text-foreground mb-4">
-                    This lets {clientName} use this app as you.
-                  </p>
+                  <p className="text-sm text-foreground mb-4">{tr("This lets {clientName} use this app as you.", { clientName })}</p>
                   {details?.client?.redirect_uri && (
-                    <p className="text-xs text-muted-foreground mb-4 break-all">
-                      Returns to: {details.client.redirect_uri}
+                    <p className="text-xs text-muted-foreground mb-4 break-all">{tr("Returns to:")}{details.client.redirect_uri}
                     </p>
                   )}
                   {scopes.length > 0 && (
                     <ul className="space-y-2 mb-4">
                       {scopes.map((scope) => (
                         <li key={scope} className="text-sm text-muted-foreground">
-                          • {SCOPE_LABELS[scope] ?? `Additional permission requested: ${scope}`}
+                          • {SCOPE_LABELS[scope] ? tr(SCOPE_LABELS[scope]) : tr("Additional permission requested: {scope}", { scope })}
                         </li>
                       ))}
                     </ul>
                   )}
-                  <p className="text-xs text-muted-foreground mb-6">
-                    This does not bypass this app's permissions or backend policies.
-                  </p>
+                  <p className="text-xs text-muted-foreground mb-6">{tr("This does not bypass this app's permissions or backend policies.")}</p>
                 </>
               )}
 
               <div className="flex flex-col gap-3">
                 <Button onClick={() => decide(true)} disabled={working || !!error} className="w-full min-h-[44px]">
-                  {working ? <Loader2 className="w-4 h-4 animate-spin" /> : "Approve"}
+                  {working ? <Loader2 className="w-4 h-4 animate-spin" /> : tr("Approve")}
                 </Button>
                 <Button
                   onClick={() => decide(false)}
                   variant="outline"
                   disabled={working || !authorizationId}
                   className="w-full min-h-[44px]"
-                >
-                  Cancel connection
-                </Button>
+                >{tr("Cancel connection")}</Button>
               </div>
             </>
           )}

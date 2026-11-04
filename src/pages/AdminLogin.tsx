@@ -1,3 +1,4 @@
+import { useText } from "@/lib/farmerI18n";
 import { useEffect, useState } from "react";
 import { useNavigate, Link, useSearchParams } from "react-router-dom";
 import { Leaf, Loader2 } from "lucide-react";
@@ -10,6 +11,7 @@ import Wordmark from "@/components/Wordmark";
 import Seo from "@/components/Seo";
 
 const AdminLogin = () => {
+  const tr = useText();
   const navigate = useNavigate();
   const [params] = useSearchParams();
   const [email, setEmail] = useState("");
@@ -32,7 +34,7 @@ const AdminLogin = () => {
     const { error } = await supabase.auth.signInWithPassword({ email, password });
     setLoading(false);
     if (error) {
-      toast({ title: "Login failed", description: error.message, variant: "destructive" });
+      toast({ title: tr("Login failed"), description: error.message, variant: "destructive" });
       return;
     }
     navigate(next, { replace: true });
@@ -48,14 +50,12 @@ const AdminLogin = () => {
         </Link>
 
         <div className="bg-card border border-border rounded-2xl shadow-sm p-8">
-          <h1 className="font-heading text-2xl font-bold text-foreground mb-2">Admin Login</h1>
-          <p className="text-sm text-muted-foreground mb-6">
-            Sign in to manage subscribers, testimonials and published content.
-          </p>
+          <h1 className="font-heading text-2xl font-bold text-foreground mb-2">{tr("Admin Login")}</h1>
+          <p className="text-sm text-muted-foreground mb-6">{tr("Sign in to manage subscribers, testimonials and published content.")}</p>
 
           <form onSubmit={onSubmit} className="space-y-4">
             <div>
-              <Label htmlFor="email">Email</Label>
+              <Label htmlFor="email">{tr("Email")}</Label>
               <Input
                 id="email"
                 type="email"
@@ -67,7 +67,7 @@ const AdminLogin = () => {
               />
             </div>
             <div>
-              <Label htmlFor="password">Password</Label>
+              <Label htmlFor="password">{tr("Password")}</Label>
               <Input
                 id="password"
                 type="password"
@@ -79,7 +79,7 @@ const AdminLogin = () => {
               />
             </div>
             <Button type="submit" className="w-full" disabled={loading}>
-              {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : "Sign in"}
+              {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : tr("Sign in")}
             </Button>
           </form>
         </div>

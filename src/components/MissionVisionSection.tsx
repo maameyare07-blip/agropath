@@ -1,3 +1,4 @@
+import { useText } from "@/lib/farmerI18n";
 import { motion } from "framer-motion";
 import { Target, Eye, Leaf, Lightbulb, Sprout, Users, FlaskConical, Globe2, CloudSun, GraduationCap } from "lucide-react";
 
@@ -33,9 +34,9 @@ const cards = [
   },
 ];
 
-const MissionVisionSection = () => (
+const MissionVisionSection = () => { const tr = useText(); return (
   <section id="mission-vision" className="relative py-14 lg:py-20 bg-secondary/30 overflow-hidden">
-    <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[40rem] h-[40rem] bg-primary/10 rounded-full blur-3xl pointer-events-none" />
+    <div className="absolute top-1/3 start-1/2 -translate-x-1/2 w-[40rem] h-[40rem] bg-primary/10 rounded-full blur-3xl pointer-events-none" />
 
     <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <motion.div
@@ -45,14 +46,14 @@ const MissionVisionSection = () => (
         transition={{ duration: 0.6 }}
         className="text-center mb-16"
       >
-        <span className="text-primary font-semibold text-sm uppercase tracking-wider">Purpose & Direction</span>
-        <h2 className="font-heading text-3xl sm:text-4xl font-bold text-foreground mt-3">Mission & Vision</h2>
+        <span className="text-primary font-semibold text-sm uppercase tracking-wider">{tr("Purpose & Direction")}</span>
+        <h2 className="font-heading text-3xl sm:text-4xl font-bold text-foreground mt-3">{tr("Mission & Vision")}</h2>
       </motion.div>
 
       <div className="grid lg:grid-cols-2 gap-8">
         {cards.map((card, idx) => (
           <motion.div
-            key={card.title}
+            key={tr(card.title)}
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -66,22 +67,22 @@ const MissionVisionSection = () => (
                   <card.icon className="w-7 h-7 text-primary-foreground" />
                 </div>
                 <div>
-                  <span className="text-xs uppercase tracking-widest text-primary font-semibold">{card.label}</span>
-                  <h3 className="font-heading text-2xl font-bold text-foreground">{card.title}</h3>
+                  <span className="text-xs uppercase tracking-widest text-primary font-semibold">{tr(card.label)}</span>
+                  <h3 className="font-heading text-2xl font-bold text-foreground">{tr(card.title)}</h3>
                 </div>
               </div>
 
-              <p className="text-muted-foreground leading-relaxed mb-6">{card.text}</p>
+              <p className="text-muted-foreground leading-relaxed mb-6">{tr(card.text)}</p>
 
               <div>
-                <h4 className="font-heading font-semibold text-foreground mb-3">{card.listLabel}</h4>
+                <h4 className="font-heading font-semibold text-foreground mb-3">{tr(card.listLabel)}</h4>
                 <ul className="space-y-3">
                   {card.items.map((it) => (
-                    <li key={it.text} className="flex items-start gap-3">
+                    <li key={tr(it.text)} className="flex items-start gap-3">
                       <div className="mt-0.5 w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
                         <it.icon className="w-4 h-4 text-primary" />
                       </div>
-                      <span className="text-foreground/90">{it.text}</span>
+                      <span className="text-foreground/90">{tr(it.text)}</span>
                     </li>
                   ))}
                 </ul>
@@ -92,6 +93,6 @@ const MissionVisionSection = () => (
       </div>
     </div>
   </section>
-);
+); };
 
 export default MissionVisionSection;

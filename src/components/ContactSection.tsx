@@ -1,3 +1,4 @@
+import { useText } from "@/lib/farmerI18n";
 import { motion } from "framer-motion";
 import { Phone, Mail, MessageCircle, Send } from "lucide-react";
 import { useState } from "react";
@@ -32,6 +33,7 @@ const contactSchema = z.object({
 });
 
 const ContactSection = () => {
+  const tr = useText();
   const [form, setForm] = useState({ name: "", email: "", inquiry: "", message: "" });
 
   const buildMessage = () => {
@@ -41,7 +43,7 @@ const ContactSection = () => {
   const validate = () => {
     const result = contactSchema.safeParse(form);
     if (!result.success) {
-      toast({ title: "Please check the form", description: result.error.issues[0].message, variant: "destructive" });
+      toast({ title: tr("Please check the form"), description: tr(result.error.issues[0].message), variant: "destructive" });
       return false;
     }
     return true;
@@ -68,11 +70,9 @@ const ContactSection = () => {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <span className="text-primary font-semibold text-sm uppercase tracking-wider">Get in Touch</span>
-          <h2 className="font-heading text-3xl sm:text-4xl font-bold text-foreground mt-3">Contact Me</h2>
-          <p className="text-muted-foreground mt-4 max-w-xl mx-auto">
-            Reach out directly via WhatsApp or email, or send a structured message below.
-          </p>
+          <span className="text-primary font-semibold text-sm uppercase tracking-wider">{tr("Get in Touch")}</span>
+          <h2 className="font-heading text-3xl sm:text-4xl font-bold text-foreground mt-3">{tr("Contact Me")}</h2>
+          <p className="text-muted-foreground mt-4 max-w-xl mx-auto">{tr("Reach out directly via WhatsApp or email, or send a structured message below.")}</p>
         </motion.div>
 
         <div className="grid lg:grid-cols-2 gap-12">
@@ -88,7 +88,7 @@ const ContactSection = () => {
                 <Phone className="w-6 h-6 text-primary" />
               </div>
               <div>
-                <p className="text-sm text-muted-foreground">Call Me</p>
+                <p className="text-sm text-muted-foreground">{tr("Call Me")}</p>
                 <p className="font-semibold text-foreground">+252 612 330 512</p>
               </div>
             </a>
@@ -98,7 +98,7 @@ const ContactSection = () => {
                 <Mail className="w-6 h-6 text-primary" />
               </div>
               <div>
-                <p className="text-sm text-muted-foreground">Email Me</p>
+                <p className="text-sm text-muted-foreground">{tr("Email Me")}</p>
                 <p className="font-semibold text-foreground">{EMAIL}</p>
               </div>
             </a>
@@ -108,7 +108,7 @@ const ContactSection = () => {
                 <MessageCircle className="w-6 h-6 text-primary" />
               </div>
               <div>
-                <p className="text-sm text-muted-foreground">WhatsApp</p>
+                <p className="text-sm text-muted-foreground">{tr("WhatsApp")}</p>
                 <p className="font-semibold text-foreground">+252 612 330 512</p>
               </div>
             </a>
@@ -123,49 +123,49 @@ const ContactSection = () => {
             onSubmit={(e) => { e.preventDefault(); sendEmail(); }}
           >
             <div>
-              <label className="block text-sm font-medium text-foreground mb-1.5">Name</label>
+              <label className="block text-sm font-medium text-foreground mb-1.5">{tr("Name")}</label>
               <input
                 type="text"
                 maxLength={100}
                 value={form.name}
                 onChange={(e) => setForm({ ...form, name: e.target.value })}
                 className="w-full px-4 py-3 rounded-xl bg-secondary border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/30"
-                placeholder="Your full name"
+                placeholder={tr("Your full name")}
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-foreground mb-1.5">Email</label>
+              <label className="block text-sm font-medium text-foreground mb-1.5">{tr("Email")}</label>
               <input
                 type="email"
                 maxLength={255}
                 value={form.email}
                 onChange={(e) => setForm({ ...form, email: e.target.value })}
                 className="w-full px-4 py-3 rounded-xl bg-secondary border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/30"
-                placeholder="your@email.com"
+                placeholder={tr("your@email.com")}
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-foreground mb-1.5">Inquiry Type</label>
+              <label className="block text-sm font-medium text-foreground mb-1.5">{tr("Inquiry Type")}</label>
               <Select value={form.inquiry} onValueChange={(v) => setForm({ ...form, inquiry: v })}>
                 <SelectTrigger className="w-full h-12 px-4 rounded-xl bg-secondary border-border text-foreground">
-                  <SelectValue placeholder="Select an inquiry type" />
+                  <SelectValue placeholder={tr("Select an inquiry type")} />
                 </SelectTrigger>
                 <SelectContent className="bg-popover">
                   {inquiryTypes.map((t) => (
-                    <SelectItem key={t} value={t}>{t}</SelectItem>
+                    <SelectItem key={tr(t)} value={tr(t)}>{tr(t)}</SelectItem>
                   ))}
                 </SelectContent>
               </Select>
             </div>
             <div>
-              <label className="block text-sm font-medium text-foreground mb-1.5">Message</label>
+              <label className="block text-sm font-medium text-foreground mb-1.5">{tr("Message")}</label>
               <textarea
                 rows={4}
                 maxLength={1000}
                 value={form.message}
                 onChange={(e) => setForm({ ...form, message: e.target.value })}
                 className="w-full px-4 py-3 rounded-xl bg-secondary border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/30 resize-none"
-                placeholder="How can I help you?"
+                placeholder={tr("How can I help you?")}
               />
             </div>
             <div className="grid sm:grid-cols-2 gap-3 pt-1">
@@ -173,19 +173,15 @@ const ContactSection = () => {
                 type="submit"
                 className="flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-primary text-primary-foreground font-semibold hover:opacity-90 transition-opacity shadow-lg"
               >
-                <Mail className="w-5 h-5" /> Send via Email
-              </button>
+                <Mail className="w-5 h-5" />{tr("Send via Email")}</button>
               <button
                 type="button"
                 onClick={sendWhatsApp}
                 className="flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-[#25D366] text-white font-semibold hover:opacity-90 transition-opacity shadow-lg"
               >
-                <MessageCircle className="w-5 h-5" /> Send via WhatsApp
-              </button>
+                <MessageCircle className="w-5 h-5" />{tr("Send via WhatsApp")}</button>
             </div>
-            <p className="text-xs text-muted-foreground text-center pt-1">
-              Your message will open in your email client or WhatsApp — no data is stored.
-            </p>
+            <p className="text-xs text-muted-foreground text-center pt-1">{tr("Your message will open in your email client or WhatsApp — no data is stored.")}</p>
           </motion.form>
         </div>
       </div>
