@@ -1,3 +1,4 @@
+import { useText } from "@/lib/farmerI18n";
 import { motion } from "framer-motion";
 import { Award, Calendar, Clock, FileText, MapPin, Users } from "lucide-react";
 
@@ -154,6 +155,7 @@ const trainingGroups: { category: TrainingCategory; heading: string }[] = [
 
 
 const TrainingCard = ({ training, index }: { training: Training; index: number }) => {
+  const tr = useText();
 
   return (
     <motion.article
@@ -206,7 +208,7 @@ const TrainingCard = ({ training, index }: { training: Training; index: number }
 
       {!training.role && (
         <p className="text-sm text-muted-foreground">
-          <span className="font-semibold text-foreground">Provider:</span>{" "}
+          <span className="font-semibold text-foreground">{tr("Provider:")}</span>{" "}
           {training.providerUrl ? (
             <a
               href={training.providerUrl}
@@ -226,13 +228,13 @@ const TrainingCard = ({ training, index }: { training: Training; index: number }
         <div className="mt-3 grid gap-1 text-sm text-muted-foreground">
           {training.submittedTo && (
             <p>
-              <span className="font-semibold text-foreground">Submitted to:</span>{" "}
+              <span className="font-semibold text-foreground">{tr("Submitted to:")}</span>{" "}
               {training.submittedTo}
             </p>
           )}
           {training.supportedBy && (
             <p>
-              <span className="font-semibold text-foreground">Supported by:</span>{" "}
+              <span className="font-semibold text-foreground">{tr("Supported by:")}</span>{" "}
               {training.supportedBy}
             </p>
           )}
@@ -250,9 +252,7 @@ const TrainingCard = ({ training, index }: { training: Training; index: number }
           rel="noopener noreferrer"
           className="mt-5 inline-flex items-center gap-2 rounded-xl bg-primary px-4 py-2.5 text-sm font-semibold text-primary-foreground shadow-sm transition-opacity hover:opacity-90 min-h-[44px]"
         >
-          <FileText className="w-4 h-4" />
-          View Certificate
-        </a>
+          <FileText className="w-4 h-4" />{tr("View Certificate")}</a>
       )}
 
     </motion.article>
@@ -260,7 +260,7 @@ const TrainingCard = ({ training, index }: { training: Training; index: number }
 };
 
 
-const TrainingsSection = () => (
+const TrainingsSection = () => { const tr = useText(); return (
   <section id="trainings" className="py-14 lg:py-20">
     <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className="grid gap-12">
@@ -282,6 +282,6 @@ const TrainingsSection = () => (
       </div>
     </div>
   </section>
-);
+); };
 
 export default TrainingsSection;

@@ -1,3 +1,4 @@
+import { useText } from "@/lib/farmerI18n";
 import { motion } from "framer-motion";
 import { Briefcase, Award, Rocket } from "lucide-react";
 
@@ -49,7 +50,7 @@ const experiences = [
   },
 ];
 
-const ExperienceSection = () => (
+const ExperienceSection = () => { const tr = useText(); return (
   <section id="experience" className="py-14 lg:py-20">
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       <motion.div
@@ -58,13 +59,13 @@ const ExperienceSection = () => (
         viewport={{ once: true }}
         className="text-center mb-12"
       >
-        <span className="text-primary font-semibold text-sm uppercase tracking-wider">Career Journey</span>
-        <h2 className="font-heading text-3xl sm:text-4xl font-bold text-foreground mt-3">Professional Experience</h2>
+        <span className="text-primary font-semibold text-sm uppercase tracking-wider">{tr("Career Journey")}</span>
+        <h2 className="font-heading text-3xl sm:text-4xl font-bold text-foreground mt-3">{tr("Professional Experience")}</h2>
       </motion.div>
 
       <div className="relative">
         {/* Timeline line */}
-        <div className="absolute left-6 top-0 bottom-0 w-0.5 bg-border hidden sm:block" />
+        <div className="absolute start-6 top-0 bottom-0 w-0.5 bg-border hidden sm:block" />
 
         <div className="space-y-8">
           {experiences.map((exp, i) => (
@@ -74,10 +75,10 @@ const ExperienceSection = () => (
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.15 }}
-              className="relative sm:pl-16"
+              className="relative sm:ps-16"
             >
               {/* Timeline dot */}
-              <div className="hidden sm:flex absolute left-4 top-6 w-5 h-5 rounded-full border-2 border-primary bg-card items-center justify-center">
+              <div className="hidden sm:flex absolute start-4 top-6 w-5 h-5 rounded-full border-2 border-primary bg-card items-center justify-center">
                 {exp.isCurrent && <div className="w-2.5 h-2.5 rounded-full bg-primary animate-pulse-slow" />}
               </div>
 
@@ -90,10 +91,10 @@ const ExperienceSection = () => (
                   <exp.icon className="w-5 h-5 text-primary" />
                   <h3 className="font-heading font-bold text-lg text-foreground">{exp.title}</h3>
                   {exp.isCurrent && (
-                    <span className="px-2.5 py-0.5 text-xs font-semibold rounded-full bg-primary/10 text-primary">Current</span>
+                    <span className="px-2.5 py-0.5 text-xs font-semibold rounded-full bg-primary/10 text-primary">{tr("Current")}</span>
                   )}
                   {exp.isLeadership && (
-                    <span className="px-2.5 py-0.5 text-xs font-semibold rounded-full bg-accent/10 text-accent">Leadership</span>
+                    <span className="px-2.5 py-0.5 text-xs font-semibold rounded-full bg-accent/10 text-accent">{tr("Leadership")}</span>
                   )}
                 </div>
                 <p className="text-muted-foreground font-medium mb-1">
@@ -126,6 +127,6 @@ const ExperienceSection = () => (
       </div>
     </div>
   </section>
-);
+); };
 
 export default ExperienceSection;

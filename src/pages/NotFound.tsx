@@ -1,3 +1,4 @@
+import { useText } from "@/lib/farmerI18n";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Home, Leaf } from "lucide-react";
@@ -6,6 +7,7 @@ import Footer from "@/components/Footer";
 import Seo from "@/components/Seo";
 
 const NotFound = () => {
+  const tr = useText();
   return (
     <div className="min-h-screen bg-background">
       <Seo
@@ -33,21 +35,14 @@ const NotFound = () => {
               <h1 className="font-heading text-7xl sm:text-8xl lg:text-9xl font-bold text-primary mb-4">
                 404
               </h1>
-              <p className="font-heading text-2xl sm:text-3xl font-semibold text-foreground mb-4">
-                Page not found
-              </p>
-              <p className="text-muted-foreground text-lg max-w-2xl mx-auto mb-8">
-                This page doesn’t exist — but there’s plenty to explore.
-                Return to the homepage to learn more about AgroPath and sustainable agriculture.
-              </p>
+              <p className="font-heading text-2xl sm:text-3xl font-semibold text-foreground mb-4">{tr("Page not found")}</p>
+              <p className="text-muted-foreground text-lg max-w-2xl mx-auto mb-8">{tr("This page doesn’t exist — but there’s plenty to explore. Return to the homepage to learn more about AgroPath and sustainable agriculture.")}</p>
 
               <Link
                 to="/"
                 className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-lg font-medium hover:bg-primary/90 transition-colors"
               >
-                <Home className="w-5 h-5" />
-                Back to Home
-              </Link>
+                <Home className="w-5 h-5" />{tr("Back to Home")}</Link>
             </motion.div>
           </div>
         </section>

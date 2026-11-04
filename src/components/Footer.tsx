@@ -1,10 +1,11 @@
+import { useText } from "@/lib/farmerI18n";
 import { Linkedin, Twitter, Instagram } from "lucide-react";
 import AgroPathLogo from "./AgroPathLogo";
 import Wordmark from "./Wordmark";
 import { Link } from "react-router-dom";
 import NewsletterSignup from "./NewsletterSignup";
 
-const Footer = () => (
+const Footer = () => { const tr = useText(); return (
   <footer className="bg-foreground py-12">
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className="flex flex-col items-center text-center">
@@ -12,20 +13,18 @@ const Footer = () => (
           <AgroPathLogo className="w-6 h-6" />
           <Wordmark onDark className="font-heading font-bold text-lg" />
         </div>
-        <p className="text-background/60 text-sm mb-6 max-w-md">
-          Advancing sustainable agriculture through science, innovation, and community empowerment.
-        </p>
+        <p className="text-background/60 text-sm mb-6 max-w-md">{tr("Advancing sustainable agriculture through science, innovation, and community empowerment.")}</p>
 
         <div className="flex items-center gap-4 mb-8">
-          <a href="https://www.linkedin.com/in/mohamed-mohamud-sh-hassan/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"
+          <a href="https://www.linkedin.com/in/mohamed-mohamud-sh-hassan/" target="_blank" rel="noopener noreferrer" aria-label={tr("LinkedIn")}
             className="w-10 h-10 rounded-full bg-background/10 flex items-center justify-center hover:bg-primary/20 transition-colors">
             <Linkedin className="w-5 h-5 text-background/80" />
           </a>
-          <a href="https://x.com/SH_Hassan8" target="_blank" rel="noopener noreferrer" aria-label="Twitter"
+          <a href="https://x.com/SH_Hassan8" target="_blank" rel="noopener noreferrer" aria-label={tr("Twitter")}
             className="w-10 h-10 rounded-full bg-background/10 flex items-center justify-center hover:bg-primary/20 transition-colors">
             <Twitter className="w-5 h-5 text-background/80" />
           </a>
-          <a href="https://www.instagram.com/sh_hassan__/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"
+          <a href="https://www.instagram.com/sh_hassan__/" target="_blank" rel="noopener noreferrer" aria-label={tr("Instagram")}
             className="w-10 h-10 rounded-full bg-background/10 flex items-center justify-center hover:bg-primary/20 transition-colors">
             <Instagram className="w-5 h-5 text-background/80" />
           </a>
@@ -36,19 +35,16 @@ const Footer = () => (
         <div className="w-full flex flex-col items-center gap-3">
           <p className="text-background/40 text-sm">
             © {new Date().getFullYear()}{" "}
-            <span className="text-brand-green-light font-medium">Mohamed Mohamud SH Hassan</span>. All rights reserved.
-          </p>
+            <span className="text-brand-green-light font-medium">{tr("Mohamed Mohamud SH Hassan")}</span>{tr(". All rights reserved.")}</p>
           <Link
             to="/privacy-policy"
             className="text-background/60 text-sm hover:text-primary transition-colors"
-          >
-            Privacy Policy
-          </Link>
-          <Link to="/admin" className="text-background/60 text-sm hover:text-primary transition-colors">Admin</Link>
+          >{tr("Privacy Policy")}</Link>
+          <Link to="/admin" className="text-background/60 text-sm hover:text-primary transition-colors">{tr("Admin")}</Link>
         </div>
       </div>
     </div>
   </footer>
-);
+); };
 
 export default Footer;

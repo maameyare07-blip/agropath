@@ -1,3 +1,4 @@
+import { useText } from "@/lib/farmerI18n";
 import { motion } from "framer-motion";
 import { Bug, FlaskConical, BarChart3, Microscope, CloudSun } from "lucide-react";
 
@@ -9,7 +10,7 @@ const skills = [
   { icon: CloudSun, name: "Climate-Smart Agriculture" },
 ];
 
-const SkillsSection = () => (
+const SkillsSection = () => { const tr = useText(); return (
   <section id="skills" className="py-14 lg:py-20 bg-secondary/30">
     <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
       <motion.div
@@ -18,8 +19,8 @@ const SkillsSection = () => (
         viewport={{ once: true }}
         className="text-center mb-12"
       >
-        <span className="text-primary font-semibold text-sm uppercase tracking-wider">Technical Expertise</span>
-        <h2 className="font-heading text-3xl sm:text-4xl font-bold text-foreground mt-3">Skills</h2>
+        <span className="text-primary font-semibold text-sm uppercase tracking-wider">{tr("Technical Expertise")}</span>
+        <h2 className="font-heading text-3xl sm:text-4xl font-bold text-foreground mt-3">{tr("Skills")}</h2>
       </motion.div>
 
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
@@ -41,6 +42,6 @@ const SkillsSection = () => (
       </div>
     </div>
   </section>
-);
+); };
 
 export default SkillsSection;

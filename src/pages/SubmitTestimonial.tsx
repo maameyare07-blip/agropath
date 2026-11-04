@@ -1,3 +1,4 @@
+import { useText } from "@/lib/farmerI18n";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
@@ -27,6 +28,7 @@ const MAX_BYTES = 5 * 1024 * 1024;
 const ACCEPT = ["image/jpeg", "image/png", "image/webp", "image/gif"];
 
 const SubmitTestimonial = () => {
+  const tr = useText();
   const [submitting, setSubmitting] = useState(false);
   const [done, setDone] = useState(false);
   const [file, setFile] = useState<File | null>(null);
@@ -114,8 +116,7 @@ const SubmitTestimonial = () => {
           to="/"
           className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors mb-8"
         >
-          <ArrowLeft className="w-4 h-4" /> Back to portfolio
-        </Link>
+          <ArrowLeft className="w-4 h-4" />{tr("Back to portfolio")}</Link>
 
         <motion.div
           initial={{ opacity: 0, y: 16 }}
@@ -126,34 +127,24 @@ const SubmitTestimonial = () => {
           {done ? (
             <div className="text-center py-8">
               <CheckCircle2 className="w-16 h-16 text-primary mx-auto mb-4" />
-              <h1 className="font-heading text-2xl sm:text-3xl font-bold text-foreground mb-3">
-                Thank you!
-              </h1>
-              <p className="text-muted-foreground max-w-md mx-auto">
-                Your testimonial is pending review and will appear here once approved.
-              </p>
+              <h1 className="font-heading text-2xl sm:text-3xl font-bold text-foreground mb-3">{tr("Thank you!")}</h1>
+              <p className="text-muted-foreground max-w-md mx-auto">{tr("Your testimonial is pending review and will appear here once approved.")}</p>
               <Button asChild className="mt-8">
-                <Link to="/">Return to portfolio</Link>
+                <Link to="/">{tr("Return to portfolio")}</Link>
               </Button>
             </div>
           ) : (
             <>
               <div className="mb-8">
-                <span className="text-primary font-semibold text-sm uppercase tracking-wider">
-                  Share Your Experience
-                </span>
-                <h1 className="font-heading text-2xl sm:text-3xl font-bold text-foreground mt-3">
-                  Submit a Testimonial
-                </h1>
-                <p className="text-muted-foreground mt-3">
-                  Share your experience working with Mohamed. Submissions are reviewed before appearing on the site.
-                </p>
+                <span className="text-primary font-semibold text-sm uppercase tracking-wider">{tr("Share Your Experience")}</span>
+                <h1 className="font-heading text-2xl sm:text-3xl font-bold text-foreground mt-3">{tr("Submit a Testimonial")}</h1>
+                <p className="text-muted-foreground mt-3">{tr("Share your experience working with Mohamed. Submissions are reviewed before appearing on the site.")}</p>
               </div>
 
               <form onSubmit={onSubmit} className="space-y-5">
                 <div className="grid sm:grid-cols-2 gap-5">
                   <div>
-                    <Label htmlFor="full_name">Full Name *</Label>
+                    <Label htmlFor="full_name">{tr("Full Name *")}</Label>
                     <Input
                       id="full_name"
                       value={form.full_name}
@@ -164,7 +155,7 @@ const SubmitTestimonial = () => {
                     />
                   </div>
                   <div>
-                    <Label htmlFor="position">Professional Title / Position *</Label>
+                    <Label htmlFor="position">{tr("Professional Title / Position *")}</Label>
                     <Input
                       id="position"
                       value={form.position}
@@ -178,7 +169,7 @@ const SubmitTestimonial = () => {
 
                 <div className="grid sm:grid-cols-2 gap-5">
                   <div>
-                    <Label htmlFor="organization">Organization / University *</Label>
+                    <Label htmlFor="organization">{tr("Organization / University *")}</Label>
                     <Input
                       id="organization"
                       value={form.organization}
@@ -189,7 +180,7 @@ const SubmitTestimonial = () => {
                     />
                   </div>
                   <div>
-                    <Label htmlFor="email">Email Address *</Label>
+                    <Label htmlFor="email">{tr("Email Address *")}</Label>
                     <Input
                       id="email"
                       type="email"
@@ -203,14 +194,14 @@ const SubmitTestimonial = () => {
                 </div>
 
                 <div>
-                  <Label htmlFor="photo">Profile Photo (optional)</Label>
+                  <Label htmlFor="photo">{tr("Profile Photo (optional)")}</Label>
                   <div className="mt-2 flex items-center gap-3">
                     <label
                       htmlFor="photo"
                       className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-border bg-background hover:bg-secondary cursor-pointer text-sm font-medium transition-colors"
                     >
                       <Upload className="w-4 h-4" />
-                      {file ? "Change photo" : "Choose file"}
+                      {file ? tr("Change photo") : tr("Choose file")}
                     </label>
                     <input
                       id="photo"
@@ -223,13 +214,11 @@ const SubmitTestimonial = () => {
                       <span className="text-sm text-muted-foreground truncate">{file.name}</span>
                     )}
                   </div>
-                  <p className="text-xs text-muted-foreground mt-1.5">
-                    JPG, PNG, WEBP or GIF. Max 5MB.
-                  </p>
+                  <p className="text-xs text-muted-foreground mt-1.5">{tr("JPG, PNG, WEBP or GIF. Max 5MB.")}</p>
                 </div>
 
                 <div>
-                  <Label htmlFor="message">Testimonial Message *</Label>
+                  <Label htmlFor="message">{tr("Testimonial Message *")}</Label>
                   <Textarea
                     id="message"
                     value={form.message}
@@ -238,11 +227,10 @@ const SubmitTestimonial = () => {
                     maxLength={1500}
                     rows={6}
                     className="mt-2"
-                    placeholder="Share your experience working with Mohamed…"
+                    placeholder={tr("Share your experience working with Mohamed…")}
                   />
                   <p className="text-xs text-muted-foreground mt-1.5">
-                    {form.message.length}/1500 characters
-                  </p>
+                    {form.message.length}{tr("/1500 characters")}</p>
                 </div>
 
                 <label className="flex items-start gap-3 p-4 rounded-lg bg-secondary/50 border border-border cursor-pointer">
@@ -251,18 +239,15 @@ const SubmitTestimonial = () => {
                     onCheckedChange={(v) => update("permission_granted", v === true)}
                     className="mt-0.5"
                   />
-                  <span className="text-sm text-foreground/90">
-                    I give permission for my testimonial to be displayed on this website. *
-                  </span>
+                  <span className="text-sm text-foreground/90">{tr("I give permission for my testimonial to be displayed on this website. *")}</span>
                 </label>
 
                 <Button type="submit" size="lg" disabled={submitting} className="w-full">
                   {submitting ? (
                     <>
-                      <Loader2 className="w-4 h-4 animate-spin mr-2" /> Submitting…
-                    </>
+                      <Loader2 className="w-4 h-4 animate-spin me-2" />{tr("Submitting…")}</>
                   ) : (
-                    "Submit Testimonial"
+                    tr("Submit Testimonial")
                   )}
                 </Button>
               </form>

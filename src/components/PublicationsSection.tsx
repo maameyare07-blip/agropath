@@ -1,3 +1,4 @@
+import { useText } from "@/lib/farmerI18n";
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet-async";
 import { BookOpen, Calendar, FileText, Users } from "lucide-react";
@@ -26,6 +27,7 @@ const articleSchema = {
 };
 
 const PublicationsSection = () => {
+  const tr = useText();
   const { data: publications = [], isPending, isError } = usePublishedContent("publication");
   return (
   <section id="publications" className="py-14 lg:py-20">
@@ -39,17 +41,13 @@ const PublicationsSection = () => {
         viewport={{ once: true }}
         className="text-center mb-12"
       >
-        <span className="text-primary font-semibold text-sm uppercase tracking-wider">
-          Scholarly Contributions
-        </span>
-        <h2 className="font-heading text-3xl sm:text-4xl font-bold text-foreground mt-3">
-          Publications
-        </h2>
+        <span className="text-primary font-semibold text-sm uppercase tracking-wider">{tr("Scholarly Contributions")}</span>
+        <h2 className="font-heading text-3xl sm:text-4xl font-bold text-foreground mt-3">{tr("Publications")}</h2>
       </motion.div>
 
       <div className="grid gap-6">
         {isPending && <Loader2 className="mx-auto animate-spin text-primary" />}
-        {isError && <p className="text-center text-muted-foreground">Unable to load publications. Please try again later.</p>}
+        {isError && <p className="text-center text-muted-foreground">{tr("Unable to load publications. Please try again later.")}</p>}
         {publications.map((pub, i) => (
           <motion.article
             key={pub.id}
@@ -63,12 +61,8 @@ const PublicationsSection = () => {
               <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
                 <BookOpen className="w-6 h-6 text-primary" />
               </div>
-              <span className="px-3 py-1 text-xs font-semibold rounded-full bg-primary/10 text-primary uppercase tracking-wide">
-                Book Chapter
-              </span>
-              <span className="px-3 py-1 text-xs font-semibold rounded-full bg-accent/15 text-accent-foreground border border-border uppercase tracking-wide">
-                Co-Author
-              </span>
+              <span className="px-3 py-1 text-xs font-semibold rounded-full bg-primary/10 text-primary uppercase tracking-wide">{tr("Book Chapter")}</span>
+              <span className="px-3 py-1 text-xs font-semibold rounded-full bg-accent/15 text-accent-foreground border border-border uppercase tracking-wide">{tr("Co-Author")}</span>
 
               <span className="inline-flex items-center gap-1.5 text-sm text-muted-foreground">
                 <Calendar className="w-4 h-4" />
@@ -79,15 +73,14 @@ const PublicationsSection = () => {
             <h3 className="font-heading font-bold text-xl text-foreground mb-2 leading-snug">
               {pub.title}
             </h3>
-            <p className="text-sm text-muted-foreground mb-4">
-              In{" "}
+            <p className="text-sm text-muted-foreground mb-4">{tr("In")}{" "}
               <span className="italic text-foreground font-medium">{pub.in_book}</span>
             </p>
 
             <div className="flex items-start gap-2 mb-4 text-sm text-muted-foreground">
               <Users className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
               <span>
-                <span className="font-medium text-foreground">Authors: </span>
+                <span className="font-medium text-foreground">{tr("Authors:")}</span>
                 {pub.authors.join("; ")}
               </span>
             </div>
@@ -104,9 +97,7 @@ const PublicationsSection = () => {
                 rel="noopener noreferrer"
                 className="mt-5 inline-flex items-center gap-2 rounded-xl bg-primary px-4 py-2.5 text-sm font-semibold text-primary-foreground shadow-sm transition-opacity hover:opacity-90 min-h-[44px]"
               >
-                <FileText className="w-4 h-4" />
-                View Chapter
-              </a>
+                <FileText className="w-4 h-4" />{tr("View Chapter")}</a>
             )}
           </motion.article>
         ))}

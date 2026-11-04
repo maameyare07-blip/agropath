@@ -1,3 +1,4 @@
+import { useText } from "@/lib/farmerI18n";
 import { useEffect, useState, useCallback } from "react";
 import { Loader2, Check, X, Trash2, Pencil, ExternalLink } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
@@ -41,6 +42,7 @@ type Row = {
 type Filter = "all" | "pending" | "approved" | "rejected";
 
 const StatusBadge = ({ s }: { s: Row["status"] }) => {
+  const tr = useText();
   const styles: Record<Row["status"], string> = {
     pending: "bg-muted text-muted-foreground border-border",
     approved: "bg-primary/10 text-primary border-primary/20",
@@ -54,6 +56,7 @@ const StatusBadge = ({ s }: { s: Row["status"] }) => {
 };
 
 const AdminTestimonials = () => {
+  const tr = useText();
   const [rows, setRows] = useState<Row[]>([]);
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState<Filter>("pending");
@@ -134,12 +137,8 @@ const AdminTestimonials = () => {
       <main>
         <div className="flex items-center justify-between mb-6 flex-wrap gap-4">
           <div>
-            <h1 className="font-heading text-2xl sm:text-3xl font-bold text-foreground">
-              Testimonials
-            </h1>
-            <p className="text-sm text-muted-foreground mt-1">
-              Review submissions and manage what appears on the site.
-            </p>
+            <h1 className="font-heading text-2xl sm:text-3xl font-bold text-foreground">{tr("Testimonials")}</h1>
+            <p className="text-sm text-muted-foreground mt-1">{tr("Review submissions and manage what appears on the site.")}</p>
           </div>
           <div className="flex gap-2 flex-wrap">
             {(["pending", "approved", "rejected", "all"] as Filter[]).map((f) => (
@@ -163,9 +162,7 @@ const AdminTestimonials = () => {
             <Loader2 className="w-6 h-6 animate-spin text-primary mx-auto" />
           </div>
         ) : filtered.length === 0 ? (
-          <div className="text-center py-16 text-muted-foreground bg-card border border-border rounded-lg">
-            No testimonials in this view.
-          </div>
+          <div className="text-center py-16 text-muted-foreground bg-card border border-border rounded-lg">{tr("No testimonials in this view.")}</div>
         ) : (
           <div className="space-y-4">
             {filtered.map((r) => (
@@ -205,38 +202,31 @@ const AdminTestimonials = () => {
                     <div className="mt-4 flex flex-wrap gap-2">
                       {r.status !== "approved" && (
                         <Button size="sm" onClick={() => setStatus(r, "approved")}>
-                          <Check className="w-4 h-4 mr-1" /> Approve
-                        </Button>
+                          <Check className="w-4 h-4 me-1" />{tr("Approve")}</Button>
                       )}
                       {r.status !== "rejected" && (
                         <Button size="sm" variant="outline" onClick={() => setStatus(r, "rejected")}>
-                          <X className="w-4 h-4 mr-1" /> Reject
-                        </Button>
+                          <X className="w-4 h-4 me-1" />{tr("Reject")}</Button>
                       )}
                       {r.status !== "pending" && (
-                        <Button size="sm" variant="ghost" onClick={() => setStatus(r, "pending")}>
-                          Mark pending
-                        </Button>
+                        <Button size="sm" variant="ghost" onClick={() => setStatus(r, "pending")}>{tr("Mark pending")}</Button>
                       )}
                       <Button size="sm" variant="outline" onClick={() => setEditing(r)}>
-                        <Pencil className="w-4 h-4 mr-1" /> Edit
-                      </Button>
+                        <Pencil className="w-4 h-4 me-1" />{tr("Edit")}</Button>
                       <Button
                         size="sm"
                         variant="ghost"
                         className="text-destructive hover:text-destructive"
                         onClick={() => setDeleting(r)}
                       >
-                        <Trash2 className="w-4 h-4 mr-1" /> Delete
-                      </Button>
+                        <Trash2 className="w-4 h-4 me-1" />{tr("Delete")}</Button>
                       {r.photo_url && (
                         <a
                           href={r.photo_url}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="inline-flex items-center text-xs text-muted-foreground hover:text-primary ml-auto"
-                        >
-                          Photo <ExternalLink className="w-3 h-3 ml-1" />
+                        >{tr("Photo")}<ExternalLink className="w-3 h-3 ms-1" />
                         </a>
                       )}
                     </div>
@@ -251,13 +241,13 @@ const AdminTestimonials = () => {
       <Dialog open={!!editing} onOpenChange={(o) => !o && setEditing(null)}>
         <DialogContent className="max-w-2xl">
           <DialogHeader>
-            <DialogTitle>Edit testimonial</DialogTitle>
+            <DialogTitle>{tr("Edit testimonial")}</DialogTitle>
           </DialogHeader>
           {editing && (
             <div className="space-y-4">
               <div className="grid sm:grid-cols-2 gap-4">
                 <div>
-                  <Label>Full name</Label>
+                  <Label>{tr("Full name")}</Label>
                   <Input
                     className="mt-2"
                     value={editing.full_name}
@@ -265,7 +255,7 @@ const AdminTestimonials = () => {
                   />
                 </div>
                 <div>
-                  <Label>Position</Label>
+                  <Label>{tr("Position")}</Label>
                   <Input
                     className="mt-2"
                     value={editing.position}
@@ -274,7 +264,7 @@ const AdminTestimonials = () => {
                 </div>
               </div>
               <div>
-                <Label>Organization</Label>
+                <Label>{tr("Organization")}</Label>
                 <Input
                   className="mt-2"
                   value={editing.organization}
@@ -282,7 +272,7 @@ const AdminTestimonials = () => {
                 />
               </div>
               <div>
-                <Label>Photo URL</Label>
+                <Label>{tr("Photo URL")}</Label>
                 <Input
                   className="mt-2"
                   value={editing.photo_url ?? ""}
@@ -292,7 +282,7 @@ const AdminTestimonials = () => {
                 />
               </div>
               <div>
-                <Label>Message</Label>
+                <Label>{tr("Message")}</Label>
                 <Textarea
                   className="mt-2"
                   rows={6}
@@ -303,11 +293,9 @@ const AdminTestimonials = () => {
             </div>
           )}
           <DialogFooter>
-            <Button variant="outline" onClick={() => setEditing(null)}>
-              Cancel
-            </Button>
+            <Button variant="outline" onClick={() => setEditing(null)}>{tr("Cancel")}</Button>
             <Button onClick={saveEdit} disabled={saving}>
-              {saving ? <Loader2 className="w-4 h-4 animate-spin" /> : "Save changes"}
+              {saving ? <Loader2 className="w-4 h-4 animate-spin" /> : tr("Save changes")}
             </Button>
           </DialogFooter>
         </DialogContent>
@@ -316,16 +304,12 @@ const AdminTestimonials = () => {
       <AlertDialog open={!!deleting} onOpenChange={(o) => !o && setDeleting(null)}>
         <AlertDialogContent>
           <AlertDialogHeader>
-            <AlertDialogTitle>Delete testimonial?</AlertDialogTitle>
-            <AlertDialogDescription>
-              This will permanently remove the submission from {deleting?.full_name}. This cannot be undone.
-            </AlertDialogDescription>
+            <AlertDialogTitle>{tr("Delete testimonial?")}</AlertDialogTitle>
+            <AlertDialogDescription>{tr("This will permanently remove the submission from")}{deleting?.full_name}{tr(". This cannot be undone.")}</AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogCancel>Cancel</AlertDialogCancel>
-            <AlertDialogAction onClick={remove} className="bg-destructive hover:bg-destructive/90">
-              Delete
-            </AlertDialogAction>
+            <AlertDialogCancel>{tr("Cancel")}</AlertDialogCancel>
+            <AlertDialogAction onClick={remove} className="bg-destructive hover:bg-destructive/90">{tr("Delete")}</AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>

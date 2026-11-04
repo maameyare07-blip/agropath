@@ -1,3 +1,4 @@
+import { useText } from "@/lib/farmerI18n";
 import { useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
@@ -7,6 +8,7 @@ type TrainingGalleryProps = {
 };
 
 const TrainingGallery = ({ images, title }: TrainingGalleryProps) => {
+  const tr = useText();
   const [index, setIndex] = useState(0);
   if (images.length === 0) return null;
 
@@ -29,16 +31,16 @@ const TrainingGallery = ({ images, title }: TrainingGalleryProps) => {
             <button
               type="button"
               onClick={() => go(-1)}
-              aria-label="Previous photo"
-              className="absolute left-2 top-1/2 -translate-y-1/2 h-11 w-11 rounded-full bg-background/85 border border-border flex items-center justify-center text-foreground shadow-sm transition-colors hover:bg-background"
+              aria-label={tr("Previous photo")}
+              className="absolute start-2 top-1/2 -translate-y-1/2 h-11 w-11 rounded-full bg-background/85 border border-border flex items-center justify-center text-foreground shadow-sm transition-colors hover:bg-background"
             >
               <ChevronLeft className="w-5 h-5" />
             </button>
             <button
               type="button"
               onClick={() => go(1)}
-              aria-label="Next photo"
-              className="absolute right-2 top-1/2 -translate-y-1/2 h-11 w-11 rounded-full bg-background/85 border border-border flex items-center justify-center text-foreground shadow-sm transition-colors hover:bg-background"
+              aria-label={tr("Next photo")}
+              className="absolute end-2 top-1/2 -translate-y-1/2 h-11 w-11 rounded-full bg-background/85 border border-border flex items-center justify-center text-foreground shadow-sm transition-colors hover:bg-background"
             >
               <ChevronRight className="w-5 h-5" />
             </button>

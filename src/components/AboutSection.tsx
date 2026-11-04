@@ -1,3 +1,4 @@
+import { useText } from "@/lib/farmerI18n";
 import { motion } from "framer-motion";
 import {
   GraduationCap,
@@ -40,9 +41,9 @@ const stats = [
   { icon: Globe2, value: "8+", label: "Collaborations" },
 ];
 
-const AboutSection = () => (
+const AboutSection = () => { const tr = useText(); return (
   <section id="about" className="py-14 lg:py-20 bg-secondary/30 relative overflow-hidden">
-    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[60rem] h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
+    <div className="absolute top-0 start-1/2 -translate-x-1/2 w-[60rem] h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
 
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       {/* Header */}
@@ -53,12 +54,8 @@ const AboutSection = () => (
         transition={{ duration: 0.6 }}
         className="max-w-3xl mb-12"
       >
-        <span className="text-primary font-semibold text-xs tracking-[0.2em] uppercase">
-          About — Academic & Research Background
-        </span>
-        <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mt-4 leading-tight">
-          Professional Profile
-        </h2>
+        <span className="text-primary font-semibold text-xs tracking-[0.2em] uppercase">{tr("About — Academic & Research Background")}</span>
+        <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mt-4 leading-tight">{tr("Professional Profile")}</h2>
         <div className="mt-5 h-1 w-16 bg-primary rounded-full" />
       </motion.div>
 
@@ -71,18 +68,10 @@ const AboutSection = () => (
           transition={{ duration: 0.6 }}
           className="lg:col-span-7 space-y-5 text-muted-foreground text-base sm:text-lg leading-relaxed"
         >
-          <p>
-            I am a dedicated agricultural scientist specializing in <strong className="text-foreground">plant pathology</strong>, <strong className="text-foreground">seed inspection</strong>, and <strong className="text-foreground">sustainable agricultural systems</strong>. My professional experience combines scientific research, field-based agricultural practice, and agricultural education to support resilient and productive farming systems.
-          </p>
-          <p>
-            Currently, I serve as a <strong className="text-foreground">Seed Inspector at <a href="https://saris.gov.so/" target="_blank" rel="noopener noreferrer" className="hover:text-primary hover:underline underline-offset-2 transition-colors">Somali Agricultural Regulatory and Inspection Services (SARIS)</a></strong>, where I contribute to seed quality assurance, regulatory compliance, and agricultural standards development.
-          </p>
-          <p>
-            I also have academic experience as a <strong className="text-foreground">Lecturer in the Department of Agriculture</strong>, where I taught plant pathology and supported agricultural education initiatives for university students.
-          </p>
-          <p>
-            As <strong className="text-foreground">Founder & CEO of PathoSolutions</strong>, I lead an agricultural innovation platform focused on plant disease management, agricultural knowledge dissemination, and collaborative research initiatives with national and international stakeholders.
-          </p>
+          <p>{tr("I am a dedicated agricultural scientist specializing in")}<strong className="text-foreground">{tr("plant pathology")}</strong>, <strong className="text-foreground">{tr("seed inspection")}</strong>{tr(", and")}<strong className="text-foreground">{tr("sustainable agricultural systems")}</strong>{tr(". My professional experience combines scientific research, field-based agricultural practice, and agricultural education to support resilient and productive farming systems.")}</p>
+          <p>{tr("Currently, I serve as a")}<strong className="text-foreground">{tr("Seed Inspector at")}<a href="https://saris.gov.so/" target="_blank" rel="noopener noreferrer" className="hover:text-primary hover:underline underline-offset-2 transition-colors">{tr("Somali Agricultural Regulatory and Inspection Services (SARIS)")}</a></strong>{tr(", where I contribute to seed quality assurance, regulatory compliance, and agricultural standards development.")}</p>
+          <p>{tr("I also have academic experience as a")}<strong className="text-foreground">{tr("Lecturer in the Department of Agriculture")}</strong>{tr(", where I taught plant pathology and supported agricultural education initiatives for university students.")}</p>
+          <p>{tr("As")}<strong className="text-foreground">{tr("Founder & CEO of PathoSolutions")}</strong>{tr(", I lead an agricultural innovation platform focused on plant disease management, agricultural knowledge dissemination, and collaborative research initiatives with national and international stakeholders.")}</p>
         </motion.div>
 
         {/* Academic credentials card */}
@@ -98,27 +87,23 @@ const AboutSection = () => (
               <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
                 <GraduationCap className="w-5 h-5 text-primary" />
               </div>
-              <h3 className="font-heading font-semibold text-foreground text-lg">Academic Training</h3>
+              <h3 className="font-heading font-semibold text-foreground text-lg">{tr("Academic Training")}</h3>
             </div>
             <div className="space-y-5">
-              <div className="pl-4 border-l-2 border-primary/40">
+              <div className="ps-4 border-s-2 border-primary/40">
                 <p className="font-semibold text-foreground">
-                  <a href="https://www.lpu.in/" target="_blank" rel="noopener noreferrer" className="hover:text-primary hover:underline underline-offset-2 transition-colors">Lovely Professional University</a>
+                  <a href="https://www.lpu.in/" target="_blank" rel="noopener noreferrer" className="hover:text-primary hover:underline underline-offset-2 transition-colors">{tr("Lovely Professional University")}</a>
                 </p>
-                <p className="text-sm text-muted-foreground">India — Advanced Plant Pathology</p>
+                <p className="text-sm text-muted-foreground">{tr("India — Advanced Plant Pathology")}</p>
               </div>
-              <div className="pl-4 border-l-2 border-accent/50">
+              <div className="ps-4 border-s-2 border-accent/50">
                 <p className="font-semibold text-foreground">
-                  <a href="https://iubat.edu/" target="_blank" rel="noopener noreferrer" className="hover:text-primary hover:underline underline-offset-2 transition-colors">IUBAT</a>
+                  <a href="https://iubat.edu/" target="_blank" rel="noopener noreferrer" className="hover:text-primary hover:underline underline-offset-2 transition-colors">{tr("IUBAT")}</a>
                 </p>
-                <p className="text-sm text-muted-foreground">
-                  International University of Business Agriculture and Technology, Bangladesh
-                </p>
+                <p className="text-sm text-muted-foreground">{tr("International University of Business Agriculture and Technology, Bangladesh")}</p>
               </div>
             </div>
-            <p className="mt-6 pt-5 border-t border-border text-sm text-muted-foreground italic">
-              Long-term vision: contributing to agricultural transformation and food security through research, innovation, education, and scientific collaboration.
-            </p>
+            <p className="mt-6 pt-5 border-t border-border text-sm text-muted-foreground italic">{tr("Long-term vision: contributing to agricultural transformation and food security through research, innovation, education, and scientific collaboration.")}</p>
           </div>
         </motion.div>
       </div>
@@ -131,7 +116,7 @@ const AboutSection = () => (
         transition={{ duration: 0.6 }}
         className="mb-14"
       >
-        <p className="text-xs font-semibold text-primary tracking-[0.2em] uppercase mb-6">Experience Highlights</p>
+        <p className="text-xs font-semibold text-primary tracking-[0.2em] uppercase mb-6">{tr("Experience Highlights")}</p>
         <div className="grid md:grid-cols-3 gap-5">
           {timeline.map((item, i) => (
             <motion.div
@@ -142,7 +127,7 @@ const AboutSection = () => (
               transition={{ duration: 0.5, delay: i * 0.12 }}
               className="group relative rounded-2xl bg-card border border-border p-6 hover:border-primary/40 hover:-translate-y-1 transition-all duration-300 shadow-sm hover:shadow-lg"
             >
-              <div className="absolute top-0 left-6 right-6 h-1 bg-gradient-to-r from-primary to-accent rounded-b opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="absolute top-0 start-6 end-6 h-1 bg-gradient-to-r from-primary to-accent rounded-b opacity-0 group-hover:opacity-100 transition-opacity" />
               <div className="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/15 transition-colors">
                 <item.icon className="w-5 h-5 text-primary" />
               </div>
@@ -191,6 +176,6 @@ const AboutSection = () => (
       </motion.div>
     </div>
   </section>
-);
+); };
 
 export default AboutSection;

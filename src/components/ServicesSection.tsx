@@ -1,3 +1,4 @@
+import { useText } from "@/lib/farmerI18n";
 import { motion } from "framer-motion";
 import { Search, ShieldCheck, MessageSquare, Users, BookOpen } from "lucide-react";
 
@@ -9,7 +10,7 @@ const services = [
   { icon: BookOpen, title: "Research Collaboration", desc: "Co-authoring research articles and review papers in plant pathology, seed science, and food security with fellow researchers and institutions." },
 ];
 
-const ServicesSection = () => (
+const ServicesSection = () => { const tr = useText(); return (
   <section id="services" className="py-14 lg:py-20">
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <motion.div
@@ -18,8 +19,8 @@ const ServicesSection = () => (
         viewport={{ once: true }}
         className="text-center mb-16"
       >
-        <span className="text-primary font-semibold text-sm uppercase tracking-wider">What I Offer</span>
-        <h2 className="font-heading text-3xl sm:text-4xl font-bold text-foreground mt-3">Services</h2>
+        <span className="text-primary font-semibold text-sm uppercase tracking-wider">{tr("What I Offer")}</span>
+        <h2 className="font-heading text-3xl sm:text-4xl font-bold text-foreground mt-3">{tr("Services")}</h2>
       </motion.div>
 
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
@@ -42,6 +43,6 @@ const ServicesSection = () => (
       </div>
     </div>
   </section>
-);
+); };
 
 export default ServicesSection;

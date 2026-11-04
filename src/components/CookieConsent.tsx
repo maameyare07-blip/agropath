@@ -1,3 +1,4 @@
+import { useText } from "@/lib/farmerI18n";
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Cookie } from "lucide-react";
@@ -6,6 +7,7 @@ import { Link } from "react-router-dom";
 const STORAGE_KEY = "agropath-cookie-consent";
 
 const CookieConsent = () => {
+  const tr = useText();
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -34,8 +36,8 @@ const CookieConsent = () => {
           exit={{ opacity: 0, y: 24 }}
           transition={{ duration: 0.3 }}
           role="dialog"
-          aria-label="Cookie notice"
-          className="fixed bottom-4 left-4 right-4 z-40 sm:left-auto sm:right-6 sm:bottom-6 sm:max-w-md"
+          aria-label={tr("Cookie notice")}
+          className="fixed bottom-4 start-4 end-4 z-40 sm:left-auto sm:end-6 sm:bottom-6 sm:max-w-md"
         >
           <div className="bg-card/95 backdrop-blur-lg border border-border rounded-2xl shadow-lg p-4 sm:p-5">
             <div className="flex items-start gap-3">
@@ -43,23 +45,16 @@ const CookieConsent = () => {
                 <Cookie className="w-5 h-5 text-primary" />
               </div>
               <div className="flex-1">
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  This site uses cookies to understand site traffic via Google Analytics. By
-                  continuing to browse, you agree to our use of cookies.
-                </p>
+                <p className="text-sm text-muted-foreground leading-relaxed">{tr("This site uses cookies to understand site traffic via Google Analytics. By continuing to browse, you agree to our use of cookies.")}</p>
                 <div className="flex items-center gap-3 mt-3">
                   <button
                     onClick={accept}
                     className="min-h-11 px-5 rounded-xl bg-primary text-primary-foreground text-sm font-semibold hover:opacity-90 transition-opacity"
-                  >
-                    Accept
-                  </button>
+                  >{tr("Accept")}</button>
                   <Link
                     to="/privacy-policy"
                     className="min-h-11 inline-flex items-center text-sm font-medium text-primary hover:underline"
-                  >
-                    Privacy Policy
-                  </Link>
+                  >{tr("Privacy Policy")}</Link>
                 </div>
               </div>
             </div>

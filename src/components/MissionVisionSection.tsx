@@ -1,3 +1,4 @@
+import { useText } from "@/lib/farmerI18n";
 import { motion } from "framer-motion";
 import { Target, Eye, Leaf, Lightbulb, Sprout, Users, FlaskConical, Globe2, CloudSun, GraduationCap } from "lucide-react";
 
@@ -33,9 +34,9 @@ const cards = [
   },
 ];
 
-const MissionVisionSection = () => (
+const MissionVisionSection = () => { const tr = useText(); return (
   <section id="mission-vision" className="relative py-14 lg:py-20 bg-secondary/30 overflow-hidden">
-    <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[40rem] h-[40rem] bg-primary/10 rounded-full blur-3xl pointer-events-none" />
+    <div className="absolute top-1/3 start-1/2 -translate-x-1/2 w-[40rem] h-[40rem] bg-primary/10 rounded-full blur-3xl pointer-events-none" />
 
     <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <motion.div
@@ -45,8 +46,8 @@ const MissionVisionSection = () => (
         transition={{ duration: 0.6 }}
         className="text-center mb-16"
       >
-        <span className="text-primary font-semibold text-sm uppercase tracking-wider">Purpose & Direction</span>
-        <h2 className="font-heading text-3xl sm:text-4xl font-bold text-foreground mt-3">Mission & Vision</h2>
+        <span className="text-primary font-semibold text-sm uppercase tracking-wider">{tr("Purpose & Direction")}</span>
+        <h2 className="font-heading text-3xl sm:text-4xl font-bold text-foreground mt-3">{tr("Mission & Vision")}</h2>
       </motion.div>
 
       <div className="grid lg:grid-cols-2 gap-8">
@@ -92,6 +93,6 @@ const MissionVisionSection = () => (
       </div>
     </div>
   </section>
-);
+); };
 
 export default MissionVisionSection;

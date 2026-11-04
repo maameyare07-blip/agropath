@@ -1,3 +1,4 @@
+import { useText } from "@/lib/farmerI18n";
 import { motion } from "framer-motion";
 import { GraduationCap, BookOpen, Microscope, ShieldCheck, Leaf } from "lucide-react";
 
@@ -22,7 +23,7 @@ const degrees = [
   },
 ];
 
-const EducationSection = () => (
+const EducationSection = () => { const tr = useText(); return (
   <section id="education" className="py-14 lg:py-20 bg-secondary/30">
     <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
       <motion.div
@@ -31,8 +32,8 @@ const EducationSection = () => (
         viewport={{ once: true }}
         className="text-center mb-12"
       >
-        <span className="text-primary font-semibold text-sm uppercase tracking-wider">Academic Foundation</span>
-        <h2 className="font-heading text-3xl sm:text-4xl font-bold text-foreground mt-3">Education</h2>
+        <span className="text-primary font-semibold text-sm uppercase tracking-wider">{tr("Academic Foundation")}</span>
+        <h2 className="font-heading text-3xl sm:text-4xl font-bold text-foreground mt-3">{tr("Education")}</h2>
       </motion.div>
 
       <div className="grid md:grid-cols-2 gap-8">
@@ -53,7 +54,7 @@ const EducationSection = () => (
                 <span className="text-sm text-muted-foreground">{d.year}</span>
                 <div className="flex items-center gap-2">
                   <ShieldCheck className="w-4 h-4 text-primary" />
-                  <span className="text-xs text-primary font-medium">Verified</span>
+                  <span className="text-xs text-primary font-medium">{tr("Verified")}</span>
                 </div>
               </div>
             </div>
@@ -71,10 +72,10 @@ const EducationSection = () => (
             </p>
 
             {/* Thesis */}
-            <div className="border-l-2 border-primary pl-4 mb-5">
+            <div className="border-s-2 border-primary ps-4 mb-5">
               <div className="flex items-center gap-2 mb-1">
                 <Microscope className="w-4 h-4 text-primary" />
-                <span className="text-xs font-semibold text-primary uppercase">Research Thesis</span>
+                <span className="text-xs font-semibold text-primary uppercase">{tr("Research Thesis")}</span>
               </div>
               <p className="text-sm text-foreground font-semibold italic">{d.thesis}</p>
             </div>
@@ -83,7 +84,7 @@ const EducationSection = () => (
             <div className="mb-5">
               <div className="flex items-center gap-2 mb-2">
                 <BookOpen className="w-4 h-4 text-primary" />
-                <span className="text-xs font-semibold text-primary uppercase">Specialization</span>
+                <span className="text-xs font-semibold text-primary uppercase">{tr("Specialization")}</span>
               </div>
               <div className="flex flex-wrap gap-2">
                 {d.specializations.map((s) => (
@@ -96,7 +97,7 @@ const EducationSection = () => (
             <div className="bg-primary/5 rounded-xl p-4">
               <div className="flex items-center gap-2 mb-2">
                 <Leaf className="w-4 h-4 text-primary" />
-                <span className="text-xs font-semibold text-primary uppercase">Impact & Resilience</span>
+                <span className="text-xs font-semibold text-primary uppercase">{tr("Impact & Resilience")}</span>
               </div>
               <p className="text-sm text-muted-foreground leading-relaxed">{d.impact}</p>
             </div>
@@ -105,6 +106,6 @@ const EducationSection = () => (
       </div>
     </div>
   </section>
-);
+); };
 
 export default EducationSection;

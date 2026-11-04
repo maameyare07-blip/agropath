@@ -1,3 +1,4 @@
+import { useText } from "@/lib/farmerI18n";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import TrainingsSection from "@/components/TrainingsSection";
@@ -49,7 +50,7 @@ const coursesSchema = {
   })),
 };
 
-const Trainings = () => (
+const Trainings = () => { const tr = useText(); return (
   <div className="min-h-screen bg-background">
     <Helmet>
       <script type="application/ld+json">{JSON.stringify(coursesSchema)}</script>
@@ -68,16 +69,9 @@ const Trainings = () => (
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <span className="text-primary font-semibold text-sm uppercase tracking-wider">
-              Continuous Learning
-            </span>
-            <h1 className="font-heading text-4xl sm:text-5xl font-bold text-foreground mt-3 mb-4">
-              Trainings & Professional Development
-            </h1>
-            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              A record of certifications, courses, and professional development activities
-              undertaken with UN agencies, FAO, and other leading institutions.
-            </p>
+            <span className="text-primary font-semibold text-sm uppercase tracking-wider">{tr("Continuous Learning")}</span>
+            <h1 className="font-heading text-4xl sm:text-5xl font-bold text-foreground mt-3 mb-4">{tr("Trainings & Professional Development")}</h1>
+            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">{tr("A record of certifications, courses, and professional development activities undertaken with UN agencies, FAO, and other leading institutions.")}</p>
           </motion.div>
         </div>
       </section>
@@ -85,6 +79,6 @@ const Trainings = () => (
     </main>
     <Footer />
   </div>
-);
+); };
 
 export default Trainings;
