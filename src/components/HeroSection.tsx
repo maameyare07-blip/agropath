@@ -36,7 +36,7 @@ const HeroSection = () => {
             transition={{ duration: 0.8 }}
             className="text-center lg:text-left"
           >
-            <div className="text-center mb-6 lg:text-left">
+            <div className="text-center mb-6">
               <Wordmark className="block font-heading text-3xl sm:text-4xl font-bold tracking-tight" />
               <p className="mt-1.5 font-heading text-base sm:text-lg font-semibold text-brand-green">{tr("Mohamed Mohamud SH Hassan")}</p>
             </div>

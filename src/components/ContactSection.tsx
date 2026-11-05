@@ -89,7 +89,7 @@ const ContactSection = () => {
               </div>
               <div>
                 <p className="text-sm text-muted-foreground">{tr("Call Me")}</p>
-                <p className="font-semibold text-foreground">+252 612 330 512</p>
+                <p dir="ltr" className="font-semibold text-foreground">+252 612 330 512</p>
               </div>
             </a>
 
@@ -109,7 +109,7 @@ const ContactSection = () => {
               </div>
               <div>
                 <p className="text-sm text-muted-foreground">{tr("WhatsApp")}</p>
-                <p className="font-semibold text-foreground">+252 612 330 512</p>
+                <p dir="ltr" className="font-semibold text-foreground">+252 612 330 512</p>
               </div>
             </a>
           </motion.div>
