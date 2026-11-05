@@ -19,3 +19,12 @@ it("uses right-to-left direction for the Arabic version", async () => {
   expect(document.documentElement.lang).toBe("ar");
   expect(localStorage.getItem("site-lang")).toBe("ar");
 });
+
+it("restores left-to-right when switching from Arabic to English", async () => {
+  const { result } = renderHook(useFarmerLang, { wrapper: FarmerLangProvider });
+  act(() => result.current.setLang("ar"));
+  await waitFor(() => expect(document.documentElement.dir).toBe("rtl"));
+  act(() => result.current.setLang("en"));
+  await waitFor(() => expect(document.documentElement.dir).toBe("ltr"));
+  expect(localStorage.getItem("site-lang")).toBe("en");
+});
