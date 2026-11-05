@@ -2138,5 +2138,33 @@
   "— they are visible only to the site owner, and used solely to verify or follow up on your submission.": [
     "— waxaa arki kara oo keliya milkiilaha mareegta waxaana loo isticmaalaa xaqiijinta ama daba-galka markhaatigaaga oo keliya.",
     "— لا يراها سوى مالك الموقع، وتُستخدم فقط للتحقق من مشاركتك أو متابعتها."
+  ],
+  "Corresponding Author": [
+    "Qoraaga xiriirka",
+    "المؤلف المراسل"
+  ],
+  "Language": [
+    "Luqadda",
+    "اللغة"
+  ],
+  "Close": [
+    "Xir",
+    "إغلاق"
+  ],
+  "Something went wrong.": [
+    "Waxbaa khaldamay.",
+    "حدث خطأ ما."
+  ],
+  "Invalid login credentials": [
+    "Iimaylka ama furaha sirta ahi ma saxna",
+    "البريد الإلكتروني أو كلمة المرور غير صحيحة"
+  ],
+  "Email not confirmed": [
+    "Iimaylka lama xaqiijin",
+    "لم يتم تأكيد البريد الإلكتروني"
+  ],
+  "Marked as {status}": [
+    "Waxaa laga dhigay {status}",
+    "تم التعيين إلى {status}"
   ]
 }

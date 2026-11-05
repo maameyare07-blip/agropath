@@ -15,7 +15,7 @@ import { toast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import type { Tables } from "@/integrations/supabase/types";
 import { useAuthUser } from "@/hooks/useAuthUser";
-import { useFarmerLang } from "@/lib/farmerI18n";
+import { useFarmerLang, useText } from "@/lib/farmerI18n";
 
 type Diagnosis = Tables<"diagnoses"> & { urls: string[] };
 type Log = Tables<"symptom_logs">;
@@ -25,7 +25,8 @@ const card = "bg-card rounded-2xl border border-border shadow-sm p-5 sm:p-6";
 const fmt = (d: string) => new Date(d).toLocaleDateString();
 
 const Diagnoses = () => {
-  const { t } = useFarmerLang();
+  const { t, lang } = useFarmerLang();
+  const tr = useText();
   const [items, setItems] = useState<Diagnosis[] | null>(null);
   const [open, setOpen] = useState<string | null>(null);
 
@@ -66,7 +67,7 @@ const Diagnoses = () => {
             <div className="flex gap-2 mt-3 flex-wrap">
               {d.urls.map((u, i) => (
                 <a key={i} href={u} target="_blank" rel="noopener noreferrer">
-                  <img src={u} alt={`${d.crop ?? "Crop"} photo ${i + 1}`} className="w-24 h-24 object-cover rounded-xl border border-border" />
+                  <img src={u} alt={tr("{title} — photo {number} of {total}", { title: d.crop ?? t.crop, number: i + 1, total: d.urls.length })} className="w-24 h-24 object-cover rounded-xl border border-border" />
                 </a>
               ))}
             </div>
@@ -83,7 +84,8 @@ const Diagnoses = () => {
 };
 
 const Tracker = ({ userId }: { userId: string }) => {
-  const { t } = useFarmerLang();
+  const { t, lang } = useFarmerLang();
+  const tr = useText();
   const [logs, setLogs] = useState<Log[]>([]);
   const [filter, setFilter] = useState("");
   const [form, setForm] = useState({ crop: "", plot: "", severity: 3, notes: "", observed_on: new Date().toISOString().slice(0, 10) });
@@ -133,7 +135,7 @@ const Tracker = ({ userId }: { userId: string }) => {
                 <XAxis dataKey="date" stroke="hsl(var(--muted-foreground))" fontSize={12} />
                 <YAxis domain={[1, 5]} ticks={[1, 2, 3, 4, 5]} stroke="hsl(var(--muted-foreground))" fontSize={12} />
                 <Tooltip />
-                <Line type="monotone" dataKey="severity" stroke="hsl(var(--primary))" strokeWidth={2} dot={{ r: 4 }} />
+                <Line name={t.severity} type="monotone" dataKey="severity" stroke="hsl(var(--primary))" strokeWidth={2} dot={{ r: 4 }} />
               </LineChart>
             </ResponsiveContainer>
           </div>
@@ -155,7 +157,8 @@ const Tracker = ({ userId }: { userId: string }) => {
 };
 
 const Notes = ({ userId }: { userId: string }) => {
-  const { t } = useFarmerLang();
+  const { t, lang } = useFarmerLang();
+  const tr = useText();
   const [notes, setNotes] = useState<Note[]>([]);
   const empty = { title: "", crop: "", body: "" };
   const [form, setForm] = useState(empty);
@@ -211,7 +214,8 @@ const Notes = ({ userId }: { userId: string }) => {
 };
 
 const FarmerDashboard = () => {
-  const { t } = useFarmerLang();
+  const { t, lang } = useFarmerLang();
+  const tr = useText();
   const { user, loading } = useAuthUser();
   const navigate = useNavigate();
 
@@ -236,11 +240,11 @@ const FarmerDashboard = () => {
             </div>
           </div>
           {!user ? <Loader2 className="w-6 h-6 animate-spin text-primary mx-auto" /> : (
-            <Tabs defaultValue="diagnoses">
+            <Tabs defaultValue="diagnoses" dir={lang === "ar" ? "rtl" : "ltr"}>
               <TabsList className="w-full grid grid-cols-3 h-auto mb-6">
-                <TabsTrigger value="diagnoses" className="min-h-11">{t.diagnoses}</TabsTrigger>
-                <TabsTrigger value="tracker" className="min-h-11">{t.tracker}</TabsTrigger>
-                <TabsTrigger value="notes" className="min-h-11">{t.notes}</TabsTrigger>
+                <TabsTrigger value="diagnoses" className="min-h-11 whitespace-normal">{t.diagnoses}</TabsTrigger>
+                <TabsTrigger value="tracker" className="min-h-11 whitespace-normal">{t.tracker}</TabsTrigger>
+                <TabsTrigger value="notes" className="min-h-11 whitespace-normal">{t.notes}</TabsTrigger>
               </TabsList>
               <TabsContent value="diagnoses"><Diagnoses /></TabsContent>
               <TabsContent value="tracker"><Tracker userId={user.id} /></TabsContent>

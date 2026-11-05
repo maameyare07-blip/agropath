@@ -71,7 +71,7 @@ const AdminTestimonials = () => {
       .select("*")
       .order("created_at", { ascending: false });
     if (error) {
-      toast({ title: "Failed to load", description: error.message, variant: "destructive" });
+      toast({ title: tr("Failed to load"), description: error.message, variant: "destructive" });
     }
     setRows((data as Row[]) ?? []);
     setLoading(false);
@@ -82,10 +82,10 @@ const AdminTestimonials = () => {
   const setStatus = async (row: Row, status: Row["status"]) => {
     const { error } = await supabase.from("testimonials").update({ status }).eq("id", row.id);
     if (error) {
-      toast({ title: "Update failed", description: error.message, variant: "destructive" });
+      toast({ title: tr("Update failed"), description: error.message, variant: "destructive" });
       return;
     }
-    toast({ title: `Marked as ${status}` });
+    toast({ title: tr("Marked as {status}", { status: tr(status) }) });
     load();
   };
 
@@ -93,9 +93,9 @@ const AdminTestimonials = () => {
     if (!deleting) return;
     const { error } = await supabase.from("testimonials").delete().eq("id", deleting.id);
     if (error) {
-      toast({ title: "Delete failed", description: error.message, variant: "destructive" });
+      toast({ title: tr("Delete failed"), description: error.message, variant: "destructive" });
     } else {
-      toast({ title: "Deleted" });
+      toast({ title: tr("Deleted") });
       load();
     }
     setDeleting(null);
@@ -116,10 +116,10 @@ const AdminTestimonials = () => {
       .eq("id", editing.id);
     setSaving(false);
     if (error) {
-      toast({ title: "Save failed", description: error.message, variant: "destructive" });
+      toast({ title: tr("Save failed"), description: error.message, variant: "destructive" });
       return;
     }
-    toast({ title: "Saved" });
+    toast({ title: tr("Saved") });
     setEditing(null);
     load();
   };

@@ -1,3 +1,4 @@
+import { translateText } from "@/lib/siteText";
 import { Component, ErrorInfo, ReactNode } from "react";
 import { reportError } from "@/lib/errorLogging";
 
@@ -25,21 +26,23 @@ class ErrorBoundary extends Component<Props, State> {
   render() {
     if (!this.state.error) return this.props.children;
 
+    const lang = document.documentElement.lang;
+    const tr = (text: string) => translateText(text, lang === "ar" || lang === "so" ? lang : "en");
     return (
       <div className="min-h-screen bg-background text-foreground flex items-center justify-center px-6">
         <div className="max-w-md text-center">
           <h1 className="font-heading text-2xl font-bold mb-3">
-            Something went wrong
+            {tr("Something went wrong")}
           </h1>
           <p className="text-muted-foreground mb-6">
-            The page could not be displayed. Please reload to try again.
+            {tr("The page could not be displayed. Please reload to try again.")}
           </p>
           <button
             type="button"
             onClick={() => window.location.reload()}
             className="min-h-11 px-6 rounded-xl bg-primary text-primary-foreground font-semibold"
           >
-            Reload page
+            {tr("Reload page")}
           </button>
         </div>
       </div>
