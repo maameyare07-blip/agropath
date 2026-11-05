@@ -51,7 +51,7 @@ const experiences = [
 ];
 
 const ExperienceSection = () => { const tr = useText(); return (
-  <section id="experience" className="py-14 lg:py-20">
+  <section id="experience" className="py-14 lg:py-20 overflow-hidden">
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       <motion.div
         initial={{ opacity: 0, y: 30 }}

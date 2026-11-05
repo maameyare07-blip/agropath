@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Moon, Sun } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
+import { useText } from "@/lib/farmerI18n";
 
 const STORAGE_KEY = "agropath-theme";
 
@@ -16,6 +17,7 @@ const getInitialTheme = () => {
 };
 
 const ThemeToggle = () => {
+  const tr = useText();
   const [theme, setTheme] = useState<"light" | "dark">(getInitialTheme);
 
   useEffect(() => {
@@ -39,13 +41,13 @@ const ThemeToggle = () => {
           size="icon"
           className="h-11 w-11 shrink-0"
           onClick={() => setTheme(isDark ? "light" : "dark")}
-          aria-label={isDark ? "Use light mode" : "Use dark mode"}
+          aria-label={tr(isDark ? "Use light mode" : "Use dark mode")}
           aria-pressed={isDark}
         >
           {isDark ? <Sun aria-hidden="true" /> : <Moon aria-hidden="true" />}
         </Button>
       </TooltipTrigger>
-      <TooltipContent>{isDark ? "Light mode" : "Dark mode"}</TooltipContent>
+      <TooltipContent>{tr(isDark ? "Light mode" : "Dark mode")}</TooltipContent>
     </Tooltip>
   );
 };

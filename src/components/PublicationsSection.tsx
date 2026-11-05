@@ -81,13 +81,13 @@ const PublicationsSection = () => {
               <Users className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
               <span>
                 <span className="font-medium text-foreground">{tr("Authors:")}</span>
-                {pub.authors.join("; ")}
+                {" "}{pub.authors.map(author => author.replace("(Corresponding Author)", `(${tr("Corresponding Author")})`).replace("(Co-Author)", `(${tr("Co-Author")})`)).join("; ")}
               </span>
             </div>
 
 
             <p className="text-sm text-muted-foreground leading-relaxed">
-              {pub.summary}
+              {tr(pub.summary)}
             </p>
 
             {safeContentUrl(pub.url) && (

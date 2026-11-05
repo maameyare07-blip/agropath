@@ -33,7 +33,7 @@ const PrivacyPolicy = () => { const tr = useText(); return (
             <span className="text-primary font-semibold text-sm uppercase tracking-wider">{tr("Legal")}</span>
             <h1 className="font-heading text-4xl sm:text-5xl font-bold text-foreground mt-3 mb-4">{tr("Privacy Policy")}</h1>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">{tr("How this website, owned and maintained by Mohamed Mohamud SH Hassan, handles the limited information it collects.")}</p>
-            <p className="text-sm text-muted-foreground mt-4">{tr("Last updated:")}{LAST_UPDATED}</p>
+            <p className="text-sm text-muted-foreground mt-4">{tr("Last updated:")} {tr(LAST_UPDATED)}</p>
           </motion.div>
         </div>
       </section>

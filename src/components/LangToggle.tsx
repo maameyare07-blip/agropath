@@ -1,10 +1,11 @@
 import { Check, Languages } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
-import { LANGS, useFarmerLang } from "@/lib/farmerI18n";
+import { LANGS, useFarmerLang, useText } from "@/lib/farmerI18n";
 
 const LangToggle = ({ compact = false }: { compact?: boolean }) => {
   const { lang, setLang } = useFarmerLang();
+  const tr = useText();
   const current = LANGS.find((l) => l.code === lang) ?? LANGS[0];
   return (
     <DropdownMenu>
@@ -14,7 +15,7 @@ const LangToggle = ({ compact = false }: { compact?: boolean }) => {
           variant={compact ? "ghost" : "outline"}
           size="sm"
           className="h-11 min-w-11 gap-2"
-          aria-label={`Language: ${current.label}`}
+          aria-label={`${tr("Language")}: ${current.label}`}
         >
           <Languages className="w-4 h-4" aria-hidden="true" />
           {compact ? current.short : current.label}
