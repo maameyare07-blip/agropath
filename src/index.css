@@ -104,4 +104,13 @@
   }
   html[lang="ar"] .text-left { text-align: start; }
   html[lang="ar"] .text-right { text-align: end; }
+  html[lang="ar"] .lg\:text-left { text-align: start; }
+  html[lang="ar"] { letter-spacing: 0; }
+  html[lang="ar"] h1, html[lang="ar"] h2, html[lang="ar"] h3 { line-height: 1.5; }
+  html[dir="rtl"] .lucide-arrow-left,
+  html[dir="rtl"] .lucide-arrow-right,
+  html[dir="rtl"] .lucide-chevron-left,
+  html[dir="rtl"] .lucide-chevron-right { transform: scaleX(-1); }
+  main, section, footer { overflow-wrap: break-word; }
+  input[type="email"], input[type="password"], input[type="date"] { direction: ltr; }
 }

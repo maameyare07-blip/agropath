@@ -43,7 +43,6 @@ type Filter = "all" | "pending" | "approved" | "rejected";
 
 const StatusBadge = ({ s }: { s: Row["status"] }) => {
   const tr = useText();
-  const tr = useText();
   const styles: Record<Row["status"], string> = {
     pending: "bg-muted text-muted-foreground border-border",
     approved: "bg-primary/10 text-primary border-primary/20",
