@@ -6,7 +6,7 @@ type WordmarkProps = {
 
 /** Two-tone "AgroPath" brand wordmark. Inherits font size/weight from its parent. */
 const Wordmark = ({ onDark = false, className = "" }: WordmarkProps) => (
-  <span className={className}>
+  <span className={className} dir="ltr">
     <span className={onDark ? "text-brand-green-light" : "text-brand-green"}>Agro</span>
     <span className="text-brand-gold">Path</span>
   </span>
