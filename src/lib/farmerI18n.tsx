@@ -5,7 +5,7 @@ export type Lang = "en" | "so" | "ar";
 
 const en = {
   dashboard: "My Farm Dashboard",
-  dashboardIntro: "Your saved diagnoses, symptom records and crop notes — private to your account.",
+  dashboardIntro: "Your saved diagnoses, symptom records and crop notes. The AgroPath team may review diagnoses to improve advice.",
   signIn: "Sign in",
   signUp: "Create account",
   signOut: "Sign out",
@@ -56,7 +56,7 @@ const en = {
 
 const so: typeof en = {
   dashboard: "Shaxda Beertayda",
-  dashboardIntro: "Baaritaannadaada, diiwaanka calaamadaha iyo qoraallada dalagga — kaliya adiga ayaa arki kara.",
+  dashboardIntro: "Baaritaannadaada, diiwaanka calaamadaha iyo qoraallada dalagga. Kooxda AgroPath waxay dib u eegi kartaa baaritaannada si ay talada u hagaajiso.",
   signIn: "Gal",
   signUp: "Samee akoon",
   signOut: "Ka bax",
@@ -107,7 +107,7 @@ const so: typeof en = {
 
 const ar: typeof en = {
   dashboard: "لوحة مزرعتي",
-  dashboardIntro: "تشخيصاتك المحفوظة وسجلات الأعراض وملاحظات المحاصيل — خاصة بحسابك فقط.",
+  dashboardIntro: "تشخيصاتك المحفوظة وسجلات الأعراض وملاحظات المحاصيل. قد يراجع فريق AgroPath التشخيصات لتحسين النصائح.",
   signIn: "تسجيل الدخول",
   signUp: "إنشاء حساب",
   signOut: "تسجيل الخروج",

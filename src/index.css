@@ -120,6 +120,9 @@
 @layer base {
   html { scroll-padding-top: 5rem; letter-spacing: 0; }
   @media (max-width: 767px) {
+    body:has(.mobile-farmer-nav) { padding-bottom: calc(5rem + env(safe-area-inset-bottom, 0px)); }
+    .mobile-farmer-nav { padding-bottom: env(safe-area-inset-bottom, 0px); }
+    body:has(.mobile-farmer-nav) [data-cookie-consent] { bottom: calc(5rem + env(safe-area-inset-bottom, 0px)); }
     input:not([type="range"]):not([type="checkbox"]):not([type="radio"]), textarea, select {
       font-size: 1rem;
       min-height: 2.75rem;

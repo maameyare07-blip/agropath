@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, NavLink, Outlet, useLocation, useNavigate } from "react-router-dom";
-import { Loader2, LogOut, Mail, MessageSquare, BookOpen, ShieldCheck } from "lucide-react";
+import { Loader2, LogOut, Mail, MessageSquare, BookOpen, ShieldCheck, LayoutDashboard, Sprout, Activity } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import AgroPathLogo from "@/components/AgroPathLogo";
@@ -48,11 +48,14 @@ export default function AdminLayout() {
       <div className="flex items-center gap-2"><LangToggle /><Button variant="ghost" onClick={signOut}><LogOut />{text("Sign out")}</Button></div>
     </div></header>
     <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8"><div className="flex items-center gap-2 text-primary mb-5"><ShieldCheck className="w-5 h-5" /><span className="font-semibold">{text("Admin panel")}</span></div>
-      <nav aria-label={text("Admin navigation")} className="flex flex-wrap gap-2 border-b pb-5 mb-8">{[
-        { to: "/admin/subscribers", label: "Subscribers", icon: Mail },
+      <nav aria-label={text("Admin navigation")} className="grid grid-cols-2 sm:flex sm:flex-wrap gap-2 border-b pb-5 mb-8">{[
+        { to: "/admin/overview", label: "Overview", icon: LayoutDashboard },
         { to: "/admin/testimonials", label: "Testimonials", icon: MessageSquare },
-        { to: "/admin/content", label: "Published content", icon: BookOpen },
-      ].map(item => <NavLink key={item.to} to={item.to}>{({ isActive }) => <Button variant={isActive ? "default" : "ghost"} className="min-h-11"><item.icon />{text(item.label)}</Button>}</NavLink>)}</nav>
+        { to: "/admin/subscribers", label: "Subscribers", icon: Mail },
+        { to: "/admin/content", label: "Content", icon: BookOpen },
+        { to: "/admin/diagnoses", label: "Crop Doctor", icon: Sprout },
+        { to: "/admin/errors", label: "Site health", icon: Activity },
+      ].map(item => <NavLink key={item.to} to={item.to} className="min-w-0">{({ isActive }) => <Button asChild variant={isActive ? "default" : "ghost"} className="min-h-11 h-auto w-full sm:w-auto whitespace-normal justify-start px-3 py-3"><span><item.icon className="shrink-0" />{text(item.label)}</span></Button>}</NavLink>)}</nav>
       <Outlet />
     </div>
   </div>;
