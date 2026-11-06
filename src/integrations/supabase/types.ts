@@ -300,6 +300,7 @@ export type Database = {
       }
     }
     Functions: {
+      admin_stats: { Args: never; Returns: Json }
       get_approved_testimonials: {
         Args: never
         Returns: {
