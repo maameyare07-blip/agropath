@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Cookie } from "lucide-react";
 import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
 
 const STORAGE_KEY = "agropath-cookie-consent";
 
@@ -37,6 +38,7 @@ const CookieConsent = () => {
           transition={{ duration: 0.3 }}
           role="dialog"
           aria-label={tr("Cookie notice")}
+          data-cookie-consent
           className="fixed bottom-4 start-4 end-4 z-40 sm:left-auto sm:end-6 sm:bottom-6 sm:max-w-md"
         >
           <div className="bg-card/95 backdrop-blur-lg border border-border rounded-2xl shadow-lg p-4 sm:p-5">
@@ -47,10 +49,10 @@ const CookieConsent = () => {
               <div className="flex-1">
                 <p className="text-sm text-muted-foreground leading-relaxed">{tr("This site uses cookies to understand site traffic via Google Analytics. By continuing to browse, you agree to our use of cookies.")}</p>
                 <div className="flex items-center gap-3 mt-3">
-                  <button
+                  <Button
                     onClick={accept}
                     className="min-h-11 px-5 rounded-xl bg-primary text-primary-foreground text-sm font-semibold hover:opacity-90 transition-opacity"
-                  >{tr("Accept")}</button>
+                  >{tr("Accept")}</Button>
                   <Link
                     to="/privacy-policy"
                     className="min-h-11 inline-flex items-center text-sm font-medium text-primary hover:underline"
