@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ExternalLink, ChevronDown } from "lucide-react";
@@ -40,6 +40,13 @@ const Navbar = () => {
   const [credentialsOpen, setCredentialsOpen] = useState(false);
   const location = useLocation();
   const isHome = location.pathname === "/";
+  useEffect(() => { setIsOpen(false); setCredentialsOpen(false); }, [location.pathname, location.hash]);
+  useEffect(() => {
+    if (!isOpen) return;
+    const escape = (event: KeyboardEvent) => { if (event.key === "Escape") setIsOpen(false); };
+    window.addEventListener("keydown", escape);
+    return () => window.removeEventListener("keydown", escape);
+  }, [isOpen]);
 
   // On pages other than the homepage, hash links must include the home path
   // so they actually navigate back instead of only changing the hash.
@@ -55,7 +62,7 @@ const Navbar = () => {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-card/80 backdrop-blur-lg border-b border-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 xl:px-8">
         <div className="flex items-center justify-between h-16">
-          <Link to="/" onClick={closeAll} className="flex items-center gap-2">
+          <Link to="/" onClick={closeAll} className="flex items-center gap-2 min-h-11 shrink-0">
             <AgroPathLogo className="w-7 h-7" />
             <Wordmark className="font-heading font-bold text-xl" />
           </Link>
@@ -111,6 +118,7 @@ const Navbar = () => {
               className="p-2 rounded-lg text-foreground hover:bg-secondary transition-colors min-h-11 min-w-11"
               aria-label={text("Toggle menu")}
               aria-expanded={isOpen}
+              aria-controls="mobile-menu"
             >
               {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </Button>
@@ -125,7 +133,8 @@ const Navbar = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="xl:hidden bg-card border-b border-border overflow-hidden"
+            id="mobile-menu"
+            className="xl:hidden bg-card border-b border-border max-h-[calc(100dvh-4rem)] overflow-y-auto overscroll-contain"
           >
             <div className="px-4 py-4 space-y-1">
               {primaryLinks.map((link) => (

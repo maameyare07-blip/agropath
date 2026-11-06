@@ -1,6 +1,7 @@
 import { useText } from "@/lib/farmerI18n";
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
+import { Button } from "@/components/ui/button";
 import { ArrowDown, Mail } from "lucide-react";
 import Wordmark from "@/components/Wordmark";
 import img1 from "@/assets/gallery/1.jpeg.asset.json";
@@ -13,22 +14,22 @@ const SLIDES = [img1.url, img2.url, img3.url, img4.url];
 const HeroSection = () => {
   const tr = useText();
   const [index, setIndex] = useState(0);
+  const reducedMotion = useReducedMotion();
 
   useEffect(() => {
+    if (reducedMotion) return;
     const timer = setInterval(() => {
       setIndex((prev) => (prev + 1) % SLIDES.length);
     }, 4500);
     return () => clearInterval(timer);
-  }, []);
+  }, [reducedMotion]);
 
   return (
     <section className="relative flex items-center pt-20 lg:pt-16 lg:min-h-[88vh] overflow-hidden">
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-accent/5" />
-      <div className="absolute top-20 end-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
-      <div className="absolute bottom-0 start-0 w-72 h-72 bg-accent/10 rounded-full blur-3xl" />
 
-      <div className="relative w-full max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-12">
+      <div className="relative w-full max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-10 lg:py-12">
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           <motion.div
             initial={{ opacity: 0, x: -40 }}
@@ -42,10 +43,10 @@ const HeroSection = () => {
             </div>
 
             <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6">{tr("Plant Pathology Specialist | Seed Inspector | Agricultural Researcher")}</span>
-            <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground leading-tight mb-6">{tr("Advancing Sustainable Agriculture")}{" "}
+            <h1 className="font-heading text-3xl sm:text-5xl lg:text-6xl font-bold text-foreground leading-tight mb-6">{tr("Advancing Sustainable Agriculture")}{" "}
               <span className="text-primary">{tr("Through Science")}</span>
             </h1>
-            <p className="text-lg text-muted-foreground max-w-xl mx-auto lg:mx-0 mb-8">{tr("A Plant Pathology Specialist and Seed Inspector dedicated to strengthening crop health, seed quality, and food security across Somalia. Founder & CEO of PathoSolutions, bridging scientific research with practical solutions for farmers and agricultural institutions.")}</p>
+            <p className="text-base sm:text-lg text-muted-foreground max-w-xl mx-auto lg:mx-0 mb-6 sm:mb-8">{tr("A Plant Pathology Specialist and Seed Inspector dedicated to strengthening crop health, seed quality, and food security across Somalia. Founder & CEO of PathoSolutions, bridging scientific research with practical solutions for farmers and agricultural institutions.")}</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
               <a
                 href="#contact"
@@ -85,16 +86,14 @@ const HeroSection = () => {
 
               <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-background/90 border border-border shadow-sm">
                 {SLIDES.map((_, i) => (
-                  <button
+                  <Button variant="ghost" size="icon"
                     key={i}
                     type="button"
                     onClick={() => setIndex(i)}
                     aria-label={tr("Go to photo {number}", { number: i + 1 })}
                     aria-current={i === index}
-                    className={`h-1.5 rounded-full transition-all ${
-                      i === index ? "w-4 bg-primary" : "w-1.5 bg-border hover:bg-primary/40"
-                    }`}
-                  />
+                    className="h-11 w-11"
+                  ><span className={`h-1.5 rounded-full ${i === index ? "w-4 bg-primary" : "w-1.5 bg-border"}`} /></Button>
                 ))}
               </div>
             </div>

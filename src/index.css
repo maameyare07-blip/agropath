@@ -87,6 +87,8 @@
   body {
     @apply bg-background text-foreground;
     font-family: 'Figtree', sans-serif;
+    -webkit-text-size-adjust: 100%;
+    min-width: 320px;
   }
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Outfit', sans-serif;
@@ -113,4 +115,18 @@
   html[dir="rtl"] .lucide-chevron-right { transform: scaleX(-1); }
   main, section, footer { overflow-wrap: break-word; }
   input[type="email"], input[type="password"], input[type="date"] { direction: ltr; }
+}
+
+@layer base {
+  html { scroll-padding-top: 5rem; letter-spacing: 0; }
+  @media (max-width: 767px) {
+    input:not([type="range"]):not([type="checkbox"]):not([type="radio"]), textarea, select {
+      font-size: 1rem;
+      min-height: 2.75rem;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+    html { scroll-behavior: auto !important; }
+  }
 }
