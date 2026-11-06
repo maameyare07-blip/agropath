@@ -87,7 +87,7 @@ const ContactSection = () => {
               <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
                 <Phone className="w-6 h-6 text-primary" />
               </div>
-              <div>
+              <div className="min-w-0">
                 <p className="text-sm text-muted-foreground">{tr("Call Me")}</p>
                 <p dir="ltr" className="font-semibold text-foreground">+252 612 330 512</p>
               </div>
@@ -99,7 +99,7 @@ const ContactSection = () => {
               </div>
               <div>
                 <p className="text-sm text-muted-foreground">{tr("Email Me")}</p>
-                <p className="font-semibold text-foreground">{EMAIL}</p>
+                <p dir="ltr" className="font-semibold text-foreground break-all">{EMAIL}</p>
               </div>
             </a>
 
@@ -119,7 +119,7 @@ const ContactSection = () => {
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="bg-card rounded-2xl p-6 lg:p-8 border border-border shadow-sm space-y-5"
+            className="bg-card rounded-2xl p-4 sm:p-6 lg:p-8 border border-border shadow-sm space-y-5"
             onSubmit={(e) => { e.preventDefault(); sendEmail(); }}
           >
             <div>

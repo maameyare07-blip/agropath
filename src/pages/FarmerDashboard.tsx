@@ -24,7 +24,7 @@ type Note = Tables<"crop_notes">;
 const card = "bg-card rounded-2xl border border-border shadow-sm p-5 sm:p-6";
 const fmt = (d: string) => new Date(d).toLocaleDateString();
 
-const Diagnoses = () => {
+const Diagnoses = ({ userId }: { userId: string }) => {
   const { t, lang } = useFarmerLang();
   const tr = useText();
   const [items, setItems] = useState<Diagnosis[] | null>(null);
@@ -32,7 +32,7 @@ const Diagnoses = () => {
 
   useEffect(() => {
     (async () => {
-      const { data } = await supabase.from("diagnoses").select("*").order("created_at", { ascending: false });
+      const { data } = await supabase.from("diagnoses").select("*").eq("user_id", userId).order("created_at", { ascending: false });
       const rows = data ?? [];
       const paths = rows.flatMap((r) => r.photo_paths);
       const signed = paths.length
@@ -41,7 +41,7 @@ const Diagnoses = () => {
       const map = new Map(signed.map((s) => [s.path, s.signedUrl]));
       setItems(rows.map((r) => ({ ...r, urls: r.photo_paths.map((p) => map.get(p)).filter(Boolean) as string[] })));
     })();
-  }, []);
+  }, [userId]);
 
   const remove = async (d: Diagnosis) => {
     if (d.photo_paths.length) await supabase.storage.from("crop-photos").remove(d.photo_paths);
@@ -246,7 +246,7 @@ const FarmerDashboard = () => {
                 <TabsTrigger value="tracker" className="min-h-11 whitespace-normal">{t.tracker}</TabsTrigger>
                 <TabsTrigger value="notes" className="min-h-11 whitespace-normal">{t.notes}</TabsTrigger>
               </TabsList>
-              <TabsContent value="diagnoses"><Diagnoses /></TabsContent>
+              <TabsContent value="diagnoses"><Diagnoses userId={user.id} /></TabsContent>
               <TabsContent value="tracker"><Tracker userId={user.id} /></TabsContent>
               <TabsContent value="notes"><Notes userId={user.id} /></TabsContent>
             </Tabs>

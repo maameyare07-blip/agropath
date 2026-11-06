@@ -14,6 +14,10 @@ import AdminTestimonials from "./pages/AdminTestimonials.tsx";
 import AdminLayout from "./components/admin/AdminLayout";
 import AdminSubscribers from "./pages/AdminSubscribers";
 import AdminContent from "./pages/AdminContent";
+import AdminOverview from "./pages/AdminOverview";
+import AdminDiagnoses from "./pages/AdminDiagnoses";
+import AdminErrors from "./pages/AdminErrors";
+import MobileFarmerNav from "./components/MobileFarmerNav";
 import OAuthConsent from "./pages/OAuthConsent.tsx";
 import Trainings from "./pages/Trainings.tsx";
 import PrivacyPolicy from "./pages/PrivacyPolicy.tsx";
@@ -42,7 +46,10 @@ const App = () => (
           <Route path="/testimonial" element={<SubmitTestimonial />} />
           <Route path="/admin/login" element={<AdminLogin />} />
           <Route path="/admin" element={<AdminLayout />}>
-            <Route index element={<Navigate to="subscribers" replace />} />
+            <Route index element={<Navigate to="overview" replace />} />
+            <Route path="overview" element={<AdminOverview />} />
+            <Route path="diagnoses" element={<AdminDiagnoses />} />
+            <Route path="errors" element={<AdminErrors />} />
             <Route path="subscribers" element={<AdminSubscribers />} />
             <Route path="testimonials" element={<AdminTestimonials />} />
             <Route path="content" element={<AdminContent />} />
@@ -58,6 +65,7 @@ const App = () => (
           <Route path="*" element={<NotFound />} />
         </Routes>
         <CookieConsent />
+        <MobileFarmerNav />
       </BrowserRouter>
       </FarmerLangProvider>
       <Analytics />

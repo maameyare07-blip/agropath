@@ -158,7 +158,7 @@ const CropDoctor = () => {
           <div className="max-w-3xl mx-auto px-4 sm:px-6 text-center">
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
               <span className="text-primary font-semibold text-sm uppercase tracking-wider">{tr("For Farmers")}</span>
-              <h1 className="font-heading text-4xl sm:text-5xl font-bold text-foreground mt-3 mb-4">{tr("Crop Doctor")}</h1>
+              <h1 className="font-heading text-3xl sm:text-5xl font-bold text-foreground mt-3 mb-4">{tr("Crop Doctor")}</h1>
               <p className="text-muted-foreground text-lg">{tr("Share photos of your crop and describe what you see. You'll get a quick first opinion on possible problems and what you can do about them.")}</p>
             </motion.div>
           </div>
@@ -166,7 +166,7 @@ const CropDoctor = () => {
 
         <section className="py-12">
           <div className="max-w-3xl mx-auto px-4 sm:px-6 space-y-8">
-            <form onSubmit={submit} className="bg-card rounded-2xl border border-border shadow-sm p-6 lg:p-8 space-y-6">
+            <form onSubmit={submit} className="bg-card rounded-lg border border-border shadow-sm p-4 sm:p-6 lg:p-8 space-y-6">
               <div className="space-y-2">
                 <Label htmlFor="crop">{tr("Crop (optional)")}</Label>
                 <Input id="crop" value={crop} maxLength={100} onChange={(e) => setCrop(e.target.value)} placeholder={tr("e.g. Maize, tomato, sorghum")} className="h-11" />
@@ -178,25 +178,25 @@ const CropDoctor = () => {
                   {images.map((src, i) => (
                     <div key={i} className="relative w-24 h-24 rounded-xl overflow-hidden border border-border">
                       <img src={src} alt={tr("Crop photo {number}", { number: i + 1 })} className="w-full h-full object-cover" />
-                      <button
+                      <Button variant="ghost" size="icon"
                         type="button"
                         onClick={() => setImages((p) => p.filter((_, j) => j !== i))}
                         aria-label={tr("Remove photo")}
-                        className="absolute top-1 end-1 h-7 w-7 rounded-full bg-background/90 flex items-center justify-center"
+                        className="absolute top-0 end-0 h-11 w-11 bg-background/90"
                       >
                         <X className="w-4 h-4" />
-                      </button>
+                      </Button>
                     </div>
                   ))}
                   {images.length < MAX_IMAGES && (
-                    <button
+                    <Button variant="outline"
                       type="button"
                       onClick={() => fileRef.current?.click()}
                       className="w-24 h-24 rounded-xl border-2 border-dashed border-border flex flex-col items-center justify-center gap-1 text-muted-foreground hover:border-primary hover:text-primary transition-colors"
                     >
                       <Camera className="w-6 h-6" />
                       <span className="text-xs">{tr("Add photo")}</span>
-                    </button>
+                    </Button>
                   )}
                 </div>
                 <input ref={fileRef} type="file" accept="image/*" multiple className="hidden" onChange={(e) => addFiles(e.target.files)} />
@@ -220,14 +220,14 @@ const CropDoctor = () => {
                 </p>
               )}
 
-              <Button type="submit" size="lg" disabled={loading} className="w-full gap-2">
+              <Button type="submit" size="lg" disabled={loading} className="w-full gap-2 h-auto min-h-12 whitespace-normal py-3">
                 {loading ? <Loader2 className="w-5 h-5 animate-spin" /> : <Sprout className="w-5 h-5" />}
                 {loading ? tr("Analysing… this can take up to a minute") : tr("Get preliminary diagnosis")}
               </Button>
             </form>
 
             {answer && (
-              <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} className="bg-card rounded-2xl border border-border shadow-sm p-6 lg:p-8">
+              <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} className="bg-card rounded-lg border border-border shadow-sm p-4 sm:p-6 lg:p-8 min-w-0 break-words">
                 <h2 className="font-heading text-2xl font-bold text-foreground">{tr("Preliminary assessment")}</h2>
                 <Answer text={answer} />
                 <p className="mt-6 text-sm">
@@ -245,6 +245,7 @@ const CropDoctor = () => {
 
             <p className="text-xs text-muted-foreground text-center">{tr("This is an AI-generated preliminary guide, not a confirmed diagnosis. For serious or spreading problems, contact a local extension officer or")}{" "}
               <a href="/#contact" className="text-primary underline">{tr("get in touch")}</a>{tr("for expert help.")}</p>
+            <p className="text-xs text-muted-foreground text-center">{tr("Submissions may be reviewed by the AgroPath team to improve advice.")}</p>
           </div>
         </section>
       </main>

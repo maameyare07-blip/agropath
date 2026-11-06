@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import Seo from "@/components/Seo";
 
 const EMAIL = "maameyare07@gmail.com";
-const LAST_UPDATED = "2 August 2026";
+const LAST_UPDATED = "6 November 2026";
 
 const Section = ({ title, children }: { title: string; children: React.ReactNode }) => { const tr = useText(); return (
   <div className="bg-card rounded-2xl border border-border shadow-sm p-6 lg:p-8">
@@ -41,7 +41,7 @@ const PrivacyPolicy = () => { const tr = useText(); return (
       <section className="py-14 lg:py-20">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
           <Section title={tr("Overview")}>
-            <p>{tr("This site is a personal professional portfolio. It collects only the minimal information described below — website usage analytics, and details you choose to submit yourself through the testimonial form or the contact options.")}</p>
+            <p>{tr("This site provides a professional portfolio and farmer tools. It collects website usage information and the details you choose to submit through subscriptions, testimonials, farmer accounts, and Crop Doctor.")}</p>
           </Section>
 
           <Section title={tr("Analytics and Cookies")}>
@@ -67,8 +67,15 @@ const PrivacyPolicy = () => { const tr = useText(); return (
             <p>{tr("The contact section provides phone, WhatsApp, and email options, plus a form that opens a pre-filled message in your own email client or WhatsApp. Messages sent this way are not stored by this website — they arrive directly in the site owner's inbox or WhatsApp, and only include what you voluntarily choose to send.")}</p>
           </Section>
 
+          <Section title={tr("Crop Doctor")}>
+            <p>{tr("Crop Doctor collects the crop name, symptoms, uploaded photos, and the AI-generated diagnosis. For signed-in farmers, these records and photos are saved with the farmer account. Anonymous submissions are processed to provide advice but are not saved to a farmer dashboard.")}</p>
+            <p>{tr("Your crop details, symptoms, and photos are processed by an AI service to generate preliminary disease possibilities and management guidance.")}</p>
+            <p>{tr("The site administrator may review saved submissions and photos to improve the service and follow up. These submissions are not public; other farmers cannot view your records.")}</p>
+            <p>{tr("Farmers can ask for their Crop Doctor records and photos to be deleted by contacting the site owner using the contact details below.")}</p>
+          </Section>
+
           <Section title={tr("Sharing of Information")}>
-            <p>{tr("Your information is never sold, rented, or traded. No data is shared with third parties beyond the two services required to operate this site: Google Analytics (site usage measurement) and the Supabase backend infrastructure (database and file storage for testimonials).")}</p>
+            <p>{tr("Your information is never sold, rented, or traded. Services used to operate this site include Google Analytics for usage measurement, Lovable Cloud for accounts and private record and photo storage, and an AI service for Crop Doctor assessments.")}</p>
           </Section>
 
           <Section title={tr("Your Choices and Rights")}>
